@@ -1,18 +1,26 @@
-import { Container, Col, Row } from "react-bootstrap";
-import Register from "./Register";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-function App() {
+import Home from "./Home";
+import Login from "./Login";
+
+const App = () => {
   return (
-    <Container>
-      <Row>
-        <Col xs={12} sm={12} md={6} lg={6}>
-          <Register />
-        </Col>
-
-        <Col xs={12} sm={12} md={6} lg={6}></Col>
-      </Row>
-    </Container>
+    <div style={styles.app}>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </Router>
+    </div>
   );
-}
+};
 
 export default App;
+
+const styles = {
+  app: {
+    padding: 50,
+  },
+};
