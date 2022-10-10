@@ -1,13 +1,11 @@
 import React from 'react';
 import {Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import homeImage from "./home.png";
+import homeImage from "./Home.png";
 
 import "./Home.css";
 const Home = (props) => {
     const navigate = useNavigate();
-    
-
 
   return (
     <>
@@ -16,6 +14,7 @@ const Home = (props) => {
         <Button
             variant="primary"
             type="submit"
+            onClick={() => navigate("/Register")}
             >
             Create an Account
         </Button>

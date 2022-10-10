@@ -4,7 +4,7 @@ import axios from "axios";
 
 export default function Register() {
   // initial state
-  const [email, setEmail] = useState("");
+  const [userName, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [register, setRegister] = useState(false);
 
@@ -15,9 +15,9 @@ export default function Register() {
     // set configurations
     const configuration = {
       method: "post",
-      url: "https://match-app-backend-deploy.herokuapp.com/register",
+      url: "http://localhost:8080/api/students",
       data: {
-        email,
+        userName,
         password,
       },
     };
@@ -42,7 +42,7 @@ export default function Register() {
           <Form.Control
             type="email"
             name="email"
-            value={email}
+            value={userName}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Enter email"
           />
