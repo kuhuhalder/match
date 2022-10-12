@@ -45,12 +45,12 @@ const App = () => {
   <div style={styles.app}>
     <Router>
     <Routes>
-    <Route path="/" element={<Home />} />
-    <Route path="/login" element={<Login />} />
-    <Route path="/register" element={<Register />} />
+    <Route exact path="/" element={<Home />} />
+    <Route exact path="/login" element={<Login />} />
+    <Route exact path="/register" element={<Register />} />
     {/* <ProtectedRoutes path="/profile" element={Profile} /> */}
-    <Route path="/profile" element={<Profile />} />
-    <Route path="/account" element={<Account />} />
+    <Route exact path="/profile" element={<Profile />} />
+    <Route exact path="/account" element={<Account />} />
     </Routes>
     </Router>
     </div>
