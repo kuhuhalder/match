@@ -41,7 +41,7 @@ function Profile()
   };
   return (
     <>
-      <h2>Your Profile</h2>
+      <h4>Your Profile</h4>
       <Form onSubmit={(e) => handleSubmit(e)}>
         {/* first name*/}
         <Form.Group controlId="formFirstName">
@@ -51,9 +51,74 @@ function Profile()
             name="firstName"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
-            placeholder="Enter name"
+            placeholder="Enter first name"
           />
-        </Form.Group>
+            <Form.Label>Last Name</Form.Label>
+          <Form.Control
+            type="firstName"
+            name="firstName"
+            value={firstName}
+            // onChange={(e) => setFirstName(e.target.value)}
+            placeholder="Enter last name"
+          />
+
+<Form.Label>Pronouns</Form.Label>
+          <Form.Control
+            type="firstName"
+            name="firstName"
+            value={firstName}
+            // onChange={(e) => setFirstName(e.target.value)}
+            placeholder="Enter Pronouns"
+          />
+
+<Dropdown
+        label="Campus"
+        options={[
+          {label: 'Select', value:'select'},
+          { label: 'Livingston', value: 'Livi' },
+          { label: 'College Avenue', value: 'CA' },
+          { label: 'Busch', value: 'B' },
+          { label: 'Cook/Douglass', value: 'C/D' },
+        ]}
+        value={campus}
+        onChange={handleCampus}
+      />
+      <CustomListDropDown></CustomListDropDown>
+      <Courses></Courses>
+        <Form.Label># Years in College</Form.Label>
+          <Form.Control
+            type="firstName"
+            name="firstName"
+            value={firstName}
+            // onChange={(e) => setFirstName(e.target.value)}
+            placeholder="# Years in College"
+          />
+         <Form.Label>Major</Form.Label>
+          <Form.Control
+            type="firstName"
+            name="firstName"
+            value={firstName}
+            // onChange={(e) => setFirstName(e.target.value)}
+            placeholder="Major"
+          />
+                  <Form.Label>Gender Preferences</Form.Label>
+          <Form.Control
+            type="firstName"
+            name="firstName"
+            value={firstName}
+            // onChange={(e) => setFirstName(e.target.value)}
+            placeholder="Gender Preferences"
+          />
+
+<Form.Label>Bio</Form.Label>
+          <Form.Control
+            type="firstName"
+            name="firstName"
+            value={firstName}
+            // onChange={(e) => setFirstName(e.target.value)}
+            placeholder="Enter bio"
+          />
+  
 
         {/* password */}
         {/* <Form.Group controlId="formBasicPassword"> */}
@@ -66,19 +131,6 @@ function Profile()
             placeholder="Password"
           />
         </Form.Group> */}
-        <Dropdown
-        label="Campus"
-        options={[
-          { label: 'Livingston', value: 'Livi' },
-          { label: 'College Avenue', value: 'CA' },
-          { label: 'Busch', value: 'B' },
-          { label: 'Cook/Douglass', value: 'C/D' },
-        ]}
-        value={campus}
-        onChange={handleCampus}
-      />
-      <CustomListDropDown></CustomListDropDown>
-      <Courses></Courses>
       <br></br>
         {/* submit button */}
         
@@ -87,8 +139,9 @@ function Profile()
           type="submit"
           onClick={(e) => handleSubmit(e)}
         >
-          Register
+          Submit
         </Button>
+        </Form.Group>
         </Form>
     </>
     
