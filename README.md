@@ -1,70 +1,31 @@
-# Getting Started with Create React App
+## MATCH
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+MATCH is a web-app that pairs students to form study-buddies where students can study together. MATCH can also match students with mentors based on interests or classes mentors have already taken that the students are currently taking.
 
-## Available Scripts
+Type of Application: software tools for helping the users and making life easier  or software projects that solve domain specific problems
 
-In the project directory, you can run:
+## Inspiration
 
-### `npm start`
+The reason why we chose this project is because after being students at Rutgers University for the past 3-4 years, we have realized that knowing classmates and peers within classes is of utmost importance. It gives students a support system to go through the day-to-day challenges that each class faces and being able to share stresses, victories, and reminders with students within our classes is very helpful. We are creating a service that will allow students to meet and match with other students in the classes they are taking and form a “study buddy” relationship with them. This allows students a way to meet other students, form friendships, and gain support in classes that can be difficult. We expect to learn an ample amount of skills to accomplish this project.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Meet the Team: S(WE)NSATIONAL
+### Team Members:
+- Kuhu Halder (Product Owner)
+- Farah Lubaba Rouf (Scrum Master)
+- Shreya Jain (Front-end Developer)
+- Prince Rawal (Backend Developer)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Tech Stack:
+- Front-end using React.js
+- Backend using Java and Springboot
 
-### `npm test`
+## Deployment:
+The front-end is deployed on Netlify here: https://match-swensational.netlify.app/.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The backend will be deployed on Heroku.
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## In order to run this project:
+1. Download the repository into VSCode.
+2. On the terminal, run `npm install`
+3. After installing dependencies and node modules
+4. Run the app by typing `npm start` - It will start the developmental server and open up the app on the https://localhost:3000/ (3000 port) on your computer.
