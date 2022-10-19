@@ -15,11 +15,13 @@ The reason why we chose this project is because after being students at Rutgers 
 - Shreya Jain (Front-end Developer)
 - Prince Rawal (Backend Developer)
 
-## Tech Stack:
+## Technology Stack
 - Front-end using React.js
 - Backend using Java and Springboot
 
-## Deployment:
+IDE: VSCode for React.js + Intellij for Java
+
+## Deployment
 The front-end is deployed on Netlify here: https://match-swensational.netlify.app/.
 
 The backend will be deployed on Heroku.
