@@ -4,6 +4,7 @@ import axios from "axios";
 import Cookies from "universal-cookie";
 import { useNavigate } from "react-router-dom";
 import Account from "./Account";
+import ForgotPass from "./ForgotPass";
 import ReactDOM from "react-dom/client";
 
 
@@ -97,6 +98,7 @@ export default function Login(props) {
           >
             Login
           </Button>
+
   
           {/* display success message */}
           {login ? (
@@ -147,6 +149,17 @@ export default function Login(props) {
         >
           Login
         </Button>
+        {/* forgot password button */}
+        <Button
+            variant="primary"
+            type="submit"
+            onClick={() => {
+              const root = ReactDOM.createRoot(document.getElementById('root'));
+              const element = <ForgotPass root = {root}/>;
+              root.render(element);
+            }}          >
+            Forgot Password?
+          </Button>
 
         {/* display success message */}
         {login ? (
