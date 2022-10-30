@@ -5,7 +5,7 @@ class Courses extends Component {
    constructor(){
        super();
        this.state = {
-           data: [],
+           data: ["math", "science"],
        };
    } //end constructor
 

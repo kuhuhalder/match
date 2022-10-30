@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import SideBar from './components/Sidebar';
 import "./Account.css";
 import axios from "axios";
-const Account = (props) => {
+const Match = (props) => {
 
   const [firstName, setFirstName] = useState(null);
   const [lastName, setLastName] = useState(null);
@@ -37,4 +37,4 @@ const Account = (props) => {
     </>
   );
 }
-export default Account;
+export default Match;

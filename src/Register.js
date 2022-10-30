@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import axios from "axios";
+import ReactDOM from "react-dom/client";
+import Login from "./Login";
+import Profile from "./Profile";
 
-export default function Register() {
+export default function Register(props) {
   // initial state
   const [userName, setEmail] = useState("");
+  const [id, setId] = useState("");
   const [password, setPassword] = useState("");
   const [register, setRegister] = useState(false);
 
@@ -15,12 +19,15 @@ export default function Register() {
     // set configurations
     const configuration = {
       method: "post",
-      url: "http://localhost:8080/api/students",
+      url: "http://localhost:8080/api/students/add",
       data: {
+        id,
         userName,
         password,
       },
     };
+
+    console.log(configuration);
 
     // make the API call
     axios(configuration)
@@ -31,6 +38,11 @@ export default function Register() {
         error = new Error();
       });
   };
+
+  const handleLogin = (e) => {
+    const element = <Profile userName = {userName} root = {props.root}/>;
+    props.root.render(element);
+  }
 
   return (
     <>
@@ -43,7 +55,10 @@ export default function Register() {
             type="email"
             name="email"
             value={userName}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => {
+              setEmail(e.target.value)
+              setId(e.target.value)
+            }}
             placeholder="Enter email"
           />
         </Form.Group>
@@ -71,7 +86,17 @@ export default function Register() {
 
         {/* display success message */}
         {register ? (
-          <p className="text-success">You Are Registered Successfully</p>
+          <div>
+          <p className="text-success">You Are Registered Successfully. Click here to add the rest of your details -></p>
+          <Button
+          variant="primary"
+          type="submit"
+          onClick={(e) => handleLogin(e)}
+        >
+          Update Profile
+        </Button>
+          </div>
+          
         ) : (
           <p className="text-danger">You Are Not Registered</p>
         )}
