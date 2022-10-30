@@ -44,7 +44,7 @@ const Match = (props) => {
             {ids.map((val, key) => {
               return (
                 <tr key={key}>
-                  <td>{val.userName}</td>
+                  <td>{val.firstName}</td>
                   <td>{val.year}</td>
                   <td>{val.pronouns}</td>
                 </tr>
