@@ -28,10 +28,6 @@ export default props => {
       <a className="menu-item" href="/logout">
         Logout
       </a>
-
-      {/* <a className="menu-item" href="/node">
-        Node
-      </a> */}
     </Menu>
   );
 };

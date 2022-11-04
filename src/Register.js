@@ -1,18 +1,24 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import ReactDOM from "react-dom/client";
 import Login from "./Login";
 import Profile from "./Profile";
 
 export default function Register(props) {
+
+  const navigate = useNavigate();
   // initial state
   const [userName, setEmail] = useState("");
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
+  const [accountType, setType] = useState("");
   const [register, setRegister] = useState(false);
 
   const handleSubmit = (e) => {
+
+    
     // prevent the form from refreshing the whole page
     e.preventDefault();
 
@@ -24,6 +30,7 @@ export default function Register(props) {
         id,
         userName,
         password,
+        accountType
       },
     };
 
@@ -75,6 +82,27 @@ export default function Register(props) {
           />
         </Form.Group>
 
+        <label> Account Type </label>
+        <div>
+            <input 
+            type="radio" name="role" value="student" id="student" 
+            onChange={(event) => {
+                setType(event.target.value);
+            }} 
+            />
+            <label for="student"> Student </label>
+        </div>
+        <div>
+            <input 
+            type="radio" name="role" value="admin" id="admin" 
+            placeholder='Admin'
+            onChange={(event) => {
+                setType(event.target.value);
+            }}
+            />
+            <label for="admin"> Admin </label>
+        </div>
+
         {/* submit button */}
         <Button
           variant="primary"
@@ -83,6 +111,13 @@ export default function Register(props) {
         >
           Register
         </Button>
+          
+        {/* <Button
+          onClick={()=> {navigate("./Login")}}
+        >
+          Login
+        </Button> */}
+
 
         {/* display success message */}
         {register ? (

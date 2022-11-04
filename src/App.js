@@ -11,36 +11,13 @@ import Account from "./Account"
 import ProtectedRoutes from "./ProtectedRoutes";
 const App = () => {
   return (
-    // <div style={styles.app}>
-    //   <Router>
-    //     <Routes>
-    //       <Route path="/" element={<Home />} />
-    //       <Route path="/login" element={<Login />} />
-    //       <Route path="/register" element={<Register />} />
-    //       {/* <Route path="/profile" element={<Profile />} /> */}
-    //     </Routes>
-    //   </Router>
-    // </div>
+
     <Container>
       <Row>
         <Col className="text-center">
           <h1>MATCH</h1>
-
-          <section id="navigation">
-            <a href="/">Home </a>
-            <a href="/account">Account</a>
-            {/* <a href="/profile">Profile</a> */}
-            {/* <a href="/auth">Auth Component</a> */}
-          </section>
-        </Col>
+          </Col>
       </Row>
-
-      {/* create routes here */}
-      {/* <Switch>
-        <Route exact path="/" component={Home} />
-        {/* <Route exact path="/free" component={FreeComponent} /> */}
-        {/* <ProtectedRoutes path="/profile" component={Profile} />
-      </Switch> */}
 
   <div style={styles.app}>
     <Router>
@@ -48,7 +25,6 @@ const App = () => {
     <Route exact path="/" element={<Home />} />
     <Route exact path="/login" element={<Login />} />
     <Route exact path="/register" element={<Register />} />
-    {/* <ProtectedRoutes path="/profile" element={Profile} /> */}
     <Route exact path="/profile" element={<Profile />} />
     <Route exact path="/account" element={<Account />} />
     </Routes>

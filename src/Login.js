@@ -27,10 +27,6 @@ export default function Login(props) {
     const configuration = {
       method: "get",
       url: "http://localhost:8080/api/students/validate/"+userName+"/"+password,
-      // data: {
-      //   userName,
-      //   password,
-      // },
     };
 
     // make the API call
@@ -46,7 +42,7 @@ export default function Login(props) {
         }
         else{
           setWrong(true);
-          setWrongDisp = <div> Please provide a valid UserName and Password!! </div>;
+          setWrongDisp = <div> Please provide a valid username and password!! </div>;
         }
         
       })
@@ -63,7 +59,7 @@ export default function Login(props) {
   if(wrong){
     return (
       <div>
-        <div> Please provide a valid UserName and Password!! </div>;
+        <div> Please provide a valid username and password!! </div>;
         <h2>Login</h2>
         <Form onSubmit={(e) => handleSubmit(e)}>
           {/* email */}
@@ -149,6 +145,8 @@ export default function Login(props) {
         >
           Login
         </Button>
+
+
         {/* forgot password button */}
         <Button
             variant="primary"

@@ -4,18 +4,20 @@ import { Form, Button } from "react-bootstrap";
 import "./Account.css";
 import axios from "axios";
 import Match from "./Match";
+import Profile from "./Profile"
 const Account = (props) => {
 
   const [firstName, setFirstName] = useState(null);
   const [lastName, setLastName] = useState(null);
 
   //added by SJ
-  const [pronouns, setPronouns] = useState(null);
-  const [campus, setCampus] = useState(null);
-  const [className, setClassName] = useState(null);
-  const [major, setMajor] = useState(null);
-  const [bio, setBio] = useState(null);
-  const [year, setYear] = useState(null);
+  const [pronouns, setPronouns] = useState("");
+  const [campus, setCampus] = useState("");
+  const [course, setCourse] = useState("");
+  const [className, setClassName] = useState("");
+  const [major, setMajor] = useState("");
+  const [bio, setBio] = useState("");
+  const [year, setYear] = useState(0);
   const [genderPreference, setGenderPreference] = useState(null);
 
   const configuration = {
@@ -53,12 +55,31 @@ const Account = (props) => {
       props.root.render(element);
     };
 
+    const handleUpdate = (e) => {
+      const element = <Profile userName = {props.userName} root = {props.root}/>;
+      props.root.render(element);
+    }
+
   return (
     <>
     <div id="Account">
       <SideBar />
       <div id="page-wrap">
         <h1>Account</h1>
+
+        <section id="navigation">
+            <a href="/">Home </a>
+            <a href="/account">Account</a>
+            <Button
+          variant="primary"
+          type="submit"
+          onClick={(e) => handleUpdate(e)}
+        >
+          Update Profile
+        </Button>
+          </section>
+
+
         <h2>Welcome {firstName} {lastName}!</h2>
 
         <div>Click here to see students who are a great match for you -> 
@@ -77,6 +98,7 @@ const Account = (props) => {
           <h4> Last Name:  {lastName}</h4>
           <h4> Pronouns:  {pronouns}</h4>
           <h4> Campus:  {campus}</h4>
+          <h4> Courses:  {course}</h4>
           <h4> Major:  {major}</h4>
           <h4> Bio:  {bio}</h4>
           <h4> Year: {year}</h4>

@@ -7,7 +7,8 @@ const ForgotPass = (props) => {
 
   return (
     <>
-      <h2>Home Page</h2>
+      <h2>Forgot Password</h2>
+      
 
 
     </>

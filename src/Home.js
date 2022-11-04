@@ -1,7 +1,7 @@
 import React from 'react';
 import {Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import homeImage from "./Home.png";
+import homeImage from "./images/Home.png";
 import Register from "./Register";
 import ReactDOM from "react-dom/client";
 import Login from "./Login";
@@ -13,15 +13,19 @@ const Home = (props) => {
 
   return (
     <>
-      <h2>Home Page</h2>
+     {/* <div>
+      <img src={homeImage} alt="homeImage"/>;
+    </div> */}
+      {/* <h2>Home Page</h2> */}
     <p>
         <Button
             variant="primary"
             type="submit"
             onClick={() => {
-              const root = ReactDOM.createRoot(document.getElementById('root'));
-              const element = <Register root = {root}/>;
-              root.render(element);
+              // const root = ReactDOM.createRoot(document.getElementById('root'));
+              // const element = <Register root = {root}/>;
+              // root.render(element);
+              navigate("./Register")
             }}
             >
             Create an Account
@@ -36,15 +40,14 @@ const Home = (props) => {
               const root = ReactDOM.createRoot(document.getElementById('root'));
               const element = <Login root = {root}/>;
               root.render(element);
+              // navigate("./Login")
             }}
             >
             Login
         </Button>
     </p>
 
-    <div>
-      <img src={homeImage} alt="homeImage"/>;
-    </div>
+   
 
     </>
   );
