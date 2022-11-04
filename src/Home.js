@@ -6,7 +6,7 @@ import Register from "./Register";
 import ReactDOM from "react-dom/client";
 import Login from "./Login";
 
-import "./home.css";
+import "./Home.css";
 import { render } from 'react-dom';
 const Home = (props) => {
     const navigate = useNavigate();
