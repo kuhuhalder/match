@@ -7,24 +7,24 @@ import Courses from "./Courses";
 import Cookies from "universal-cookie";
 import Account from "./Account";
 import ReactDOM from "react-dom/client";
+import { Navigate, useNavigate, useLocation } from "react-router-dom";
 
 function Profile(props) {
-  const [id, setId] = useState(props.userName);
-  const [userName, setUserName] = useState(props.userName);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [id, setId] = useState(location.state.id);
+  const [userName, setUserName] = useState(location.state.userName);
   const [firstName, setFirstName] = useState(null);
   const [lastName, setLastName] = useState(null);
   const [pronouns, setPronouns] = useState(null);
   const [campus, setCampus] = useState(null);
-  const [className, setClassName] = useState(null);
+  const [courses, setCourses] = useState([]);
   const [major, setMajor] = useState(null);
   const [bio, setBio] = useState(null);
   const [year, setYear] = useState(null);
   const [genderPreference, setGenderPreference] = useState(null);
   const [register, setRegister] = useState(false);
 
-  const handleCampus = (event) => {
-    setCampus(event.target.value);
-  };
   const handleSubmit = (e) => {
     // prevent the form from refreshing the whole page
     e.preventDefault();
@@ -40,6 +40,7 @@ function Profile(props) {
         lastName,
         pronouns,
         campus,
+        courses,
         major,
         bio,
         year,
@@ -48,13 +49,12 @@ function Profile(props) {
     };
     console.log(configuration);
 
-    // make the API call
-
     axios(configuration)
       .then((result) => {
         setRegister(true);
-        const element = <Account userName={userName} root={props.root} />;
-        props.root.render(element);
+        // const element = <Account userName={userName} root={props.root} />;
+        // props.root.render(element);
+        navigate('/account', {state:{userName:userName}});
       })
       .catch((error) => {
         console.log(error);
@@ -85,23 +85,34 @@ function Profile(props) {
             placeholder="Enter last name"
           />
 
-          <Form.Label>Pronouns</Form.Label>
-          <Form.Control
+          {/* <Form.Label>Pronouns</Form.Label> */}
+          {/* <Form.Control
             type="pronouns"
             name="pronouns"
             value={pronouns}
             onChange={(e) => setPronouns(e.target.value)}
             placeholder="Enter Pronouns"
+          /> */}
+           <Dropdown
+            label="Pronouns"
+            options={[
+              { label: "Select", value: null },
+              { label: "she/her/hers", value: "she/her/hers" },
+              { label: "he/him/his", value: "he/him/his" },
+              { label: "they/them", value: "they/them" },
+            ]}
+            value={pronouns}
+            onChange={(e) => setPronouns(e.target.value)}
           />
-
+          <br></br>
           <Dropdown
             label="Campus"
             options={[
-              { label: "Select", value: null },
-              { label: "Livingston", value: "Livi" },
-              { label: "College Avenue", value: "CA" },
-              { label: "Busch", value: "B" },
-              { label: "Cook/Douglass", value: "C/D" },
+              { label: "Select", value: null},
+              { label: "Livingston", value: "Livingston" },
+              { label: "College Avenue", value: "College Avenue" },
+              { label: "Busch", value: "Busch" },
+              { label: "Cook/Douglass", value: "Cook/Douglass" },
             ]}
             value={campus}
             onChange={(e) => setCampus(e.target.value)}
@@ -128,8 +139,8 @@ function Profile(props) {
                 value: "Discrete Structures I",
               },
             ]}
-            value={className}
-            onChange={(e) => setClassName(e.target.value)}
+            value={courses}
+            onChange={(e) => setCourses(e.target.value)}
           />
           <br></br>
           <Form.Label># Years in College</Form.Label>
@@ -148,14 +159,26 @@ function Profile(props) {
             onChange={(e) => setMajor(e.target.value)}
             placeholder="Major"
           />
-          <Form.Label>Gender Preferences</Form.Label>
+          {/* <Form.Label>Gender Preferences</Form.Label>
           <Form.Control
             type="genderPreference"
             name="genderPreference"
             value={genderPreference}
             onChange={(e) => setGenderPreference(e.target.value)}
             placeholder="Gender Preferences"
-          />
+          /> */}
+          <Dropdown
+            label="Gender Preferences"
+            options={[
+              { label: "Select", value: null },
+              { label: "Female", value: "Female" },
+              { label: "Male", value: "Male" },
+              { label: "Non-binary", value: "Non-binary" },
+            ]}
+            value={genderPreference}
+            onChange={(e) => setGenderPreference(e.target.value)}
+            />
+            <br></br>
 
           <Form.Label>Bio</Form.Label>
           <Form.Control

@@ -7,7 +7,8 @@ import Home from "./Home";
 import Login from "./Login";
 import Register from "./Register";
 import Profile from "./Profile";
-import Account from "./Account"
+import Account from "./Account";
+import Match from "./Match";
 import ProtectedRoutes from "./ProtectedRoutes";
 const App = () => {
   return (
@@ -27,6 +28,7 @@ const App = () => {
     <Route exact path="/register" element={<Register />} />
     <Route exact path="/profile" element={<Profile />} />
     <Route exact path="/account" element={<Account />} />
+    <Route exact path="/matches" element={<Match/>} />
     </Routes>
     </Router>
     </div>

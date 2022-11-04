@@ -7,22 +7,15 @@ import Login from "./Login";
 import Profile from "./Profile";
 
 export default function Register(props) {
-
-  const navigate = useNavigate();
-  // initial state
+  // const navigate = useNavigate();
   const [userName, setEmail] = useState("");
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
   const [accountType, setType] = useState("");
   const [register, setRegister] = useState(false);
 
-  const handleSubmit = (e) => {
-
-    
-    // prevent the form from refreshing the whole page
+  const handleRegister = (e) => {
     e.preventDefault();
-
-    // set configurations
     const configuration = {
       method: "post",
       url: "http://localhost:8080/api/students/add",
@@ -33,10 +26,7 @@ export default function Register(props) {
         accountType
       },
     };
-
     console.log(configuration);
-
-    // make the API call
     axios(configuration)
       .then((result) => {
         setRegister(true);
@@ -46,7 +36,7 @@ export default function Register(props) {
       });
   };
 
-  const handleLogin = (e) => {
+  const handleUpdateProfile = (e) => {
     const element = <Profile userName = {userName} root = {props.root}/>;
     props.root.render(element);
   }
@@ -54,7 +44,7 @@ export default function Register(props) {
   return (
     <>
       <h2>Register</h2>
-      <Form onSubmit={(e) => handleSubmit(e)}>
+      <Form onSubmit={(e) => handleRegister(e)}>
         {/* email */}
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
@@ -107,7 +97,7 @@ export default function Register(props) {
         <Button
           variant="primary"
           type="submit"
-          onClick={(e) => handleSubmit(e)}
+          onClick={(e) => handleRegister(e)}
         >
           Register
         </Button>
@@ -117,16 +107,14 @@ export default function Register(props) {
         >
           Login
         </Button> */}
-
-
-        {/* display success message */}
+        
         {register ? (
           <div>
           <p className="text-success">You Are Registered Successfully. Click here to add the rest of your details -></p>
           <Button
           variant="primary"
           type="submit"
-          onClick={(e) => handleLogin(e)}
+          onClick={(e) => handleUpdateProfile(e)}
         >
           Update Profile
         </Button>

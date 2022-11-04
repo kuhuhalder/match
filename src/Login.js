@@ -2,17 +2,15 @@ import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import axios from "axios";
 import Cookies from "universal-cookie";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import Account from "./Account";
 import ForgotPass from "./ForgotPass";
 import ReactDOM from "react-dom/client";
 
 
-const cookies = new Cookies();
-
-
 export default function Login(props) {
   // initial state
+  const navigate = useNavigate()
   const [wrongDisp, setWrongDisp] = useState(<div></div>);
   const [wrong, setWrong] = useState(false);
   const [userName, setEmail] = useState("");
@@ -32,13 +30,10 @@ export default function Login(props) {
     // make the API call
     axios(configuration)
       .then((result) => {
-        // set the cookie
-        cookies.set("TOKEN", result.data.token, {
-          path: "/",
-        });
-        // redirect user to the auth page
+
         if(result.data == true){  
           setLogin(true);
+          
         }
         else{
           setWrong(true);
@@ -52,8 +47,9 @@ export default function Login(props) {
   };
 
   if(login){
-    const element = <Account userName = {userName} root = {props.root}/>;
-    props.root.render(element);
+    // const element = <Account userName = {userName} root = {props.root}/>;
+    // props.root.render(element);
+    navigate("/account", {state:{userName:userName, password:password}})
   }
 
   if(wrong){
