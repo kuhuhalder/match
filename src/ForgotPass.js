@@ -1,13 +1,14 @@
-import { useNavigate } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import axios from "axios";
 import Login from "./Login";
 
 const ForgotPass = (props) => {
-  // const navigate = useNavigate();
-  const [id, setId] = useState(props.userName);
-  const [userName, setUserName] = useState(props.userName);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [id, setId] = useState(location.state.userName);
+  const [userName, setUserName] = useState(location.state.userName);
   const [password, setPassword] =useState("");
 
 //   const handleResetPassword = (e) => {
@@ -43,6 +44,7 @@ const handleResetPassword = (e) => {
     .then((result) => {
       // const element = <Login userName={userName} root={props.root} />;
       // props.root.render(element);
+    navigate('/login', {state:{userName:userName}})
     })
     .catch((error) => {
       console.log(error);

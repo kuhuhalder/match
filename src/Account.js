@@ -77,7 +77,6 @@ const Account = (props) => {
       <div id="Account">
         <SideBar />
         <div id="page-wrap">
-          <h1>Account</h1>
 
           {/* <NavBar /> */}
           <ul>

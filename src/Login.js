@@ -52,6 +52,10 @@ export default function Login(props) {
     navigate("/account", {state:{userName:userName, password:password}})
   }
 
+  const handleForgotPassword=(e)=>{
+    navigate("/forgotpass", {state:{id:userName, userName:userName}})
+
+  }
   if(wrong){
     return (
       <div>
@@ -91,7 +95,16 @@ export default function Login(props) {
             Login
           </Button>
 
-  
+          {/* forgot password button */}
+        <Button
+            variant="primary"
+            type="submit"
+            onClick={(e) => {
+            handleForgotPassword()
+            }}          >
+            Forgot Password?
+          </Button>
+
           {/* display success message */}
           {login ? (
             <p className="text-success">You Are Logged in Successfully</p>
@@ -147,10 +160,8 @@ export default function Login(props) {
         <Button
             variant="primary"
             type="submit"
-            onClick={() => {
-              const root = ReactDOM.createRoot(document.getElementById('root'));
-              const element = <ForgotPass root = {root}/>;
-              root.render(element);
+            onClick={(e) => {
+            handleForgotPassword()
             }}          >
             Forgot Password?
           </Button>

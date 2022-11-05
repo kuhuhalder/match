@@ -3,7 +3,6 @@ import SideBar from './components/Sidebar';
 import "./Account.css";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
-
 const Match = (props) => {
   const location = useLocation();
   const navigate = useNavigate()
@@ -28,12 +27,14 @@ const Match = (props) => {
 const handleViewProfile = (e) =>{
   navigate('/account', {state:{userName:e.userName}})
 }
+
+
   return (
     <>
     <div id="Account">
       <SideBar />
       <div id="page-wrap">
-        <h1>Account</h1>
+
         <h2>Welcome {firstName} {lastName}!</h2>
         
         <div className="Match">
@@ -54,7 +55,7 @@ const handleViewProfile = (e) =>{
                   <td>{val.major}</td>
                   <td>{val.pronouns}</td>
                   <button onClick={()=>{handleViewProfile(val.userName)}}>View Profile </button>
-
+                  {/* <button onClick={()=>{handleViewProfile(val.userName)}}>View Profile </button> */}
                 </tr>
               )
             })}

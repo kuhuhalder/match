@@ -7,7 +7,7 @@ import Login from "./Login";
 import Profile from "./Profile";
 
 export default function Register(props) {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [userName, setEmail] = useState("");
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
@@ -37,8 +37,7 @@ export default function Register(props) {
   };
 
   const handleUpdateProfile = (e) => {
-    const element = <Profile userName = {userName} root = {props.root}/>;
-    props.root.render(element);
+    navigate('/profile', {state:{userName:userName}});
   }
 
   return (
@@ -111,13 +110,15 @@ export default function Register(props) {
         {register ? (
           <div>
           <p className="text-success">You Are Registered Successfully. Click here to add the rest of your details -></p>
-          <Button
+          
+          { <Button
           variant="primary"
           type="submit"
           onClick={(e) => handleUpdateProfile(e)}
         >
           Update Profile
         </Button>
+      }
           </div>
           
         ) : (

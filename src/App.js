@@ -10,6 +10,7 @@ import Profile from "./Profile";
 import Account from "./Account";
 import Match from "./Match";
 import ProtectedRoutes from "./ProtectedRoutes";
+import ForgotPass from "./ForgotPass";
 const App = () => {
   return (
 
@@ -29,6 +30,7 @@ const App = () => {
     <Route exact path="/profile" element={<Profile />} />
     <Route exact path="/account" element={<Account />} />
     <Route exact path="/matches" element={<Match/>} />
+    <Route exact path="/forgotpass" element={<ForgotPass/>} />
     </Routes>
     </Router>
     </div>
