@@ -45,6 +45,9 @@ const ViewAccount = (props) => {
           <a href="/viewaccount">Account</a>
         </li>
         <li>
+          <a href="/createaccount">Create an Account</a>
+        </li>
+        <li>
           <a href="/updateprofile" onClick={(e) => {navigate("/updateprofile", {state:{id:userName, userName:userName}})}}>Update Profile</a>
         </li>
         <li>
@@ -55,6 +58,11 @@ const ViewAccount = (props) => {
         <li>
           <a href="/viewallmatches" onClick={(e) => handleViewMatches(e)}>
             View All Matches
+          </a>
+        </li>
+        <li>
+          <a href="/viewcourses" onClick={(e) => {navigate("/viewcourses")}}>
+            View All Courses
           </a>
         </li>
         <li>

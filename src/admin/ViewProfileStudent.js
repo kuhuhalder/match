@@ -61,6 +61,10 @@ const configuration = {
     });
 }
 
+const editProfile = (e) => {
+  navigate("/profile", { state: { userName: e } });
+};
+
   return (
     <>
       <div id="ViewProfile">
@@ -84,12 +88,12 @@ const configuration = {
                     Delete Student
                     </Button>
 
-                    {/* <Button
+                    <Button
                       type="submit"
-                      onClick={() => editProfile()}
+                      onClick={(e) => editProfile(userName)}
                     >
                     Edit Profile
-                    </Button> */}
+                    </Button>
           </div>
         </div>
       </div>

@@ -53,6 +53,13 @@ const ViewAllStudents = (props) => {
                       View Profile
                     </Button>
 
+                    {/* <Button
+                      type="submit"
+                      onClick={() => handleViewProfile(val.userName)}
+                    >
+                      Edit Profile
+                    </Button> */}
+
                 
                   </tr>
                 );
