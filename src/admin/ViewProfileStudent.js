@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import {Button} from "react-bootstrap";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
-import Popup from 'reactjs-popup';
 
 const ViewProfileStudent = (props) => {
   const location = useLocation();
