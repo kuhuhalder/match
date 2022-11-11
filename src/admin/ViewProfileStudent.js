@@ -84,12 +84,12 @@ const configuration = {
                     Delete Student
                     </Button>
 
-                    <Button
+                    {/* <Button
                       type="submit"
                       onClick={() => editProfile()}
                     >
                     Edit Profile
-                    </Button>
+                    </Button> */}
           </div>
         </div>
       </div>
