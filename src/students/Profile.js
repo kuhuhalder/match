@@ -29,7 +29,7 @@ function Profile(props) {
   const handleSubmit = (e) => {
     // prevent the form from refreshing the whole page
     e.preventDefault();
-
+    console.log(courses)
     // set configurations
     const configuration = {
       method: "post",
@@ -123,7 +123,7 @@ function Profile(props) {
           <Dropdown
             label="Course"
             options={[
-              { label: "Select", value: null },
+              { label: "Select", value: "none"},
               {
                 label: "Introduction to Computer Science",
                 value: "Introduction to Computer Science",
@@ -139,7 +139,7 @@ function Profile(props) {
               },
             ]}
             value={courses}
-            onChange={(e) => setCourses(e.target.value)}
+            onChange={(e) => setCourses(courses =>courses.concat(e.target.value))}
           />
           <br></br>
           <Form.Label># Years in College</Form.Label>

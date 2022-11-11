@@ -14,7 +14,7 @@ const Account = (props) => {
   const [lastName, setLastName] = useState(null);
   const [pronouns, setPronouns] = useState("");
   const [campus, setCampus] = useState("");
-  const [course, setCourse] = useState(null);
+  const [course, setCourse] = useState([]);
   const [major, setMajor] = useState("");
   const [bio, setBio] = useState("");
   const [year, setYear] = useState(0);
@@ -30,11 +30,13 @@ const Account = (props) => {
 
   axios(configuration)
     .then((result) => {
+      console.log(result)
       setFirstName(result.data.firstName);
       setLastName(result.data.lastName);
       setPronouns(result.data.pronouns);
       setCampus(result.data.campus);
       setCourse(result.data.course);
+      console.log(result.data.course)
       setMajor(result.data.major);
       setBio(result.data.bio);
       setYear(result.data.year);
