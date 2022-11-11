@@ -1,57 +1,65 @@
-import React from 'react';
-import {Button } from "react-bootstrap";
-import {Link} from 'react-router-dom';
+import React from "react";
+import { Button } from "react-bootstrap";
+import { Container, Col, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import homeImage from "./images/Home.png";
-import Register from "./Register";
-import ReactDOM from "react-dom/client";
-import Login from "./Login";
-import {Redirect} from 'react-router-dom';
 import "./Home.css";
-import { render } from 'react-dom';
 const Home = (props) => {
   const navigate = useNavigate();
   return (
     <>
-     {/* <div>
+      {/* <div>
       <img src={homeImage} alt="homeImage"/>;
     </div> */}
       {/* <h2>Home Page</h2> */}
-    <p>
-        <Button
+      <Row>
+        <Col>
+          <h2>Students</h2>
+          <Button
             variant="primary"
             type="submit"
-            
             onClick={() => {
-              // const root = ReactDOM.createRoot(document.getElementById('root'));
-              // const element = <Register root = {root}/>;
-              // root.render(element);
-              navigate("/register")
-          
+              navigate("/register");
             }}
-            >
-            Create an Account
-        </Button>
-    </p>
+          >
+            Register
+          </Button>
 
-    <p>
-        <Button
+          <Button
             variant="primary"
             type="submit"
             onClick={() => {
-              // const root = ReactDOM.createRoot(document.getElementById('root'));
-              // const element = <Login root = {root}/>;
-              // root.render(element);
-              navigate("/login")
+              navigate("/login");
             }}
-            >
+          >
             Login
-        </Button>
-    </p>
+          </Button>
+        </Col>
 
-   
+        <Col>
+          <h2>Admins</h2>
+          <Button
+            variant="primary"
+            type="submit"
+            onClick={() => {
+              navigate("/registeradmin");
+            }}
+          >
+            Register
+          </Button>
 
+          <Button
+            variant="primary"
+            type="submit"
+            onClick={() => {
+              navigate("/loginadmin");
+            }}
+          >
+            Login
+          </Button>
+        </Col>
+      </Row>
     </>
   );
-}
+};
 export default Home;

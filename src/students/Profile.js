@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import axios from "axios";
-import Dropdown from "./components/Dropdown";
-import CustomListDropDown from "./CustomDropdownList";
+import Dropdown from "../components/Dropdown";
+import CustomListDropDown from "../components/CustomDropdownList";
 import Courses from "./Courses";
 import Cookies from "universal-cookie";
 import Account from "./Account";
@@ -14,6 +14,7 @@ function Profile(props) {
   const navigate = useNavigate();
   const [id, setId] = useState(location.state.id);
   const [userName, setUserName] = useState(location.state.userName);
+  const [isAdmin, setIsAdmin] = useState(location.state.isAdmin);
   const [firstName, setFirstName] = useState(null);
   const [lastName, setLastName] = useState(null);
   const [pronouns, setPronouns] = useState(null);
@@ -52,8 +53,6 @@ function Profile(props) {
     axios(configuration)
       .then((result) => {
         setRegister(true);
-        // const element = <Account userName={userName} root={props.root} />;
-        // props.root.render(element);
         navigate('/account', {state:{userName:userName}});
       })
       .catch((error) => {

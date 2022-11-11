@@ -11,7 +11,7 @@ export default function Register(props) {
   const [userName, setEmail] = useState("");
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
-  const [accountType, setType] = useState("");
+  const [isAdmin, setIsAdmin] = useState(0);
   const [register, setRegister] = useState(false);
 
   const handleRegister = (e) => {
@@ -23,7 +23,7 @@ export default function Register(props) {
         id,
         userName,
         password,
-        accountType
+        isAdmin,
       },
     };
     console.log(configuration);
@@ -35,16 +35,45 @@ export default function Register(props) {
         error = new Error();
       });
   };
-
-  const handleUpdateProfile = (e) => {
-    navigate('/profile', {state:{userName:userName}});
+  if(register && !userName.endsWith("@match.com")){
+    <div>
+    <p className="text-success">
+        You Are Registered Successfully. Click here to add the rest of
+        your details
+      </p>
+      </div>
+    navigate("/profile", {state:{userName:userName}})
+    
+  }else if (userName.endsWith("@match.com")){
+    <div>
+    <p className="text-danger">
+        Please register as an admin instead with the @match.com email address
+      </p>
+      </div>
   }
+  else{
+    <div>
+    <p className="text-danger">Username already exists. Login instead</p>
+    
+    {
+        <Button
+          variant="primary"
+          type="submit"
+          onClick={(e) => {navigate("./login")}}
+        >
+          Login
+        </Button>
+      }
+      </div>
+  }
+  const handleUpdateProfile = (e) => {
+    navigate("/profile", { state: { userName: userName, isAdmin: isAdmin } });
+  };
 
   return (
     <>
-      <h2>Register</h2>
+      <h2>Create an Account</h2>
       <Form onSubmit={(e) => handleRegister(e)}>
-        {/* email */}
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control
@@ -52,14 +81,19 @@ export default function Register(props) {
             name="email"
             value={userName}
             onChange={(e) => {
-              setEmail(e.target.value)
-              setId(e.target.value)
+              setEmail(e.target.value);
+              setId(e.target.value);
             }}
             placeholder="Enter email"
           />
         </Form.Group>
+        
+        {userName.endsWith("@match.com") ? (
+          <p className="text-danger">Please register as an admin instead</p>
+        ) : (
+          <p className="text-success">Email address is valid!</p>
+        )}
 
-        {/* password */}
         <Form.Group controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
           <Form.Control
@@ -71,26 +105,32 @@ export default function Register(props) {
           />
         </Form.Group>
 
-        <label> Account Type </label>
+        {/* <label> Account Type </label>
         <div>
-            <input 
-            type="radio" name="role" value="student" id="student" 
+          <input
+            type="radio"
+            name="role"
+            value="student"
+            id="student"
             onChange={(event) => {
-                setType(event.target.value);
-            }} 
-            />
-            <label for="student"> Student </label>
-        </div>
-        <div>
-            <input 
-            type="radio" name="role" value="admin" id="admin" 
-            placeholder='Admin'
-            onChange={(event) => {
-                setType(event.target.value);
+              setIsAdmin(0);
             }}
-            />
-            <label for="admin"> Admin </label>
+          />
+          <label for="student"> Student </label>
         </div>
+        <div>
+          <input
+            type="radio"
+            name="role"
+            value="admin"
+            id="admin"
+            placeholder="Admin"
+            onChange={(event) => {
+              setIsAdmin(1);
+            }}
+          />
+          <label for="admin"> Admin </label>
+        </div> */}
 
         {/* submit button */}
         <Button
@@ -100,18 +140,22 @@ export default function Register(props) {
         >
           Register
         </Button>
-          
+
         {/* <Button
           onClick={()=> {navigate("./Login")}}
         >
           Login
         </Button> */}
-        
-        {register ? (
-          <div>
-          <p className="text-success">You Are Registered Successfully. Click here to add the rest of your details -></p>
-          
-          { <Button
+
+{register ? (
+    <div>
+      <p className="text-success">
+        You Are Registered Successfully. Click here to add the rest of
+        your details
+      </p>
+
+      {
+        <Button
           variant="primary"
           type="submit"
           onClick={(e) => handleUpdateProfile(e)}
@@ -119,11 +163,24 @@ export default function Register(props) {
           Update Profile
         </Button>
       }
-          </div>
-          
-        ) : (
-          <p className="text-danger">You Are Not Registered</p>
-        )}
+    </div>
+  ) : (
+    <div>
+    <p className="text-danger">Username already exists. Login instead</p>
+    
+    {
+        <Button
+          variant="primary"
+          type="submit"
+          onClick={(e) => {navigate("/login")}}
+        >
+          Login
+        </Button>
+      }
+      </div>
+    
+  )}
+
       </Form>
     </>
   );

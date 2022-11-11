@@ -1,15 +1,10 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import axios from "axios";
-import Cookies from "universal-cookie";
 import { Navigate, useNavigate } from "react-router-dom";
-import Account from "./Account";
-import ForgotPass from "./ForgotPass";
-import ReactDOM from "react-dom/client";
 
 
 export default function Login(props) {
-  // initial state
   const navigate = useNavigate()
   const [wrongDisp, setWrongDisp] = useState(<div></div>);
   const [wrong, setWrong] = useState(false);
@@ -18,20 +13,16 @@ export default function Login(props) {
   const [login, setLogin] = useState(false);
 
   const handleSubmit = (e) => {
-    // prevent the form from refreshing the whole page
     e.preventDefault();
-
-    // set configurations
     const configuration = {
       method: "get",
       url: "http://localhost:8080/api/students/validate/"+userName+"/"+password,
     };
 
-    // make the API call
     axios(configuration)
       .then((result) => {
 
-        if(result.data == true){  
+        if(result.data == true && !userName.endsWith("@match.com")){  
           setLogin(true);
           
         }
@@ -46,10 +37,11 @@ export default function Login(props) {
       });
   };
 
-  if(login){
-    // const element = <Account userName = {userName} root = {props.root}/>;
-    // props.root.render(element);
+  if(login && !userName.endsWith("@match.com")){
     navigate("/account", {state:{userName:userName, password:password}})
+  }else if(userName.endsWith("@match.com"))
+  {
+    <p className="text-danger">Please login as an admin instead!</p>;
   }
 
   const handleForgotPassword=(e)=>{
@@ -62,7 +54,6 @@ export default function Login(props) {
         <div> Please provide a valid username and password!! </div>;
         <h2>Login</h2>
         <Form onSubmit={(e) => handleSubmit(e)}>
-          {/* email */}
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
             <Form.Control
@@ -86,7 +77,6 @@ export default function Login(props) {
             />
           </Form.Group>
   
-          {/* submit button */}
           <Button
             variant="primary"
             type="submit"
@@ -95,7 +85,6 @@ export default function Login(props) {
             Login
           </Button>
 
-          {/* forgot password button */}
         <Button
             variant="primary"
             type="submit"
@@ -166,8 +155,7 @@ export default function Login(props) {
             Forgot Password?
           </Button>
 
-        {/* display success message */}
-        {login ? (
+        {login? (
           <p className="text-success">You Are Logged in Successfully</p>
         ) : (
           <p className="text-danger">You Are Not Logged in</p>

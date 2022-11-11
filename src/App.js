@@ -1,16 +1,23 @@
 import React from "react";
 import { Container, Col, Row } from "react-bootstrap";
 import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
-import { Switch } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Home from "./Home";
-import Login from "./Login";
-import Register from "./Register";
-import Profile from "./Profile";
-import Account from "./Account";
-import Match from "./Match";
-import ProtectedRoutes from "./ProtectedRoutes";
-import ForgotPass from "./ForgotPass";
+import Login from "./students/Login";
+import Register from "./students/Register";
+import RegisterAdmin from "./admin/Register";
+import LoginAdmin from "./admin/Login";
+import Profile from "./students/Profile";
+import Account from "./students/Account";
+import Match from "./students/Match";
+import ForgotPass from "./students/ForgotPass";
+import ViewProfile from "./students/ViewProfile"
+import ViewRequests from "./students/ViewRequests"
+import ViewAccount from "./admin/ViewAccount";
+import ViewAllStudents from "./admin/ViewAllStudents"
+import ViewAllMatches from "./admin/ViewAllMatches"
+import UpdateProfile from "./admin/UpdateProfile"
+import ViewProfileStudent from "./admin/ViewProfileStudent"
 const App = () => {
   return (
 
@@ -31,6 +38,16 @@ const App = () => {
     <Route exact path="/account" element={<Account />} />
     <Route exact path="/matches" element={<Match/>} />
     <Route exact path="/forgotpass" element={<ForgotPass/>} />
+    <Route exact path="/viewprofile" element={<ViewProfile/>} />
+    <Route exact path="/viewrequests" element={<ViewRequests/>} />
+
+    <Route exact path="/registeradmin" element={<RegisterAdmin />} />
+    <Route exact path="/viewprofilestudent" element={<ViewProfileStudent />} />
+    <Route exact path="/updateprofile" element={<UpdateProfile />} />
+    <Route exact path="/loginadmin" element={<LoginAdmin />} />
+    <Route exact path="/viewaccount" element={<ViewAccount/>} />
+    <Route exact path="/viewallstudents" element={<ViewAllStudents/>} />
+    <Route exact path="/viewallmatches" element={<ViewAllMatches/>} />
     </Routes>
     </Router>
     </div>
