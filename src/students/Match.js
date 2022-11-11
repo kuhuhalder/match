@@ -47,9 +47,10 @@ const Match = (props) => {
               <th>Year</th>
               <th>Major</th>
               <th>Pronouns</th>
+              <th>View Profile</th>
             </tr>
+            
             {ids.map((val, key) => {
-
                 return (
                   <tr key={key}>
                     <td>{val.firstName}</td>
@@ -57,12 +58,15 @@ const Match = (props) => {
                     <td>{val.year}</td>
                     <td>{val.major}</td>
                     <td>{val.pronouns}</td>
-                    <Button
+                    <td><a href="View Profile">{val.userName}</a></td>
+                    {/* <td><a href={val.userName}>View Profile</a></td> */}
+
+                    {/* <Button
                       type="submit"
                       onClick={() => handleViewProfile(val.userName)}
                     >
                       {"View Profile"}
-                    </Button>
+                    </Button> */}
   
                     {/* <button onClick={()=>{handleViewProfile(val.userName)}}>View Profile </button> */}
                   </tr>
