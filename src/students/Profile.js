@@ -12,7 +12,7 @@ import { Navigate, useNavigate, useLocation } from "react-router-dom";
 function Profile(props) {
   const location = useLocation();
   const navigate = useNavigate();
-  const [id, setId] = useState(location.state.id);
+  const [id, setId] = useState(location.state.userName);
   const [userName, setUserName] = useState(location.state.userName);
   const [isAdmin, setIsAdmin] = useState(location.state.isAdmin);
   const [firstName, setFirstName] = useState(null);
