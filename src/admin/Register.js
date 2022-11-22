@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 export default function RegisterAdmin(props) {
   const navigate = useNavigate();
@@ -203,6 +203,8 @@ export default function RegisterAdmin(props) {
           </div>
         )}
       </Form>
+
+      <Link to='/loginadmin'>Already have an account? Click here!</Link> 
     </>
   );
 }

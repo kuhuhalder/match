@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import axios from "axios";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, useNavigate, Link } from "react-router-dom";
 
 
 export default function LoginAdmin(props) {
@@ -167,6 +167,8 @@ export default function LoginAdmin(props) {
           <p className="text-danger">Please login with a valid @match.com email address</p>
         )}
       </Form>
+
+      <Link to='/registeradmin'>Don't have an account? Register here!</Link>
     </div>
   );
 }

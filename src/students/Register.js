@@ -10,6 +10,8 @@ export default function Register(props) {
   const [password, setPassword] = useState("");
   const [isAdmin, setIsAdmin] = useState(0);
   const [register, setRegister] = useState(false);
+  const [userNameExists, setUserNameExists] = useState(false);
+  const [passwordsMatch, setPasswordsMatch] = useState(false);
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -30,8 +32,11 @@ export default function Register(props) {
       })
       .catch((error) => {
         error = new Error();
+        setUserNameExists(true)
+        navigate("/register")
       });
   };
+  
   if(register && !userName.endsWith("@match.com")){
     <div>
     <p className="text-success">

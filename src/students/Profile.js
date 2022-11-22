@@ -19,7 +19,7 @@ function Profile(props) {
   const [lastName, setLastName] = useState(null);
   const [pronouns, setPronouns] = useState(null);
   const [campus, setCampus] = useState(null);
-  const [courses, setCourses] = useState([]);
+  const [course, setCourses] = useState([]);
   const [major, setMajor] = useState(null);
   const [bio, setBio] = useState(null);
   const [year, setYear] = useState(null);
@@ -29,7 +29,6 @@ function Profile(props) {
   const handleSubmit = (e) => {
     // prevent the form from refreshing the whole page
     e.preventDefault();
-    console.log(courses)
     // set configurations
     const configuration = {
       method: "post",
@@ -41,7 +40,7 @@ function Profile(props) {
         lastName,
         pronouns,
         campus,
-        courses,
+        course,
         major,
         bio,
         year,
@@ -138,8 +137,8 @@ function Profile(props) {
                 value: "Discrete Structures I",
               },
             ]}
-            value={courses}
-            onChange={(e) => setCourses(courses =>courses.concat(e.target.value))}
+            value={course}
+            onChange={(e) => setCourses(course =>course.concat(e.target.value))}
           />
           <br></br>
           <Form.Label># Years in College</Form.Label>

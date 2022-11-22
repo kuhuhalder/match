@@ -14,13 +14,15 @@ const ViewProfile = (props) => {
   const [lastName, setLastName] = useState(null);
   const [pronouns, setPronouns] = useState("");
   const [campus, setCampus] = useState("");
-  const [course, setCourse] = useState(null);
+  const [course, setCourse] = useState([null]);
   const [major, setMajor] = useState("");
   const [bio, setBio] = useState("");
   const [year, setYear] = useState(0);
   const [genderPreference, setGenderPreference] = useState(null);
   const [userName, setUserName] = useState(location.state.userName);
+  const [id, setId] = useState(location.state.userName);
   const [password, setPassword] = useState(location.state.password);
+  const [match, setMatch] = useState(false);
 
   const configuration = {
     method: "get",
@@ -47,7 +49,25 @@ const ViewProfile = (props) => {
 
 const handleRequestMatch =(e)=>{
     <div>You have requested to match with this student: {e}</div>
-}
+    const configuration = {
+      method: "post",
+      url: "http://localhost:8080/api/students/matchAdd",
+      data: {
+        id,
+        userName,
+        e,
+      },
+    };
+    console.log(configuration);
+    axios(configuration)
+      .then((result) => {
+        setMatch(true);
+      })
+      .catch((error) => {
+        error = new Error();
+      });
+  }
+
   return (
     <>
       <div id="ViewProfile">
