@@ -51,6 +51,9 @@ const ViewAccount = (props) => {
           <a href="/updateprofile" onClick={(e) => {navigate("/updateprofile", {state:{id:userName, userName:userName}})}}>Update Profile</a>
         </li>
         <li>
+          <a href="/createcourse">Create a Course</a>
+        </li>
+        <li>
           <a href="/viewallstudents" onClick={(e) => handleViewStudents(e)}>
             View All Students
           </a>

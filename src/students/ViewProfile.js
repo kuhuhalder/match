@@ -20,7 +20,10 @@ const ViewProfile = (props) => {
   const [year, setYear] = useState(0);
   const [genderPreference, setGenderPreference] = useState(null);
   const [userName, setUserName] = useState(location.state.userName);
-  const [id, setId] = useState(location.state.userName);
+  const [userName2, setUserName2] = useState(location.state.userName2);
+
+  const [id, setId] = useState(location.state.userName2+"+"+userName);
+
   const [password, setPassword] = useState(location.state.password);
   const [match, setMatch] = useState(false);
 
@@ -54,8 +57,8 @@ const handleRequestMatch =(e)=>{
       url: "http://localhost:8080/api/students/matchAdd",
       data: {
         id,
-        userName,
-        e,
+        userOneId:userName2,
+        userTwoId:userName
       },
     };
     console.log(configuration);

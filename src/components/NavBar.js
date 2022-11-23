@@ -61,6 +61,9 @@ const NavBar = (props) => {
     const handleUpdate = (e) => {
         navigate("/profile", { state: { id: userName, userName: userName } });
       };
+      const handleViewStudyBuddies = (e) => {
+        navigate("/viewstudybuddies", { state: { id: userName, userName: userName } });
+      };
 
       const handleRequests = (e) => {
         navigate("/viewrequests", { state: { id: userName, userName: userName } });
@@ -77,10 +80,13 @@ return(
     <li><a href="/profile" onClick={(e) => handleUpdate(e)}>
       Update Profile
     </a></li>
+    <li><a href="/viewstudybuddies" onClick={(e) => handleViewStudyBuddies(e)}>
+      View Study Buddies
+    </a></li>
     <li><a href="/matches" onClick={(e) => handleMatch(e)}>
       View Matches
     </a></li>
-    <li><a href="/matches" onClick={(e) => handleRequests(e)}>
+    <li><a href="/viewrequests" onClick={(e) => handleRequests(e)}>
       View Requests
     </a></li>
     <li><a href="/" onClick={(e) => logout(e)}>

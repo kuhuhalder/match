@@ -20,6 +20,8 @@ import UpdateProfile from "./admin/UpdateProfile"
 import ViewProfileStudent from "./admin/ViewProfileStudent"
 import ViewCourses from "./admin/ViewCourses";
 import CreateStudent from "./admin/CreateStudent"
+import ViewStudyBuddies from "./students/ViewStudyBuddies";
+import CreateCourse from "./admin/CreateCourse";
 const App = () => {
   return (
 
@@ -42,6 +44,8 @@ const App = () => {
     <Route exact path="/forgotpass" element={<ForgotPass/>} />
     <Route exact path="/viewprofile" element={<ViewProfile/>} />
     <Route exact path="/viewrequests" element={<ViewRequests/>} />
+    <Route exact path="/viewstudybuddies" element={<ViewStudyBuddies/>} />
+
 
     <Route exact path="/registeradmin" element={<RegisterAdmin />} />
     <Route exact path="/viewprofilestudent" element={<ViewProfileStudent />} />
@@ -52,6 +56,7 @@ const App = () => {
     <Route exact path="/viewallmatches" element={<ViewAllMatches/>} />
     <Route exact path="/viewcourses" element={<ViewCourses/>} />
     <Route exact path="/createaccount" element={<CreateStudent/>} />
+    <Route exact path="/createcourse" element={<CreateCourse/>} />
     </Routes>
     </Router>
     </div>

@@ -10,6 +10,8 @@ const Match = (props) => {
   const navigate = useNavigate();
   const [firstName, setFirstName] = useState(location.state.firstName);
   const [lastName, setLastName] = useState(location.state.lastName);
+  const [userName2, setUserName2] = useState(location.state.userName);
+
   const [ids, setIds] = useState([]);
 
   const configuration = {
@@ -29,7 +31,7 @@ const Match = (props) => {
 
   const handleViewProfile = (e) => {
     // e.preventDefault();
-    navigate("/viewprofile", { state: { userName: e } });
+    navigate("/viewprofile", { state: { userName: e, userName2: userName2 } });
   };
 
   return (
@@ -53,6 +55,7 @@ const Match = (props) => {
             {ids.map((val, key) => {
                 return (
                   <tr key={key}>
+
                     <td>{val.firstName}</td>
                     <td>{val.course}</td>
                     <td>{val.year}</td>
