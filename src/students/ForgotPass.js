@@ -48,7 +48,14 @@ const handleResetPassword = (e) => {
 if(passwordReset){
   return(
     <div>
-
+      <p className="text-success">Password changed successfully</p>
+       <Button
+        variant="primary"
+        type="submit"
+          onClick={()=> {navigate("/login")}}
+        >
+          Login
+        </Button>
     </div>
   )
 }
@@ -70,10 +77,10 @@ if(passwordReset){
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formPassword">
-          <Form.Label>Last Name</Form.Label>
+          <Form.Label>Password</Form.Label>
           <Form.Control
-            type="lastName"
-            name="lastName"
+            type="Password"
+            name="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Enter new password"

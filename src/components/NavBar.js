@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import {Nav, Navbar, Container} from "react-bootstrap";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 const NavBar = (props) => {
@@ -93,6 +94,46 @@ return(
       Logout
     </a></li>
     </ul>
+  //   <Navbar bg="dark" variant="dark">
+  //   <Container>
+  //     <Navbar.Brand href="/home">
+  //       {/* <img
+  //         alt=""
+  //         src={Logo}
+  //         width="30"
+  //         height="30"
+  //         className="d-inline-block align-top"
+  //       />{' '} */}
+  //      Match
+  //     </Navbar.Brand>
+
+  //     <Nav className="me-auto">
+  //       {/* <Nav.Link href="/account">About Us</Nav.Link>
+  //       <Nav.Link onClick={goLogin}>Login</Nav.Link>
+  //       <Nav.Link  onClick={goRegister}>Register</Nav.Link> */}
+  //       <Nav.Link href="/account">Account</Nav.Link>
+  //   <Nav.Link href="/profile" onClick={(e) => handleUpdate(e)}>
+  //    Update Profile
+  //   </Nav.Link>
+  //   <Nav.Link href="/viewstudybuddies" onClick={(e) => handleViewStudyBuddies(e)}>
+  //      View Study Buddies
+  //   </Nav.Link>
+  //   <Nav.Link href="/matches" onClick={(e) => handleMatch(e)}>
+  //      View Matches
+  //   </Nav.Link>
+  //   <Nav.Link href="/viewrequests" onClick={(e) => handleRequests(e)}>
+  //      View Requests
+  //   </Nav.Link>
+  //   {/* <Nav.Link href="/" onClick={(e) => logout(e)}>
+  //     Logout
+  //   </Nav.Link> */}
+  //     </Nav>
+
+  //     <Nav className="justify-content-end">
+  //       <Nav.Link onClick={logout}>Logout</Nav.Link>
+  //     </Nav>
+  //   </Container>
+  // </Navbar>
 
 )
     

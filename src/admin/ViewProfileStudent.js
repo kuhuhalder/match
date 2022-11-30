@@ -71,7 +71,7 @@ navigate("/viewallstudents")
 //   )
 //   }
 const editProfile = (e) => {
-  navigate("/profile", { state: { userName: e } });
+  navigate("/editprofile", { state: { userName: e } });
 };
 
   return (

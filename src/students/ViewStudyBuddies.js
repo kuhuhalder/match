@@ -58,7 +58,7 @@ const ViewStudyBuddies = (props) => {
             {usernames.map((val, key) => {
                 return (
                   <tr key={key}>
-                    <td>{val}</td>
+                    <td>{val} accepted your request. Chat with them!</td>
                     {/* <td>{val.firstName}</td>
                     <td>{val.course}</td>
                     <td>{val.year}</td>

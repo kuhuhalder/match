@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import NavBar from "../components/NavBar";
-import { Form, Button, Table } from "react-bootstrap";
+import { Form, Button, Table, Container } from "react-bootstrap";
 import axios from "axios";
 const ViewRequests = (props) => {
   const{state} = useLocation();
@@ -60,8 +60,9 @@ const ViewRequests = (props) => {
 
   return (
     <>
-      <div className="Match">
-        <div id="page-wrap">
+      {/* <div className="Match">
+        <div id="page-wrap"> */}
+        <Container>
           <NavBar></NavBar>
           <h2>View your Requests</h2>
       <Table striped hover>
@@ -95,8 +96,9 @@ const ViewRequests = (props) => {
             </tbody>
           {/* </table> */}
           </Table>
-        </div>
-      </div>
+        {/* </div>
+      </div> */}
+      </Container>
     </>
   );
 };

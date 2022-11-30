@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import axios from "axios";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, useNavigate, Link } from "react-router-dom";
 
 
 export default function Login(props) {
@@ -161,6 +161,9 @@ export default function Login(props) {
           <p className="text-danger">You Are Not Logged in</p>
         )}
       </Form>
+      <br></br>
+      <Link to='/register'>Don't have an account? Register here!</Link>
+
     </div>
   );
 }

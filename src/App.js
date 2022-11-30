@@ -34,7 +34,7 @@ const App = () => {
           </Col>
       </Row>
 
-  <div style={styles.app}>
+  <div>
     <Router>
     <Routes>
     <Route exact path="/" element={<Home />} />
@@ -72,8 +72,8 @@ const App = () => {
 
 export default App;
 
-const styles = {
-  app: {
-    padding: 50,
-  },
-};
+// const styles = {
+//   app: {
+//     padding: 50,
+//   },
+// };

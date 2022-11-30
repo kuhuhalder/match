@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import { Form, Button, Container } from "react-bootstrap";
 import axios from "axios";
 import { Navigate, useNavigate, useLocation } from "react-router-dom";
+import { Select } from "@mui/material";
 
 function Profile(props) {
-  const{state} = useLocation();
+  const { state } = useLocation();
   const navigate = useNavigate();
   const [id, setId] = useState(state.userName);
   const [userName, setUserName] = useState(state.userName);
@@ -19,7 +20,7 @@ function Profile(props) {
   const [year, setYear] = useState(null);
   const [genderPreference, setGenderPreference] = useState(null);
   const [register, setRegister] = useState(false);
-  const [courseIds, setCourseIds] = useState([])
+  const [courseIds, setCourseIds] = useState([]);
   const handleSubmit = (e) => {
     // prevent the form from refreshing the whole page
     e.preventDefault();
@@ -37,7 +38,7 @@ function Profile(props) {
         bio,
         year,
         genderPreference,
-        isAdmin
+        isAdmin,
       },
     };
     console.log(configuration);
@@ -45,7 +46,7 @@ function Profile(props) {
     axios(configuration)
       .then((result) => {
         setRegister(true);
-        navigate('/account', {state:{userName:userName}});
+        navigate("/account", { state: { userName: userName } });
       })
       .catch((error) => {
         console.log(error);
@@ -56,26 +57,27 @@ function Profile(props) {
   const configuration = {
     method: "get",
     url: "http://localhost:8080/api/students/getAllCourses",
-    };
+  };
   axios(configuration)
-    .then(function(result) {
-    setCourseIds(result.data);
-    console.log(courseIds)
-  })
-  .catch((error) => {
-    console.log(error);
-    error = new Error();
-  });
+    .then(function (result) {
+      setCourseIds(result.data);
+      console.log(courseIds);
+    })
+    .catch((error) => {
+      console.log(error);
+      error = new Error();
+    });
 
-    
-  
   return (
     <>
-    <Container>
-      <h4>Welcome {firstName} {lastName}!</h4>
-      <div>Please fill out your preferences so that we can get your matches in!</div>
-      <Form onSubmit={(e) => handleSubmit(e)}>
-
+      <Container>
+        <h4>
+          Welcome {firstName} {lastName}!
+        </h4>
+        <div>
+          Please fill out your preferences so that we can get your matches in!
+        </div>
+        <Form onSubmit={(e) => handleSubmit(e)}>
           {/* <Form.Label>Pronouns</Form.Label> */}
           {/* <Form.Control
             type="pronouns"
@@ -84,18 +86,20 @@ function Profile(props) {
             onChange={(e) => setPronouns(e.target.value)}
             placeholder="Enter Pronouns"
           /> */}
-           <Form.Group className="mb-3" controlId="formPronouns}">
-                            <Form.Label> Pronouns </Form.Label>
-                            <Form.Select required 
-                                defaultValue={""}
-                                onChange={(e) => setPronouns(e.target.value)}>
-                                <option value=""> Select Your Pronouns </option>
-                                <option value="she/her/hers" > she/her/hers </option>
-                                <option value="he/him/his"> he/him/his </option>
-                                <option value="they/them"> they/them </option>
-                            </Form.Select>
-                        </Form.Group>
-           {/* <Dropdown
+          <Form.Group className="mb-3" controlId="formPronouns}">
+            <Form.Label> Pronouns </Form.Label>
+            <Form.Select
+              required
+              defaultValue={""}
+              onChange={(e) => setPronouns(e.target.value)}
+            >
+              <option value=""> Select Your Pronouns </option>
+              <option value="she/her/hers"> she/her/hers </option>
+              <option value="he/him/his"> he/him/his </option>
+              <option value="they/them"> they/them </option>
+            </Form.Select>
+          </Form.Group>
+          {/* <Dropdown
             label="Pronouns"
             options={[
               { label: "Select", value: null },
@@ -107,17 +111,31 @@ function Profile(props) {
             onChange={(e) => setPronouns(e.target.value)}
           /> */}
           <Form.Group className="mb-3" controlId="formCampus}">
-                            <Form.Label> Campus </Form.Label>
-                            <Form.Select required 
-                                defaultValue={""}
-                                onChange={(e) => setCampus(e.target.value)}>
-                                <option value=""> Select Campus </option>
-                                <option value="Livingston" > Livingston </option>
-                                <option value="College Avenue"> College Avenue </option>
-                                <option value="Busch"> Busch </option>
-                                <option value="Cook/Douglass"> Cook/Douglass </option>
-                            </Form.Select>
-                        </Form.Group>
+            <Form.Label> Campus </Form.Label>
+            <Form.Select
+              required
+              defaultValue={""}
+              onChange={(e) => setCampus(e.target.value)}
+            >
+              <option value=""> Select Campus </option>
+              <option value="Livingston"> Livingston </option>
+              <option value="College Avenue"> College Avenue </option>
+              <option value="Busch"> Busch </option>
+              <option value="Cook/Douglass"> Cook/Douglass </option>
+              
+            </Form.Select>
+            
+          </Form.Group>
+          {/* <div className="dropdown-container">
+            <Select 
+            options = {courseIds}
+            placeholder = "Select course"
+            value={course}
+            onChange={(e) => setCourses(course =>course.concat(e.target.value))}
+            isSearchable ={true}
+            isMulti
+            />
+          </div> */}
           {/* <Dropdown
             label="Campus"
             options={[
@@ -132,21 +150,17 @@ function Profile(props) {
           /> */}
 
           <Form.Group className="mb-3" controlId="formCourseName">
-                    <Form.Label>Courses You Want Matches for</Form.Label>
-                    <Form.Select
-                        onChange={(e)=>setCourses(e.target.value)}>
-                        <option value=""> Select Course </option>
-                        {
-                            courseIds.map((val, key) => {
-                                return (
-                                    <option key={val.courseName}> {val.courseName} </option>
-                                ) 
-                            })
-                        }
-                    </Form.Select>
-                    </Form.Group>
+            <Form.Label>Courses You Want Matches for</Form.Label>
+            <Form.Select onChange={(e) => setCourses(course =>course.concat(e.target.value))}>
+              <option value=""> Select Course </option>
+              {courseIds.map((val, key) => {
+                return <option key={val.courseName}> {val.courseName} </option>;
+              })}
+            </Form.Select>
+          </Form.Group>
+         
 
-            {/* <select onChange={(e)=>setCourses(e.target.value)}>
+          {/* <select onChange={(e)=>setCourses(e.target.value)}>
             <option value=""> Select Course Name </option>
                         {
                             courseIds.map((val, key) => {
@@ -197,17 +211,19 @@ function Profile(props) {
             placeholder="Major"
           />
 
-<Form.Group className="mb-3" controlId="formGenderPreferences">
-                            <Form.Label> Gender Preferences </Form.Label>
-                            <Form.Select required 
-                                defaultValue={""}
-                                onChange={(e) => setGenderPreference(e.target.value)}>
-                                <option value=""> Select Gender Preferences </option>
-                                <option value="Female" >Female </option>
-                                <option value="Male"> Male </option>
-                                <option value="Non-binary">Non-binary </option>
-                            </Form.Select>
-                        </Form.Group>
+          <Form.Group className="mb-3" controlId="formGenderPreferences">
+            <Form.Label> Gender Preferences </Form.Label>
+            <Form.Select
+              required
+              defaultValue={""}
+              onChange={(e) => setGenderPreference(e.target.value)}
+            >
+              <option value=""> Select Gender Preferences </option>
+              <option value="Female">Female </option>
+              <option value="Male"> Male </option>
+              <option value="Non-binary">Non-binary </option>
+            </Form.Select>
+          </Form.Group>
           {/* <Dropdown
             label="Gender Preferences"
             options={[
@@ -236,7 +252,7 @@ function Profile(props) {
           >
             Submit
           </Button>
-      </Form>
+        </Form>
       </Container>
     </>
   );

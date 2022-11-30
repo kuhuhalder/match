@@ -7,15 +7,15 @@ import NavBar from "../components/NavBar";
 const Account = (props) => {
   const location = useLocation();
   const navigate = useNavigate();
-  const [firstName, setFirstName] = useState(null);
-  const [lastName, setLastName] = useState(null);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [pronouns, setPronouns] = useState("");
   const [campus, setCampus] = useState("");
   const [course, setCourse] = useState([]);
   const [major, setMajor] = useState("");
   const [bio, setBio] = useState("");
   const [year, setYear] = useState(0);
-  const [genderPreference, setGenderPreference] = useState(null);
+  const [genderPreference, setGenderPreference] = useState("");
   const [userName, setUserName] = useState(location.state.userName);
 
   const configuration = {
