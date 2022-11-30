@@ -2,7 +2,6 @@ import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import axios from "axios";
-import { Input } from "@mui/material";
 
 const ForgotPass = (props) => {
   const navigate = useNavigate();

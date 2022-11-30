@@ -1,11 +1,7 @@
 import React, { useState } from "react";
 import { Form, Button, Alert } from "react-bootstrap";
 import { Navigate, useLocation, useNavigate, Link } from "react-router-dom";
-import "./Account.css";
 import axios from "axios";
-import Match from "./Match";
-import Profile from "./Profile";
-import NavBar from "../components/NavBar";
 const ViewProfile = (props) => {
   const location = useLocation();
   const navigate = useNavigate();

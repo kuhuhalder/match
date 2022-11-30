@@ -1,12 +1,7 @@
 import React, { useState } from "react";
-import SideBar from "../components/Sidebar";
 import { Form, Button } from "react-bootstrap";
 import { Navigate, useLocation, useNavigate, Link } from "react-router-dom";
-import "./Account.css";
 import axios from "axios";
-import Match from "./Match";
-import Profile from "./Profile";
-import NavBar from "../components/NavBar";
 const ViewProfileRequests = (props) => {
   const location = useLocation();
   const navigate = useNavigate();

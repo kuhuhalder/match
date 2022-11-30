@@ -32,36 +32,36 @@ export default function Register(props) {
         error = new Error();
       });
   };
-  if(register && !userName.endsWith("@match.com")){
+  if (register && !userName.endsWith("@match.com")) {
     <div>
-    <p className="text-success">
-        You Are Registered Successfully. Click here to add the rest of
-        your details
+      <p className="text-success">
+        You Are Registered Successfully. Click here to add the rest of your
+        details
       </p>
-      </div>
-    navigate("/profile", {state:{userName:userName}})
-    
-  }else if (userName.endsWith("@match.com")){
+    </div>;
+    navigate("/profile", { state: { userName: userName } });
+  } else if (userName.endsWith("@match.com")) {
     <div>
-    <p className="text-danger">
+      <p className="text-danger">
         Please register as an admin instead with the @match.com email address
       </p>
-      </div>
-  }
-  else{
+    </div>;
+  } else {
     <div>
-    <p className="text-danger">Username already exists. Login instead</p>
-    
-    {
+      <p className="text-danger">Username already exists. Login instead</p>
+
+      {
         <Button
           variant="primary"
           type="submit"
-          onClick={(e) => {navigate("./login")}}
+          onClick={(e) => {
+            navigate("./login");
+          }}
         >
           Login
         </Button>
       }
-      </div>
+    </div>;
   }
   const handleUpdateProfile = (e) => {
     navigate("/profile", { state: { userName: userName, isAdmin: isAdmin } });
@@ -84,7 +84,7 @@ export default function Register(props) {
             placeholder="Enter email"
           />
         </Form.Group>
-        
+
         {userName.endsWith("@match.com") ? (
           <p className="text-danger">Please register as an admin instead</p>
         ) : (
@@ -138,46 +138,42 @@ export default function Register(props) {
           Register
         </Button>
 
-        {/* <Button
-          onClick={()=> {navigate("./Login")}}
-        >
-          Login
-        </Button> */}
+        {register ? (
+          <div>
+            <p className="text-success">
+              You Are Registered Successfully. Click here to add the rest of
+              your details
+            </p>
 
-{register ? (
-    <div>
-      <p className="text-success">
-        You Are Registered Successfully. Click here to add the rest of
-        your details
-      </p>
+            {
+              <Button
+                variant="primary"
+                type="submit"
+                onClick={(e) => handleUpdateProfile(e)}
+              >
+                Update Profile
+              </Button>
+            }
+          </div>
+        ) : (
+          <div>
+            <p className="text-danger">
+              Username already exists. Login instead
+            </p>
 
-      {
-        <Button
-          variant="primary"
-          type="submit"
-          onClick={(e) => handleUpdateProfile(e)}
-        >
-          Update Profile
-        </Button>
-      }
-    </div>
-  ) : (
-    <div>
-    <p className="text-danger">Username already exists. Login instead</p>
-    
-    {
-        <Button
-          variant="primary"
-          type="submit"
-          onClick={(e) => {navigate("/login")}}
-        >
-          Login
-        </Button>
-      }
-      </div>
-    
-  )}
-
+            {
+              <Button
+                variant="primary"
+                type="submit"
+                onClick={(e) => {
+                  navigate("/login");
+                }}
+              >
+                Login
+              </Button>
+            }
+          </div>
+        )}
       </Form>
     </>
   );

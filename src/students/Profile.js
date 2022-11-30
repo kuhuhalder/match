@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Form, Button, Container } from "react-bootstrap";
 import axios from "axios";
 import { Navigate, useNavigate, useLocation } from "react-router-dom";
-import { Select } from "@mui/material";
 
 function Profile(props) {
   const { state } = useLocation();

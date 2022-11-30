@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
-import SideBar from "../components/Sidebar";
 import { Form, Button, Container, Col, Row, Table } from "react-bootstrap";
 import "./Match.css";
 import axios from "axios";
 import NavBar from "../components/NavBar";
 import { useLocation, useNavigate } from "react-router-dom";
-import { TableBody, TableHead } from "@mui/material";
 const ViewStudyBuddies = (props) => {
   const location = useLocation();
   const navigate = useNavigate();
