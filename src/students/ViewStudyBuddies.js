@@ -38,14 +38,9 @@ const ViewStudyBuddies = (props) => {
       // {/* <div className="Match">
       //   <div id="page-wrap"> */}
           <Container>
-            <Col>
-        <NavBar></NavBar>
-        </Col>
-        
 
-          <h2>
-            View your Study Buddies!
-          </h2>
+        <NavBar></NavBar>
+          <h2>View your Study Buddies!</h2>
           {/* <table> */}
           <Table striped hover>
             <thead>

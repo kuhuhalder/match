@@ -20,11 +20,15 @@ const ViewProfile = (props) => {
   const [genderPreference, setGenderPreference] = useState(null);
   const [userName, setUserName] = useState(location.state.userName);
   const [userName2, setUserName2] = useState(location.state.userName2);
-
-  const [id, setId] = useState(location.state.userName2+"+"+userName);
+  const [firstName2, setFirstName2] = useState(location.state.firstName);
+  const [lastName2, setLastName2] = useState(location.state.lastName);
+  const [matchId, setMatchId] = useState(
+    location.state.userName2 + "+" + userName
+  );
 
   const [password, setPassword] = useState(location.state.password);
   const [match, setMatch] = useState(false);
+  const [matchedAlready, setMatchedAlready] = useState(false);
 
   const configuration = {
     method: "get",
@@ -49,34 +53,68 @@ const ViewProfile = (props) => {
       error = new Error();
     });
 
-const handleRequestMatch =(e)=>{
-    <div>You have requested to match with this student: {e}</div>
+  const handleRequestMatch = () => {
+    // <div>You have requested to match with this student: {firstName} {lastName}</div>
     const configuration = {
       method: "post",
       url: "http://localhost:8080/api/students/matchAdd",
       data: {
-        id,
-        userOneId:userName2,
-        userTwoId:userName
+        matchId,
+        userOneId: userName2,
+        userTwoId: userName,
       },
     };
     console.log(configuration);
     axios(configuration)
       .then((result) => {
         setMatch(true);
+        if (result.status == 400) {
+          setMatchedAlready(true);
+        }
       })
       .catch((error) => {
         error = new Error();
+        setMatchedAlready(true);
       });
-  }
-  if(match){
-    return(
+  };
+  if (match) {
+    return (
       <div>
-    <Alert>You have matched with {firstName} {lastName}</Alert>
-    <Link to='/matches' state={{userName:userName2}}>Go back to matches</Link>
+        <Alert>
+          You have matched with {firstName} {lastName}
+        </Alert>
+        <Link
+          to="/matches"
+          state={{
+            userName: userName2,
+            firstName: firstName2,
+            lastName: lastName2,
+          }}
+        >
+          Go back to matches
+        </Link>
       </div>
-    )
-    }
+    );
+  }
+  if (matchedAlready) {
+    return (
+      <div>
+        <Alert>
+          You have already matched with {firstName} {lastName}
+        </Alert>
+        <Link
+          to="/matches"
+          state={{
+            userName: userName2,
+            firstName: firstName2,
+            lastName: lastName2,
+          }}
+        >
+          Go back to matches
+        </Link>
+      </div>
+    );
+  }
   return (
     <>
       <div id="ViewProfile">
@@ -92,12 +130,9 @@ const handleRequestMatch =(e)=>{
             <h4> Gender Preference: {genderPreference}</h4>
             <h4> Bio: {bio}</h4>
             {/* <button onClick={()=>{handleRequestMatch(userName)}}>Match </button> */}
-            <Button
-                      type="submit"
-                      onClick={() => handleRequestMatch()}
-                    >
-                    Match
-                    </Button>
+            <Button type="submit" onClick={(e) => handleRequestMatch()}>
+              Match
+            </Button>
           </div>
         </div>
       </div>

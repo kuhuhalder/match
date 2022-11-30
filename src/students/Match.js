@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import SideBar from "../components/Sidebar";
-import { Form, Button, Table, Container, Col, Row } from "react-bootstrap";
+import { Form, Button, Table, Container, Col, Row,  } from "react-bootstrap";
 import "./Match.css";
 import axios from "axios";
 import NavBar from "../components/NavBar";
@@ -31,7 +30,7 @@ const Match = (props) => {
 
   const handleViewProfile = (e) => {
     // e.preventDefault();
-    navigate("/viewprofile", { state: { userName: e, userName2: userName2 } });
+    navigate("/viewprofile", { state: { userName: e, userName2: userName2, firstName:firstName,lastName:lastName } });
   };
 
   return (
@@ -47,7 +46,7 @@ const Match = (props) => {
         <div id="page-wrap"> */}
         {/* <NavBar></NavBar> */}
           <h2>
-            Welcome {firstName} {lastName}!
+            {firstName} {lastName}, View Your Matches!
           </h2>
           {/* <table> */}
           <Table>

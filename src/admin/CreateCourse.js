@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 
 export default function CreateCourse(props) {
@@ -30,7 +30,21 @@ export default function CreateCourse(props) {
       });
   };
   
-
+// if(addCourse){
+//   return(
+//     <div>
+//       <p className="text-success">
+//         Course Added!
+//       </p>
+//   <Link
+//           to="/viewaccount"
+//           state={{userName:state.userName}}
+//         >
+//           Go back to account
+//         </Link>
+//     </div>
+//   )
+// }
 
   return (
     <>
@@ -69,6 +83,7 @@ export default function CreateCourse(props) {
       <p className="text-success">
         Course Added!
       </p>
+
       <Button onClick={navigate("/viewaccount", {state: {userName:state.userName}})}>Go back to account </Button>
 
     </div>

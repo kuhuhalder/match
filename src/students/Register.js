@@ -1,18 +1,23 @@
 import React, { useState } from "react";
-import { Form, Button } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { Form, Button, Container } from "react-bootstrap";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 
 export default function Register(props) {
   const navigate = useNavigate();
   const [userName, setEmail] = useState("");
   const [id, setId] = useState("");
+  const [firstName, setFirstName] = useState(null);
+  const [lastName, setLastName] = useState(null);
   const [password, setPassword] = useState("");
   const [isAdmin, setIsAdmin] = useState(0);
   const [register, setRegister] = useState(false);
   const [userNameExists, setUserNameExists] = useState(false);
   const [passwordsMatch, setPasswordsMatch] = useState(false);
-
+  const { state } = useLocation();
+  const handleUpdateProfile = (e) => {
+    navigate("/profile", { state: { userName: userName, isAdmin:isAdmin, firstName:firstName, lastName:lastName } });
+  };
   const handleRegister = (e) => {
     e.preventDefault();
     const configuration = {
@@ -21,6 +26,8 @@ export default function Register(props) {
       data: {
         id,
         userName,
+        firstName,
+        lastName,
         password,
         isAdmin,
       },
@@ -32,52 +39,83 @@ export default function Register(props) {
       })
       .catch((error) => {
         error = new Error();
-        setUserNameExists(true)
-        navigate("/register")
+        setUserNameExists(true);
+        // navigate("/register");
       });
   };
-  
-  if(register && !userName.endsWith("@match.com")){
-    <div>
-    <p className="text-success">
-        You Are Registered Successfully. Click here to add the rest of
-        your details
-      </p>
-      </div>
-    navigate("/profile", {state:{userName:userName}})
-    
-  }else if (userName.endsWith("@match.com")){
-    <div>
-    <p className="text-danger">
-        Please register as an admin instead with the @match.com email address
-      </p>
-      </div>
-  }
-  else{
-    <div>
+  if (userNameExists){
+    return(
+      <div>
     <p className="text-danger">Username already exists. Login instead</p>
     
     {
         <Button
           variant="primary"
           type="submit"
-          onClick={(e) => {navigate("./login")}}
+          onClick={(e) => {navigate("/login")}}
         >
           Login
         </Button>
       }
       </div>
+    )
   }
-  const handleUpdateProfile = (e) => {
-    navigate("/profile", { state: { userName: userName, isAdmin: isAdmin } });
-  };
+  if (register && !userName.endsWith("@match.com")) {
+    return (
+      <div>
+        <p className="text-success">
+          You Are Registered Successfully. Click here to add the rest of your
+          details
+          {
+            <Button
+              variant="primary"
+              type="submit"
+              onClick={(e) => handleUpdateProfile(e)}
+            >
+              Update Profile
+            </Button>
+          }
+        </p>
+      </div>
+    );
+    navigate("/profile", { state });
+  } else if (userName.endsWith("@match.com")) {
+    return (
+      <div>
+        <p className="text-danger">
+          Please register as an admin instead with the @match.com email address
+        </p>
+      </div>
+    );
+  } 
 
   return (
-    <>
+    <Container>
       <h2>Create an Account</h2>
       <Form onSubmit={(e) => handleRegister(e)}>
+        <Form.Group className="mb-3" controlId="formFirstName">
+          <Form.Label>First Name</Form.Label>
+          <Form.Control
+            type="firstName"
+            name="firstName"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            placeholder="Enter first name"
+          />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formLastName">
+          <Form.Label>Last Name</Form.Label>
+          <Form.Control
+            type="lastName"
+            name="lastName"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+            placeholder="Enter last name"
+          />
+        </Form.Group>
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
+          <p>Your email address is your username</p>
           <Form.Control
             type="email"
             name="email"
@@ -89,7 +127,7 @@ export default function Register(props) {
             placeholder="Enter email"
           />
         </Form.Group>
-        
+
         {userName.endsWith("@match.com") ? (
           <p className="text-danger">Please register as an admin instead</p>
         ) : (
@@ -148,42 +186,8 @@ export default function Register(props) {
         >
           Login
         </Button> */}
-
-{register ? (
-    <div>
-      <p className="text-success">
-        You Are Registered Successfully. Click here to add the rest of
-        your details
-      </p>
-
-      {
-        <Button
-          variant="primary"
-          type="submit"
-          onClick={(e) => handleUpdateProfile(e)}
-        >
-          Update Profile
-        </Button>
-      }
-    </div>
-  ) : (
-    <div>
-    <p className="text-danger">Username already exists. Login instead</p>
-    
-    {
-        <Button
-          variant="primary"
-          type="submit"
-          onClick={(e) => {navigate("/login")}}
-        >
-          Login
-        </Button>
-      }
-      </div>
-    
-  )}
-
       </Form>
-    </>
+      <Link to="/login">Already have an account? Click here!</Link>
+    </Container>
   );
 }

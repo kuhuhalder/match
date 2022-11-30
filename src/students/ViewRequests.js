@@ -4,7 +4,7 @@ import NavBar from "../components/NavBar";
 import { Form, Button, Table } from "react-bootstrap";
 import axios from "axios";
 const ViewRequests = (props) => {
-  const location = useLocation();
+  const{state} = useLocation();
   const navigate = useNavigate();
   const [firstName, setFirstName] = useState(null);
   const [lastName, setLastName] = useState(null);
@@ -15,9 +15,9 @@ const ViewRequests = (props) => {
   const [bio, setBio] = useState("");
   const [year, setYear] = useState(0);
   const [genderPreference, setGenderPreference] = useState(null);
-  const [userName, setUserName] = useState(location.state.userName);
+  const [userName, setUserName] = useState(state.userName);
 
-  const [password, setPassword] = useState(location.state.password);
+  const [password, setPassword] = useState(state.password);
   const [ids, setIds] = useState([]);
   const [studyBuddies, setStudyBuddies]=useState(false)
 
@@ -82,7 +82,7 @@ const ViewRequests = (props) => {
                 <tr key={key}>
                   <td>{val}</td>
                   <Button type="submit" onClick={() =>     navigate("/viewprofilerequests", { state: { userName: val} })
-}>Accept</Button>
+}>View Profile</Button>
 
                   <Button type="submit" onClick={() => handleAcceptMatch(val)}>Accept</Button>
 

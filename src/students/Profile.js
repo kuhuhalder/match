@@ -1,22 +1,16 @@
 import React, { useState } from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Container } from "react-bootstrap";
 import axios from "axios";
-import Dropdown from "../components/Dropdown";
-import CustomListDropDown from "../components/CustomDropdownList";
-import Courses from "./Courses";
-import Cookies from "universal-cookie";
-import Account from "./Account";
-import ReactDOM from "react-dom/client";
 import { Navigate, useNavigate, useLocation } from "react-router-dom";
 
 function Profile(props) {
-  const location = useLocation();
+  const{state} = useLocation();
   const navigate = useNavigate();
-  const [id, setId] = useState(location.state.userName);
-  const [userName, setUserName] = useState(location.state.userName);
-  const [isAdmin, setIsAdmin] = useState(location.state.isAdmin);
-  const [firstName, setFirstName] = useState(null);
-  const [lastName, setLastName] = useState(null);
+  const [id, setId] = useState(state.userName);
+  const [userName, setUserName] = useState(state.userName);
+  const [isAdmin, setIsAdmin] = useState(state.isAdmin);
+  const [firstName, setFirstName] = useState(state.firstName);
+  const [lastName, setLastName] = useState(state.lastName);
   const [pronouns, setPronouns] = useState(null);
   const [campus, setCampus] = useState(null);
   const [course, setCourses] = useState([]);
@@ -36,8 +30,6 @@ function Profile(props) {
       data: {
         id,
         userName,
-        firstName,
-        lastName,
         pronouns,
         campus,
         course,
@@ -45,6 +37,7 @@ function Profile(props) {
         bio,
         year,
         genderPreference,
+        isAdmin
       },
     };
     console.log(configuration);
@@ -60,46 +53,28 @@ function Profile(props) {
       });
   };
 
+  const configuration = {
+    method: "get",
+    url: "http://localhost:8080/api/students/getAllCourses",
+    };
+  axios(configuration)
+    .then(function(result) {
+    setCourseIds(result.data);
+    console.log(courseIds)
+  })
+  .catch((error) => {
+    console.log(error);
+    error = new Error();
+  });
 
-    const configuration = {
-      method: "get",
-      url: "http://localhost:8080/api/students/getAllCourses",
-      };
-    axios(configuration)
-      .then(function(result) {
-      setCourseIds(result.data);
-      console.log(courseIds)
-    })
-    .catch((error) => {
-      console.log(error);
-      error = new Error();
-    });
+    
   
-  
-
   return (
     <>
-      <h4>Welcome {userName}!</h4>
-      <div>Please fill out this form so that we can get your matches in!</div>
+    <Container>
+      <h4>Welcome {firstName} {lastName}!</h4>
+      <div>Please fill out your preferences so that we can get your matches in!</div>
       <Form onSubmit={(e) => handleSubmit(e)}>
-        {/* first name*/}
-        <Form.Group controlId="formFirstName">
-          <Form.Label>First Name</Form.Label>
-          <Form.Control
-            type="firstName"
-            name="firstName"
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
-            placeholder="Enter first name"
-          />
-          <Form.Label>Last Name</Form.Label>
-          <Form.Control
-            type="lastName"
-            name="lastName"
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
-            placeholder="Enter last name"
-          />
 
           {/* <Form.Label>Pronouns</Form.Label> */}
           {/* <Form.Control
@@ -109,7 +84,18 @@ function Profile(props) {
             onChange={(e) => setPronouns(e.target.value)}
             placeholder="Enter Pronouns"
           /> */}
-           <Dropdown
+           <Form.Group className="mb-3" controlId="formPronouns}">
+                            <Form.Label> Pronouns </Form.Label>
+                            <Form.Select required 
+                                defaultValue={""}
+                                onChange={(e) => setPronouns(e.target.value)}>
+                                <option value=""> Select Your Pronouns </option>
+                                <option value="she/her/hers" > she/her/hers </option>
+                                <option value="he/him/his"> he/him/his </option>
+                                <option value="they/them"> they/them </option>
+                            </Form.Select>
+                        </Form.Group>
+           {/* <Dropdown
             label="Pronouns"
             options={[
               { label: "Select", value: null },
@@ -119,9 +105,20 @@ function Profile(props) {
             ]}
             value={pronouns}
             onChange={(e) => setPronouns(e.target.value)}
-          />
-          <br></br>
-          <Dropdown
+          /> */}
+          <Form.Group className="mb-3" controlId="formCampus}">
+                            <Form.Label> Campus </Form.Label>
+                            <Form.Select required 
+                                defaultValue={""}
+                                onChange={(e) => setCampus(e.target.value)}>
+                                <option value=""> Select Campus </option>
+                                <option value="Livingston" > Livingston </option>
+                                <option value="College Avenue"> College Avenue </option>
+                                <option value="Busch"> Busch </option>
+                                <option value="Cook/Douglass"> Cook/Douglass </option>
+                            </Form.Select>
+                        </Form.Group>
+          {/* <Dropdown
             label="Campus"
             options={[
               { label: "Select", value: null},
@@ -132,27 +129,24 @@ function Profile(props) {
             ]}
             value={campus}
             onChange={(e) => setCampus(e.target.value)}
-          />
-          {/* <CustomListDropDown></CustomListDropDown>
-      <Courses></Courses> */}
-          <br>
-          </br>
-          {/* <Form.Group className="mb-3" controlId="formCourseName">
-                    <Form.Label>Courses</Form.Label>
+          /> */}
+
+          <Form.Group className="mb-3" controlId="formCourseName">
+                    <Form.Label>Courses You Want Matches for</Form.Label>
                     <Form.Select
-                        onChange={fetchCourses}>
-                        <option value=""> Select Course Name </option>
+                        onChange={(e)=>setCourses(e.target.value)}>
+                        <option value=""> Select Course </option>
                         {
                             courseIds.map((val, key) => {
                                 return (
-                                    <option key={key}> {val.courseName} </option>
+                                    <option key={val.courseName}> {val.courseName} </option>
                                 ) 
                             })
                         }
                     </Form.Select>
-                    </Form.Group> */}
+                    </Form.Group>
 
-            <select onChange={(e)=>setCourses(e.target.value)}>
+            {/* <select onChange={(e)=>setCourses(e.target.value)}>
             <option value=""> Select Course Name </option>
                         {
                             courseIds.map((val, key) => {
@@ -164,7 +158,7 @@ function Profile(props) {
                                 // ) 
                             })
                         }
-            </select>
+            </select> */}
           {/* <Dropdown
             label="Course"
             options={[
@@ -186,7 +180,6 @@ function Profile(props) {
             value={course}
             onChange={(e) => setCourses(course =>course.concat(e.target.value))}
           /> */}
-          <br></br>
           <Form.Label># Years in College</Form.Label>
           <Form.Control
             type="year"
@@ -203,15 +196,19 @@ function Profile(props) {
             onChange={(e) => setMajor(e.target.value)}
             placeholder="Major"
           />
-          {/* <Form.Label>Gender Preferences</Form.Label>
-          <Form.Control
-            type="genderPreference"
-            name="genderPreference"
-            value={genderPreference}
-            onChange={(e) => setGenderPreference(e.target.value)}
-            placeholder="Gender Preferences"
-          /> */}
-          <Dropdown
+
+<Form.Group className="mb-3" controlId="formGenderPreferences">
+                            <Form.Label> Gender Preferences </Form.Label>
+                            <Form.Select required 
+                                defaultValue={""}
+                                onChange={(e) => setGenderPreference(e.target.value)}>
+                                <option value=""> Select Gender Preferences </option>
+                                <option value="Female" >Female </option>
+                                <option value="Male"> Male </option>
+                                <option value="Non-binary">Non-binary </option>
+                            </Form.Select>
+                        </Form.Group>
+          {/* <Dropdown
             label="Gender Preferences"
             options={[
               { label: "Select", value: null },
@@ -221,8 +218,7 @@ function Profile(props) {
             ]}
             value={genderPreference}
             onChange={(e) => setGenderPreference(e.target.value)}
-            />
-            <br></br>
+            /> */}
 
           <Form.Label>Bio</Form.Label>
           <Form.Control
@@ -240,8 +236,8 @@ function Profile(props) {
           >
             Submit
           </Button>
-        </Form.Group>
       </Form>
+      </Container>
     </>
   );
 }

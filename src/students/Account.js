@@ -17,7 +17,6 @@ const Account = (props) => {
   const [year, setYear] = useState(0);
   const [genderPreference, setGenderPreference] = useState(null);
   const [userName, setUserName] = useState(location.state.userName);
-  const [password, setPassword] = useState(location.state.password);
 
   const configuration = {
     method: "get",

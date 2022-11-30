@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 const NavBar = (props) => {
-    const location = useLocation();
+    const{state} = useLocation();
     const navigate = useNavigate();
     const [firstName, setFirstName] = useState(null);
     const [lastName, setLastName] = useState(null);
@@ -13,8 +13,8 @@ const NavBar = (props) => {
     const [bio, setBio] = useState("");
     const [year, setYear] = useState(0);
     const [genderPreference, setGenderPreference] = useState(null);
-    const [userName, setUserName] = useState(location.state.userName);
-    const [password, setPassword] = useState(location.state.password);
+    const [userName, setUserName] = useState(state.userName);
+    const [password, setPassword] = useState(state.password);
   
     const configuration = {
       method: "get",
@@ -56,10 +56,10 @@ const NavBar = (props) => {
         },
       });
     };
-  
 
+    
     const handleUpdate = (e) => {
-        navigate("/profile", { state: { id: userName, userName: userName } });
+        navigate("/profile", { state: { id: userName, userName: userName, firstName:firstName, lastName:lastName } });
       };
       const handleViewStudyBuddies = (e) => {
         navigate("/viewstudybuddies", { state: { id: userName, userName: userName } });

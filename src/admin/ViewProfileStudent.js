@@ -56,8 +56,8 @@ const configuration = {
     .then((result) => {
       setDelete(true)
 
-/*       navigate("/viewallstudents")
- */    })
+navigate("/viewallstudents")
+})
     .catch((error) => {
       console.log(error);
       error = new Error();

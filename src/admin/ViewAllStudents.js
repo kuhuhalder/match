@@ -6,9 +6,35 @@ const ViewAllStudents = (props) => {
   const location = useLocation();
   const navigate = useNavigate();
   const [ids, setIds] = useState([]);
+  const [del, setDelete] = useState(false);
+
   const handleViewProfile = (e) => {
     navigate("/viewprofilestudent", { state: { userName: e } });
   };
+
+  const deleteStudent =(e)=>{
+    //     <Popup trigger={<button> Trigger</button>} position="right center">
+    //     <div>Do you want to delete this student?</div>
+    //   </Popup>
+    
+    const configuration = {
+        method: "delete",
+        url:
+          "http://localhost:8080/api/students/delete/" + e,
+      };
+      console.log(configuration);
+      axios(configuration)
+        .then((result) => {
+          setDelete(true)
+          navigate("/viewallstudents")
+    
+    /*       navigate("/viewallstudents")
+     */    })
+        .catch((error) => {
+          console.log(error);
+          error = new Error();
+        });
+    }
   const configuration = {
     method: "get",
     url:
@@ -33,6 +59,7 @@ const ViewAllStudents = (props) => {
           <Table striped bordered hover>
           <thead>
             <tr>
+            <th>Username</th>
               <th>Name</th>
               <th>Course</th>
               <th>Year</th>
@@ -45,17 +72,29 @@ const ViewAllStudents = (props) => {
 
                 return (
                   <tr key={key}>
+                     <td>{val.userName}</td>
                     <td>{val.firstName}</td>
                     <td>{val.course}</td>
                     <td>{val.year}</td>
                     <td>{val.major}</td>
                     <td>{val.pronouns}</td>
+                    <td>
                     <Button
                       type="submit"
                       onClick={() => handleViewProfile(val.userName)}
                     >
                       View Profile
                     </Button>
+                    </td>
+                    {/* <td>
+                    <Button
+                      type="submit"
+                      onClick={() => deleteStudent(val.userName)}
+                    >
+                    Delete Student
+                    </Button>
+                    </td> */}
+
 
                     {/* <Button
                       type="submit"
