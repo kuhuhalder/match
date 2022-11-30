@@ -2,7 +2,6 @@ import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import axios from "axios";
-import Login from "./Login";
 
 const ForgotPass = (props) => {
   const navigate = useNavigate();
@@ -10,6 +9,7 @@ const ForgotPass = (props) => {
   const [id, setId] = useState(location.state.userName);
   const [userName, setUserName] = useState(location.state.userName);
   const [password, setPassword] =useState("");
+  const [passwordReset, setPasswordReset] = useState(false)
 
 //   const handleResetPassword = (e) => {
 //     Axios.post("http://localhost:8080/api/students/update", {
@@ -23,10 +23,6 @@ const ForgotPass = (props) => {
 // };
 
 const handleResetPassword = (e) => {
-  // prevent the form from refreshing the whole page
-  e.preventDefault();
-
-  // set configurations
   const configuration = {
     method: "post",
     url: "http://localhost:8080/api/students/update",
@@ -38,21 +34,25 @@ const handleResetPassword = (e) => {
   };
   console.log(configuration);
 
-  // make the API call
-
   axios(configuration)
-    .then((result) => {
-      // const element = <Login userName={userName} root={props.root} />;
-      // props.root.render(element);
-    navigate('/login', {state:{userName:userName}})
+    .then(function(result) {
+      setPasswordReset(true)
     })
     .catch((error) => {
       console.log(error);
       error = new Error();
     });
 };
+
+if(passwordReset){
+  return(
+    <div>
+      
+    </div>
+  )
+}
   return (
-    <>
+    <div>
       <h2>Forgot Password</h2>
       <label> Enter new password </label>
         <input 
@@ -64,9 +64,8 @@ const handleResetPassword = (e) => {
         />
 
     <button onClick={handleResetPassword}>Reset Password </button>
-
-
-    </>
+    </div>
   );
+
 }
 export default ForgotPass;

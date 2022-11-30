@@ -2,19 +2,14 @@ import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import axios from "axios";
 import Dropdown from "../components/Dropdown";
-import CustomListDropDown from "../components/CustomDropdownList";
-import Courses from "./Courses";
-import Cookies from "universal-cookie";
-import Account from "./Account";
-import ReactDOM from "react-dom/client";
 import { Navigate, useNavigate, useLocation } from "react-router-dom";
 
-function Profile(props) {
+function EditProfile(props) {
   const location = useLocation();
   const navigate = useNavigate();
   const [id, setId] = useState(location.state.userName);
   const [userName, setUserName] = useState(location.state.userName);
-  const [isAdmin, setIsAdmin] = useState(location.state.isAdmin);
+  const [isAdmin, setIsAdmin] = useState(0);
   const [firstName, setFirstName] = useState(null);
   const [lastName, setLastName] = useState(null);
   const [pronouns, setPronouns] = useState(null);
@@ -25,11 +20,9 @@ function Profile(props) {
   const [year, setYear] = useState(null);
   const [genderPreference, setGenderPreference] = useState(null);
   const [register, setRegister] = useState(false);
-  const [courseIds, setCourseIds] = useState([])
+
   const handleSubmit = (e) => {
-    // prevent the form from refreshing the whole page
     e.preventDefault();
-    // set configurations
     const configuration = {
       method: "post",
       url: "http://localhost:8080/api/students/update",
@@ -45,6 +38,7 @@ function Profile(props) {
         bio,
         year,
         genderPreference,
+        isAdmin
       },
     };
     console.log(configuration);
@@ -52,37 +46,17 @@ function Profile(props) {
     axios(configuration)
       .then((result) => {
         setRegister(true);
-        navigate('/account', {state:{userName:userName}});
+        navigate('/accountadmin', {state:{userName:userName}});
       })
       .catch((error) => {
         console.log(error);
         error = new Error();
       });
   };
-
-
-    const configuration = {
-      method: "get",
-      url: "http://localhost:8080/api/students/getAllCourses",
-      };
-    axios(configuration)
-      .then(function(result) {
-      setCourseIds(result.data);
-      console.log(courseIds)
-    })
-    .catch((error) => {
-      console.log(error);
-      error = new Error();
-    });
-  
-  
-
   return (
     <>
-      <h4>Welcome {userName}!</h4>
-      <div>Please fill out this form so that we can get your matches in!</div>
+      <h4>Edit {userName}!</h4>
       <Form onSubmit={(e) => handleSubmit(e)}>
-        {/* first name*/}
         <Form.Group controlId="formFirstName">
           <Form.Label>First Name</Form.Label>
           <Form.Control
@@ -91,6 +65,7 @@ function Profile(props) {
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
             placeholder="Enter first name"
+            required
           />
           <Form.Label>Last Name</Form.Label>
           <Form.Control
@@ -99,6 +74,7 @@ function Profile(props) {
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
             placeholder="Enter last name"
+            required
           />
 
           {/* <Form.Label>Pronouns</Form.Label> */}
@@ -137,35 +113,7 @@ function Profile(props) {
       <Courses></Courses> */}
           <br>
           </br>
-          {/* <Form.Group className="mb-3" controlId="formCourseName">
-                    <Form.Label>Courses</Form.Label>
-                    <Form.Select
-                        onChange={fetchCourses}>
-                        <option value=""> Select Course Name </option>
-                        {
-                            courseIds.map((val, key) => {
-                                return (
-                                    <option key={key}> {val.courseName} </option>
-                                ) 
-                            })
-                        }
-                    </Form.Select>
-                    </Form.Group> */}
-
-            <select onChange={(e)=>setCourses(e.target.value)}>
-            <option value=""> Select Course Name </option>
-                        {
-                            courseIds.map((val, key) => {
-                              <option key = {courseIds.courseName} value ={courseIds.courseName} >
-                                courseIds.
-                              </option>
-                                // return (
-                                //     <option key={key}> {val.courseName} </option>
-                                // ) 
-                            })
-                        }
-            </select>
-          {/* <Dropdown
+          <Dropdown
             label="Course"
             options={[
               { label: "Select", value: "none"},
@@ -185,7 +133,22 @@ function Profile(props) {
             ]}
             value={course}
             onChange={(e) => setCourses(course =>course.concat(e.target.value))}
-          /> */}
+          />
+
+{/* <Form.Group className="mb-3" controlId="formInsuranceType">
+                    <Form.Label>Insurance Type</Form.Label>
+                    <Form.Select
+                        onChange={handleInsuranceType}>
+                        <option value=""> Select Insurance Type </option>
+                        {
+                            insuranceTypeList.map((val, key) => {
+                                return (
+                                    <option key={key}> {val} </option>
+                                ) 
+                            })
+                        }
+                    </Form.Select>
+                    </Form.Group> */}
           <br></br>
           <Form.Label># Years in College</Form.Label>
           <Form.Control
@@ -245,4 +208,4 @@ function Profile(props) {
     </>
   );
 }
-export default Profile;
+export default EditProfile;

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Table } from "react-bootstrap";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
 const ViewAllStudents = (props) => {
@@ -29,7 +29,9 @@ const ViewAllStudents = (props) => {
       <div className="ViewAllStudents">
         <div id="page-wrap">
           <h2> View All Students</h2>
-          <table>
+          {/* <table> */}
+          <Table striped bordered hover>
+          <thead>
             <tr>
               <th>Name</th>
               <th>Course</th>
@@ -37,6 +39,8 @@ const ViewAllStudents = (props) => {
               <th>Major</th>
               <th>Pronouns</th>
             </tr>
+            </thead>
+            <tbody>
             {ids.map((val, key) => {
 
                 return (
@@ -66,7 +70,9 @@ const ViewAllStudents = (props) => {
               })
               }
               
-          </table>
+          {/* </table> */}
+          </tbody>
+          </Table>
         </div>
       </div>
     </>

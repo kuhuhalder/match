@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export default function CreateCourse(props) {
   const navigate = useNavigate();
+  const{state}=useLocation()
   const [courseName, setCourseName] = useState("");
   const [id, setId] = useState("");
   const [addCourse, setAddCourse] = useState(false);
@@ -68,6 +69,8 @@ export default function CreateCourse(props) {
       <p className="text-success">
         Course Added!
       </p>
+      <Button onClick={navigate("/viewaccount", {state: {userName:state.userName}})}>Go back to account </Button>
+
     </div>
   ) : (
     <div>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import SideBar from "../components/Sidebar";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Table, Container, Col, Row } from "react-bootstrap";
 import "./Match.css";
 import axios from "axios";
 import NavBar from "../components/NavBar";
@@ -35,14 +35,23 @@ const Match = (props) => {
   };
 
   return (
-    <>
-      <div className="Match">
-        <div id="page-wrap">
-        <NavBar></NavBar>
+    <Container>
+      {/* <div className="Match"> */}
+        {/* <div id="page-wrap"> */}
+        <Col>
+                <NavBar></NavBar>
+            </Col>
+            <Col>
+            <Container>
+      {/* <div className="Match">
+        <div id="page-wrap"> */}
+        {/* <NavBar></NavBar> */}
           <h2>
             Welcome {firstName} {lastName}!
           </h2>
-          <table>
+          {/* <table> */}
+          <Table>
+          <thead>
             <tr>
               <th>Name</th>
               <th>Course</th>
@@ -51,6 +60,9 @@ const Match = (props) => {
               <th>Pronouns</th>
               <th>View Profile</th>
             </tr>
+            </thead>
+            <tbody>
+
             
             {ids.map((val, key) => {
                 return (
@@ -76,11 +88,17 @@ const Match = (props) => {
                 );
               })
               }
+              </tbody>
+               </Table>
+        {/* </div>
+      </div> */}
+      </Container>
+      </Col>
+    </Container>
               
-          </table>
-        </div>
-      </div>
-    </>
+      //     {/* </table>
+      //   </div>
+      // </div> */}
   );
 };
 export default Match;

@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from "react";
 import SideBar from "../components/Sidebar";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Container, Col, Row, Table } from "react-bootstrap";
 import "./Match.css";
 import axios from "axios";
 import NavBar from "../components/NavBar";
 import { useLocation, useNavigate } from "react-router-dom";
+import { TableBody, TableHead } from "@mui/material";
 const ViewStudyBuddies = (props) => {
   const location = useLocation();
   const navigate = useNavigate();
   const [firstName, setFirstName] = useState(location.state.firstName);
   const [lastName, setLastName] = useState(location.state.lastName);
-  const [ids, setIds] = useState([]);
-
-
+  const [usernames, setUsernames] = useState([]);
 
   const configuration = {
     method: "get",
@@ -20,16 +19,15 @@ const ViewStudyBuddies = (props) => {
       "http://localhost:8080/api/students/findConfirmedMatches/" + location.state.userName,
   };
   console.log(configuration);
-  useEffect(() => {
+
   axios(configuration)
     .then((result) => {
-      setIds(result.data);
+      setUsernames(result.data);
     })
     .catch((error) => {
       console.log(error);
       error = new Error();
     });
-  }, [])
 
   // const handleViewProfile = (e) => {
   //   // e.preventDefault();
@@ -37,14 +35,20 @@ const ViewStudyBuddies = (props) => {
   // };
 
   return (
-    <>
-      <div className="Match">
-        <div id="page-wrap">
+      // {/* <div className="Match">
+      //   <div id="page-wrap"> */}
+          <Container>
+            <Col>
         <NavBar></NavBar>
+        </Col>
+        
+
           <h2>
             View your Study Buddies!
           </h2>
-          <table>
+          {/* <table> */}
+          <Table striped hover>
+            <thead>
             <tr>
             <th>Username</th>
               {/* <th>Name</th>
@@ -54,8 +58,9 @@ const ViewStudyBuddies = (props) => {
               <th>Pronouns</th>
               <th>View Profile</th> */}
             </tr>
-            
-            {ids.map((val, key) => {
+            </thead>
+            <tbody>
+            {usernames.map((val, key) => {
                 return (
                   <tr key={key}>
                     <td>{val}</td>
@@ -79,11 +84,12 @@ const ViewStudyBuddies = (props) => {
                 );
               })
               }
-              
-          </table>
-        </div>
-      </div>
-    </>
+              </tbody>
+          {/* </table> */}
+          </Table>
+          </Container>
+      //   {/* </div>
+      // </div> */}
   );
 };
 export default ViewStudyBuddies;

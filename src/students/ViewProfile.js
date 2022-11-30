@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import SideBar from "../components/Sidebar";
-import { Form, Button } from "react-bootstrap";
-import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import { Form, Button, Alert } from "react-bootstrap";
+import { Navigate, useLocation, useNavigate, Link } from "react-router-dom";
 import "./Account.css";
 import axios from "axios";
 import Match from "./Match";
@@ -70,13 +69,18 @@ const handleRequestMatch =(e)=>{
         error = new Error();
       });
   }
-
+  if(match){
+    return(
+      <div>
+    <Alert>You have matched with {firstName} {lastName}</Alert>
+    <Link to='/matches' state={{userName:userName2}}>Go back to matches</Link>
+      </div>
+    )
+    }
   return (
     <>
       <div id="ViewProfile">
-        {/* <SideBar /> */}
         <div id="page-wrap">
-
           <div>
             <h4> First Name: {firstName}</h4>
             <h4> Last Name: {lastName}</h4>

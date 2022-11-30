@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import NavBar from "../components/NavBar";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Table } from "react-bootstrap";
 import axios from "axios";
 const ViewRequests = (props) => {
   const location = useLocation();
@@ -64,7 +64,8 @@ const ViewRequests = (props) => {
         <div id="page-wrap">
           <NavBar></NavBar>
           <h2>View your Requests</h2>
-          <table>
+      <Table striped hover>
+            <thead>
             <tr>
               <th>Username</th>
               {/* <th>Name</th>
@@ -74,11 +75,14 @@ const ViewRequests = (props) => {
                 <th>Pronouns</th>
                 <th>View Profile</th> */}
             </tr>
-
+            </thead>
+            <tbody>
             {ids.map((val, key) => {
               return (
                 <tr key={key}>
                   <td>{val}</td>
+                  <Button type="submit" onClick={() =>     navigate("/viewprofilerequests", { state: { userName: val} })
+}>Accept</Button>
 
                   <Button type="submit" onClick={() => handleAcceptMatch(val)}>Accept</Button>
 
@@ -88,7 +92,9 @@ const ViewRequests = (props) => {
                 </tr>
               );
             })}
-          </table>
+            </tbody>
+          {/* </table> */}
+          </Table>
         </div>
       </div>
     </>

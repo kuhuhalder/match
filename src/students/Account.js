@@ -1,11 +1,8 @@
 import React, { useState } from "react";
-import SideBar from "../components/Sidebar";
 import { Form, Button } from "react-bootstrap";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import "./Account.css";
 import axios from "axios";
-import Match from "./Match";
-import Profile from "./Profile";
 import NavBar from "../components/NavBar";
 const Account = (props) => {
   const location = useLocation();
@@ -36,7 +33,6 @@ const Account = (props) => {
       setPronouns(result.data.pronouns);
       setCampus(result.data.campus);
       setCourse(result.data.course);
-      console.log(result.data.course)
       setMajor(result.data.major);
       setBio(result.data.bio);
       setYear(result.data.year);
@@ -47,29 +43,27 @@ const Account = (props) => {
       error = new Error();
     });
 
-  const handleMatch = (event) => {
-    navigate("/matches", {
-      state: {
-        id: userName,
-        userName: userName,
-        firstName: firstName,
-        lastName: lastName,
-        pronouns: pronouns,
-        campus: campus,
-        course: course,
-        major: major,
-        bio: bio,
-        year: year,
-        genderPreference: genderPreference,
-      },
-    });
-  };
+  // const handleMatch = (event) => {
+  //   navigate("/matches", {
+  //     state: {
+  //       id: userName,
+  //       userName: userName,
+  //       firstName: firstName,
+  //       lastName: lastName,
+  //       pronouns: pronouns,
+  //       campus: campus,
+  //       course: course,
+  //       major: major,
+  //       bio: bio,
+  //       year: year,
+  //       genderPreference: genderPreference,
+  //     },
+  //   });
+  // };
 
 
   return (
-    <>
       <div id="Account">
-        {/* <SideBar /> */}
         <div id="page-wrap">
 
           {/* <NavBar /> */}
@@ -92,7 +86,7 @@ const Account = (props) => {
           </h2>
 
           <div>
-            {/* <h2>Your information</h2> */}
+            <h2>Your information</h2>
             <h4>Username: {userName}</h4>
             <h4> First Name: {firstName}</h4>
             <h4> Last Name: {lastName}</h4>
@@ -106,7 +100,6 @@ const Account = (props) => {
           </div>
         </div>
       </div>
-    </>
   );
 };
 export default Account;

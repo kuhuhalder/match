@@ -22,6 +22,8 @@ import ViewCourses from "./admin/ViewCourses";
 import CreateStudent from "./admin/CreateStudent"
 import ViewStudyBuddies from "./students/ViewStudyBuddies";
 import CreateCourse from "./admin/CreateCourse";
+import EditProfile from "./admin/EditProfile"
+import ViewProfileRequests from "./students/ViewProfileRequests";
 const App = () => {
   return (
 
@@ -45,11 +47,15 @@ const App = () => {
     <Route exact path="/viewprofile" element={<ViewProfile/>} />
     <Route exact path="/viewrequests" element={<ViewRequests/>} />
     <Route exact path="/viewstudybuddies" element={<ViewStudyBuddies/>} />
+    <Route exact path="/viewprofilerequests" element={<ViewProfileRequests/>} />
+
 
 
     <Route exact path="/registeradmin" element={<RegisterAdmin />} />
     <Route exact path="/viewprofilestudent" element={<ViewProfileStudent />} />
     <Route exact path="/updateprofile" element={<UpdateProfile />} />
+    <Route exact path="/editprofile" element={<EditProfile />} />
+
     <Route exact path="/loginadmin" element={<LoginAdmin />} />
     <Route exact path="/viewaccount" element={<ViewAccount/>} />
     <Route exact path="/viewallstudents" element={<ViewAllStudents/>} />
