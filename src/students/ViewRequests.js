@@ -67,15 +67,7 @@ const ViewRequests = (props) => {
     return (
       <div>
         <Alert>Match request deleted</Alert>
-        {/* <Link
-          to="/viewrequests"
-          state={{
-            userName: userName,
-          }}
-        >
-          Go back to requests
-        </Link>
-        <ViewRequests></ViewRequests> */}
+        {/* <ViewRequests></ViewRequests> */}
 
         <Button
           type="submit"

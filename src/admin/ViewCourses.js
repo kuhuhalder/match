@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
 import Axios from "axios";
-import { useNavigate, useLocation } from "react-router-dom";
-import Table from "react-bootstrap/Table";
+import React, { useState } from "react";
 import { Container, Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
-import NavBar from "../components/NavBar";
+import Table from "react-bootstrap/Table";
+import { useLocation, useNavigate } from "react-router-dom";
 function ViewCourses() {
   const navigate = useNavigate();
   const { state } = useLocation();
