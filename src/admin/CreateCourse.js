@@ -30,21 +30,21 @@ export default function CreateCourse(props) {
       });
   };
 
-  // if(addCourse){
-  //   return(
-  //     <div>
-  //       <p className="text-success">
-  //         Course Added!
-  //       </p>
-  //   <Link
-  //           to="/viewaccount"
-  //           state={{userName:state.userName}}
-  //         >
-  //           Go back to account
-  //         </Link>
-  //     </div>
-  //   )
-  // }
+  if(addCourse){
+    return(
+      <div>
+        <p className="text-success">
+          Course Added!
+        </p>
+    <Link
+            to="/viewaccount"
+            state={{userName:state.userName}}
+          >
+            Go back to account
+          </Link>
+      </div>
+    )
+  }
 
   return (
     <>
@@ -85,7 +85,7 @@ export default function CreateCourse(props) {
                 state: { userName: state.userName },
               })}
             >
-              Go back to account{" "}
+              Go back to account
             </Button>
           </div>
         ) : (

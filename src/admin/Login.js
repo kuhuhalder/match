@@ -41,7 +41,7 @@ export default function LoginAdmin(props) {
     navigate("/viewaccount", {state:{userName:userName, password:password}})
   }else if(!userName.endsWith("@match.com"))
   {
-    <p className="text-danger">Please use a valid @match.com email address!</p>;
+    <p className="text-danger">Please use a valid @match.com email address!</p>
   }
 
 
