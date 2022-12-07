@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { Form, Button, Alert } from "react-bootstrap";
-import { Navigate, useLocation, useNavigate, Link } from "react-router-dom";
 import axios from "axios";
+import React, { useState } from "react";
+import { Alert, Button } from "react-bootstrap";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 const ViewProfile = (props) => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -54,7 +54,7 @@ const ViewProfile = (props) => {
       method: "post",
       url: "http://localhost:8080/api/students/matchAdd",
       data: {
-        id:matchId,
+        id: matchId,
         userOneId: userName2,
         userTwoId: userName,
       },
@@ -63,13 +63,6 @@ const ViewProfile = (props) => {
     axios(configuration)
       .then((result) => {
         setMatch(true);
-        // if (result.status == 400) {
-        //   setMatchedAlready(true);
-        //   setMatch(false)
-        // }
-        // else if(result.status == 200){
-        //   setMatch(true);
-        // }
       })
       .catch((error) => {
         error = new Error();
@@ -131,10 +124,20 @@ const ViewProfile = (props) => {
             <Button type="submit" onClick={(e) => handleRequestMatch()}>
               Match
             </Button>
-            <Button type="submit" onClick={(e) => navigate("/matches", {state:{userName:userName2, firstName:firstName2, lastName:lastName2}})}>
+            <Button
+              type="submit"
+              onClick={(e) =>
+                navigate("/matches", {
+                  state: {
+                    userName: userName2,
+                    firstName: firstName2,
+                    lastName: lastName2,
+                  },
+                })
+              }
+            >
               Go back to Matches
             </Button>
-
           </div>
         </div>
       </div>

@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { Form, Button, Table, Container, Col, Row,  } from "react-bootstrap";
-import "./Match.css";
 import axios from "axios";
-import NavBar from "../components/NavBar";
+import React, { useState } from "react";
+import { Button, Col, Container, Table } from "react-bootstrap";
 import { useLocation, useNavigate } from "react-router-dom";
+import NavBar from "../components/NavBar";
+import "../css/Match.css";
 const Match = (props) => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -29,72 +29,62 @@ const Match = (props) => {
     });
 
   const handleViewProfile = (e) => {
-    // e.preventDefault();
-    navigate("/viewprofile", { state: { userName: e, userName2: userName2, firstName:firstName,lastName:lastName } });
+    navigate("/viewprofile", {
+      state: {
+        userName: e,
+        userName2: userName2,
+        firstName: firstName,
+        lastName: lastName,
+      },
+    });
   };
 
   return (
     <Container>
-      {/* <div className="Match"> */}
-        {/* <div id="page-wrap"> */}
-        <Col>
-                <NavBar></NavBar>
-            </Col>
-            <Col>
-            <Container>
-      {/* <div className="Match">
-        <div id="page-wrap"> */}
-        {/* <NavBar></NavBar> */}
+      <Col>
+        <NavBar></NavBar>
+      </Col>
+      <Col>
+        <Container>
           <h2>
             {firstName} {lastName}, View Your Matches!
           </h2>
-          {/* <table> */}
           <Table>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Course</th>
-              <th>Year</th>
-              <th>Major</th>
-              <th>Pronouns</th>
-              <th>View Profile</th>
-            </tr>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Course</th>
+                <th>Year</th>
+                <th>Major</th>
+                <th>Pronouns</th>
+                <th>View Profile</th>
+              </tr>
             </thead>
             <tbody>
-
-            
-            {ids.map((val, key) => {
+              {ids.map((val, key) => {
                 return (
                   <tr key={key}>
-
                     <td>{val.firstName}</td>
                     <td>{val.course}</td>
                     <td>{val.year}</td>
                     <td>{val.major}</td>
                     <td>{val.pronouns}</td>
                     <td>
-                    <Button
-                      type="submit"
-                      onClick={() => handleViewProfile(val.userName)}
-                    >
-                      View Profile
-                    </Button>
+                      <Button
+                        type="submit"
+                        onClick={() => handleViewProfile(val.userName)}
+                      >
+                        View Profile
+                      </Button>
                     </td>
                   </tr>
                 );
-              })
-              }
-              </tbody>
-               </Table>
-        {/* </div>
-      </div> */}
-      </Container>
+              })}
+            </tbody>
+          </Table>
+        </Container>
       </Col>
     </Container>
-              
-      //     {/* </table>
-      //   </div>
-      // </div> */}
   );
 };
 export default Match;

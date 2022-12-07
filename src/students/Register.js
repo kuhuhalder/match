@@ -13,12 +13,28 @@ export default function Register(props) {
   const [isAdmin, setIsAdmin] = useState(0);
   const [register, setRegister] = useState(false);
   const [userNameExists, setUserNameExists] = useState(false);
-  const [passwordsMatch, setPasswordsMatch] = useState(false);
   const { state } = useLocation();
   const handleUpdateProfile = (e) => {
-    navigate("/profile", { state: { userName: userName, isAdmin:isAdmin, firstName:firstName, lastName:lastName } });
+    navigate("/profile", {
+      state: {
+        userName: userName,
+        isAdmin: isAdmin,
+        firstName: firstName,
+        lastName: lastName,
+      },
+    });
   };
   const handleRegister = (e) => {
+    if (userName == "" || password == "" || firstName == "" || lastName == "") {
+      return (
+        <div>
+          <p className="text-danger">
+            Please fill out the fields correctly.
+            <Register></Register>
+          </p>
+        </div>
+      );
+    }
     e.preventDefault();
     const configuration = {
       method: "post",
@@ -40,25 +56,26 @@ export default function Register(props) {
       .catch((error) => {
         error = new Error();
         setUserNameExists(true);
-        // navigate("/register");
       });
   };
-  if (userNameExists){
-    return(
+  if (userNameExists) {
+    return (
       <div>
-    <p className="text-danger">Username already exists. Login instead</p>
-    
-    {
-        <Button
-          variant="primary"
-          type="submit"
-          onClick={(e) => {navigate("/login")}}
-        >
-          Login
-        </Button>
-      }
+        <p className="text-danger">Username already exists. Login instead</p>
+
+        {
+          <Button
+            variant="primary"
+            type="submit"
+            onClick={(e) => {
+              navigate("/login");
+            }}
+          >
+            Login
+          </Button>
+        }
       </div>
-    )
+    );
   }
   if (register && !userName.endsWith("@match.com")) {
     return (
@@ -67,17 +84,16 @@ export default function Register(props) {
           You Are Registered Successfully. Click here to add the rest of your
           details.
           <br></br>
-            <Button
-              variant="primary"
-              type="submit"
-              onClick={(e) => handleUpdateProfile(e)}
-            >
-              Update Profile
-            </Button>
+          <Button
+            variant="primary"
+            type="submit"
+            onClick={(e) => handleUpdateProfile(e)}
+          >
+            Update Profile
+          </Button>
         </p>
       </div>
     );
-    navigate("/profile", { state });
   } else if (userName.endsWith("@match.com")) {
     return (
       <div>
@@ -85,28 +101,15 @@ export default function Register(props) {
           Please register as an admin instead with the @match.com email address.
         </p>
         <Register></Register>
-
       </div>
     );
-  } 
-  // else if(userName =="" || password =="" || firstName =="" || lastName ==""){
-  //   return (
-  //     <div>
-  //       <p className="text-danger">
-  //         Please fill out the fields correctly.
-  //         <Register></Register>
-  //       </p>
-        
-  //     </div>
-  //   );
-  // }
-
+  }
 
   return (
     <Container>
       <h2>Create an Account</h2>
       <Form onSubmit={(e) => handleRegister(e)}>
-      <Form.Group controlId="formBasicEmail">
+        <Form.Group controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <p>Your email address is your username</p>
           <Form.Control
@@ -141,7 +144,7 @@ export default function Register(props) {
             placeholder="Enter last name"
           />
         </Form.Group>
-        
+
         {userName.endsWith("@match.com") ? (
           <p className="text-danger">Please register as an admin instead</p>
         ) : (

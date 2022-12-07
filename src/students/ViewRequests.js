@@ -1,23 +1,12 @@
-import React, { useState } from "react";
-import { Navigate, useLocation, useNavigate, Link } from "react-router-dom";
-import NavBar from "../components/NavBar";
-import { Form, Button, Table, Container, Alert } from "react-bootstrap";
 import axios from "axios";
+import React, { useState } from "react";
+import { Alert, Button, Container, Table } from "react-bootstrap";
+import { useLocation, useNavigate } from "react-router-dom";
+import NavBar from "../components/NavBar";
 const ViewRequests = (props) => {
   const { state } = useLocation();
   const navigate = useNavigate();
-  const [firstName, setFirstName] = useState(null);
-  const [lastName, setLastName] = useState(null);
-  const [pronouns, setPronouns] = useState("");
-  const [campus, setCampus] = useState("");
-  const [course, setCourse] = useState(null);
-  const [major, setMajor] = useState("");
-  const [bio, setBio] = useState("");
-  const [year, setYear] = useState(0);
-  const [genderPreference, setGenderPreference] = useState(null);
   const [userName, setUserName] = useState(state.userName);
-
-  const [password, setPassword] = useState(state.password);
   const [ids, setIds] = useState([]);
   const [studyBuddies, setStudyBuddies] = useState(false);
   const [deleteRequest, setDeleteRequest] = useState(false);
@@ -60,7 +49,8 @@ const ViewRequests = (props) => {
   const handleDenyMatch = (e) => {
     const configuration = {
       method: "delete",
-      url: "http://localhost:8080/api/students/deleteMatch/" + e+"+"+userName,
+      url:
+        "http://localhost:8080/api/students/deleteMatch/" + e + "+" + userName,
     };
     console.log(configuration);
     axios(configuration)
@@ -73,7 +63,7 @@ const ViewRequests = (props) => {
   };
 
   if (deleteRequest) {
-    setDeleteRequest(false)
+    setDeleteRequest(false);
     return (
       <div>
         <Alert>Match request deleted</Alert>
@@ -86,46 +76,40 @@ const ViewRequests = (props) => {
           Go back to requests
         </Link>
         <ViewRequests></ViewRequests> */}
-        
-         <Button type="submit" onClick={() => navigate("/viewrequests", {state:{userName:userName}})}>
-                    Accept
-                  </Button>
 
-        
+        <Button
+          type="submit"
+          onClick={() =>
+            navigate("/viewrequests", { state: { userName: userName } })
+          }
+        >
+          Go back to requests
+        </Button>
       </div>
     );
   }
 
   return (
-    <>
-      {/* <div className="Match">
-        <div id="page-wrap"> */}
-      <Container>
-        <NavBar></NavBar>
-        <h2>View your Requests</h2>
-        <Table striped hover>
-          <thead>
-            <tr>
-              <th>Username</th>
-              {/* <th>Name</th>
-                <th>Course</th>
-                <th>Year</th>
-                <th>Major</th>
-                <th>Pronouns</th>
-                <th>View Profile</th> */}
-            </tr>
-          </thead>
-          <tbody>
-            {ids.map((val, key) => {
-              return (
-                <tr key={key}>
-                  <td>{val}</td>
-                  <td>
+    <Container>
+      <NavBar></NavBar>
+      <h2>View your Requests</h2>
+      <Table striped hover>
+        <thead>
+          <tr>
+            <th>Username</th>
+          </tr>
+        </thead>
+        <tbody>
+          {ids.map((val, key) => {
+            return (
+              <tr key={key}>
+                <td>{val}</td>
+                <td>
                   <Button
                     type="submit"
                     onClick={() =>
                       navigate("/viewprofilerequests", {
-                        state: { userName: val, loggedInUser:userName },
+                        state: { userName: val, loggedInUser: userName },
                       })
                     }
                   >
@@ -139,19 +123,13 @@ const ViewRequests = (props) => {
                   <Button type="submit" onClick={() => handleDenyMatch(val)}>
                     Deny
                   </Button>
-                  </td>
-
-                  {/* <button onClick={()=>{handleViewProfile(val.userName)}}>View Profile </button> */}
-                </tr>
-              );
-            })}
-          </tbody>
-          {/* </table> */}
-        </Table>
-        {/* </div>
-      </div> */}
-      </Container>
-    </>
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </Table>
+    </Container>
   );
 };
 export default ViewRequests;

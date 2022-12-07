@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { Form, Button } from "react-bootstrap";
-import { Navigate, useLocation, useNavigate, Link } from "react-router-dom";
 import axios from "axios";
+import React, { useState } from "react";
+import { Button } from "react-bootstrap";
+import { useLocation, useNavigate } from "react-router-dom";
 const ViewProfileRequests = (props) => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -41,27 +41,29 @@ const ViewProfileRequests = (props) => {
     });
 
   return (
-      <div id="ViewProfile">
-        <div id="page-wrap">
-
-          <div>
-            <h4> First Name: {firstName}</h4>
-            <h4> Last Name: {lastName}</h4>
-            <h4> Pronouns: {pronouns}</h4>
-            <h4> Campus: {campus}</h4>
-            <h4> Courses: {course}</h4>
-            <h4> Major: {major}</h4>
-            <h4> Year: {year}</h4>
-            <h4> Gender Preference: {genderPreference}</h4>
-            <h4> Bio: {bio}</h4>   
-            <Button type="submit" onClick={() => navigate("/viewrequests", {state:{userName:loggedInUser}})}>
-                    Go back to requests
-                 </Button>
-
-          </div>
+    <div id="ViewProfile">
+      <div id="page-wrap">
+        <div>
+          <h4> First Name: {firstName}</h4>
+          <h4> Last Name: {lastName}</h4>
+          <h4> Pronouns: {pronouns}</h4>
+          <h4> Campus: {campus}</h4>
+          <h4> Courses: {course}</h4>
+          <h4> Major: {major}</h4>
+          <h4> Year: {year}</h4>
+          <h4> Gender Preference: {genderPreference}</h4>
+          <h4> Bio: {bio}</h4>
+          <Button
+            type="submit"
+            onClick={() =>
+              navigate("/viewrequests", { state: { userName: loggedInUser } })
+            }
+          >
+            Go back to requests
+          </Button>
         </div>
       </div>
-   
+    </div>
   );
 };
 export default ViewProfileRequests;

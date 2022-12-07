@@ -8,7 +8,7 @@ function Profile(props) {
   const navigate = useNavigate();
   const [id, setId] = useState(state.userName);
   const [userName, setUserName] = useState(state.userName);
-  const [isAdmin, setIsAdmin] = useState(state.isAdmin);
+  const [isAdmin, setIsAdmin] = useState(0);
   const [firstName, setFirstName] = useState(state.firstName);
   const [lastName, setLastName] = useState(state.lastName);
   const [pronouns, setPronouns] = useState(null);

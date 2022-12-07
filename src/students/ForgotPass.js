@@ -8,45 +8,47 @@ const ForgotPass = (props) => {
   const location = useLocation();
   const [id, setId] = useState("");
   const [userName, setUserName] = useState("");
-  const [password, setPassword] =useState("");
-  const [passwordReset, setPasswordReset] = useState(false)
+  const [password, setPassword] = useState("");
+  const [passwordReset, setPasswordReset] = useState(false);
 
-const handleResetPassword = (e) => {
-  const configuration = {
-    method: "post",
-    url: "http://localhost:8080/api/students/update",
-    data: {
-      id,
-      userName,
-      password,
-    },
+  const handleResetPassword = (e) => {
+    const configuration = {
+      method: "post",
+      url: "http://localhost:8080/api/students/update",
+      data: {
+        id,
+        userName,
+        password,
+      },
+    };
+    console.log(configuration);
+
+    axios(configuration)
+      .then(function (result) {
+        setPasswordReset(true);
+      })
+      .catch((error) => {
+        console.log(error);
+        error = new Error();
+      });
   };
-  console.log(configuration);
 
-  axios(configuration)
-    .then(function(result) {
-      setPasswordReset(true)
-    })
-    .catch((error) => {
-      console.log(error);
-      error = new Error();
-    });
-};
-
-if(passwordReset){
-  return(
-    <div>
-      <p className="text-success">Password changed successfully</p>
-       <Button
-        variant="primary"
-        type="submit"
-          onClick={()=> {navigate("/login")}}
+  if (passwordReset) {
+    return (
+      <div>
+        <p className="text-success">Password changed successfully</p>
+        <Button
+          variant="primary"
+          type="submit"
+          onClick={() => {
+            navigate("/login");
+          }}
         >
           Login
         </Button>
-    </div>
-  )
-}
+      </div>
+    );
+  }
   return (
     <div>
       <h2>Forgot Password</h2>
@@ -74,27 +76,15 @@ if(passwordReset){
             placeholder="Enter new password"
           />
         </Form.Group>
-        </Form>
-        <Button
-          variant="primary"
-          type="submit"
-          onClick={(e) => handleResetPassword(e)}
-        >
-          Change Password
-        </Button>
-      {/* <label> Enter new password </label>
-     
-        <input 
-            type="password" 
-            placeholder='Enter password'
-            onChange={(event) => {
-                setPassword(event.target.value);
-            }}
-        /> */}
-
-    {/* <button onClick={handleResetPassword}>Reset Password </button> */}
+      </Form>
+      <Button
+        variant="primary"
+        type="submit"
+        onClick={(e) => handleResetPassword(e)}
+      >
+        Change Password
+      </Button>
     </div>
   );
-
-}
+};
 export default ForgotPass;

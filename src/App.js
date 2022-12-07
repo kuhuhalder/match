@@ -24,9 +24,9 @@ import ViewStudyBuddies from "./students/ViewStudyBuddies";
 import CreateCourse from "./admin/CreateCourse";
 import EditProfile from "./admin/EditProfile"
 import ViewProfileRequests from "./students/ViewProfileRequests";
+import ViewProfileStudyBuddies from "./students/ViewProfileStudyBuddies";
 const App = () => {
   return (
-
     <Container>
       <Row>
         <Col className="text-center">
@@ -34,7 +34,7 @@ const App = () => {
           </Col>
       </Row>
 
-  <div>
+  <div style={styles}>
     <Router>
     <Routes>
     <Route exact path="/" element={<Home />} />
@@ -48,7 +48,7 @@ const App = () => {
     <Route exact path="/viewrequests" element={<ViewRequests/>} />
     <Route exact path="/viewstudybuddies" element={<ViewStudyBuddies/>} />
     <Route exact path="/viewprofilerequests" element={<ViewProfileRequests/>} />
-
+    <Route exact path="/viewprofilestudybuddies" element={<ViewProfileStudyBuddies/>} />
 
 
     <Route exact path="/registeradmin" element={<RegisterAdmin />} />
@@ -72,8 +72,8 @@ const App = () => {
 
 export default App;
 
-// const styles = {
-//   app: {
-//     padding: 50,
-//   },
-// };
+const styles = {
+  app: {
+    padding: 50,
+  },
+};

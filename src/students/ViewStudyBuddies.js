@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { Form, Button, Container, Col, Row, Table } from "react-bootstrap";
-import "./Match.css";
 import axios from "axios";
-import NavBar from "../components/NavBar";
+import React, { useState } from "react";
+import { Container, Table, Button } from "react-bootstrap";
 import { useLocation, useNavigate } from "react-router-dom";
+import NavBar from "../components/NavBar";
 const ViewStudyBuddies = (props) => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -14,7 +13,8 @@ const ViewStudyBuddies = (props) => {
   const configuration = {
     method: "get",
     url:
-      "http://localhost:8080/api/students/findConfirmedMatches/" + location.state.userName,
+      "http://localhost:8080/api/students/findConfirmedMatches/" +
+      location.state.userName,
   };
   console.log(configuration);
 
@@ -27,59 +27,37 @@ const ViewStudyBuddies = (props) => {
       error = new Error();
     });
 
-  // const handleViewProfile = (e) => {
-  //   // e.preventDefault();
-  //   navigate("/viewprofile", { state: { userName: e } });
-  // };
+  const handleViewProfile = (e) => {
+    navigate("/viewprofilestudybuddies", { state: { userName: e, loggedInUser:location.state.userName} });
+  };
 
   return (
-      // {/* <div className="Match">
-      //   <div id="page-wrap"> */}
-          <Container>
-
-        <NavBar></NavBar>
-          <h2>View your Study Buddies!</h2>
-          {/* <table> */}
-          <Table striped hover>
-            <thead>
-            <tr>
+    <Container>
+      <NavBar></NavBar>
+      <h2>View your Study Buddies!</h2>
+      <Table striped hover>
+        <thead>
+          <tr>
             <th>Username</th>
-              {/* <th>Name</th>
-              <th>Course</th>
-              <th>Year</th>
-              <th>Major</th>
-              <th>Pronouns</th>
-              <th>View Profile</th> */}
-            </tr>
-            </thead>
-            <tbody>
-            {usernames.map((val, key) => {
-                return (
-                  <tr key={key}>
-                    <td>{val} and you are study buddies. Chat with them!</td>
-                    {/* <td>{val.firstName}</td>
-                    <td>{val.course}</td>
-                    <td>{val.year}</td>
-                    <td>{val.major}</td>
-                    <td>{val.pronouns}</td> */}
-
-                    {/* <Button
-                      type="submit"
-                      onClick={() => handleViewProfile(val.userName)}
-                    >
-                      View Profile
-                    </Button>
-   */}
-                  </tr>
-                );
-              })
-              }
-              </tbody>
-          {/* </table> */}
-          </Table>
-          </Container>
-      //   {/* </div>
-      // </div> */}
+          </tr>
+        </thead>
+        <tbody>
+          {usernames.map((val, key) => {
+            return (
+              <tr key={key}>
+                <td>{val} and you are study buddies. Chat with them!</td>
+                <Button
+                  type="submit"
+                  onClick={() => handleViewProfile(val)}
+                >
+                  View their Profile
+                </Button>
+              </tr>
+            );
+          })}
+        </tbody>
+      </Table>
+    </Container>
   );
 };
 export default ViewStudyBuddies;

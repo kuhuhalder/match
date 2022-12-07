@@ -86,7 +86,7 @@ const NavBar = (props) => {
   return (
     <ul>
       <li>
-        <a href="/account">Account</a>
+        <a href="/account" onClick ={(e)=>navigate("/account", {state:{userName:userName}})}>Account</a>
       </li>
       <li>
         <a href="/profile" onClick={(e) => handleUpdate(e)}>

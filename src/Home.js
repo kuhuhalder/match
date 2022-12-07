@@ -1,17 +1,15 @@
 import React from "react";
-import { Button } from "react-bootstrap";
-import { Container, Col, Row } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import "./css/Home.css";
 import homeImage from "./images/Home.png";
-import "./Home.css";
 const Home = (props) => {
   const navigate = useNavigate();
   return (
-    <>
-      {/* <div>
-      <img src={homeImage} alt="homeImage"/>;
-    </div> */}
-      {/* <h2>Home Page</h2> */}
+    <Container>
+      <div>
+        <img src={homeImage} alt="homeImage" />;
+      </div>
       <Row>
         <Col>
           <h2>Students</h2>
@@ -59,7 +57,7 @@ const Home = (props) => {
           </Button>
         </Col>
       </Row>
-    </>
+    </Container>
   );
 };
 export default Home;

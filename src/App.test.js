@@ -1,8 +1,7 @@
-import { render, screen, fireEvent } from '@testing-library/react';
-import {BrowserRouter, Router} from 'react-router-dom';
+import { render, screen, fireEvent } from "@testing-library/react";
+import { BrowserRouter, Router } from "react-router-dom";
 
-
-import App from './App';
+import App from "./App";
 
 test("sample", () => {
   render(<App />);
@@ -14,7 +13,7 @@ test("student register page", () => {
 
   const buttonLog = screen.getByText("Student Register");
   fireEvent.click(buttonLog);
-  expect(screen.getByText(/Create an Account/i)).toBeInTheDocument()
+  expect(screen.getByText(/Create an Account/i)).toBeInTheDocument();
 });
 
 test("student login page", () => {
@@ -22,16 +21,15 @@ test("student login page", () => {
 
   const buttonLog = screen.getByText("Login");
   fireEvent.click(buttonLog);
-  expect(screen.getByText(/Email Address/i)).toBeInTheDocument()
+  expect(screen.getByText(/Email Address/i)).toBeInTheDocument();
 });
-
 
 test("home --> student register page", () => {
   render(<App />);
 
   const buttonLog = screen.getByText("Student Register");
   fireEvent.click(buttonLog);
-  expect(screen.getByText(/Create an Account/i)).toBeInTheDocument()
+  expect(screen.getByText(/Create an Account/i)).toBeInTheDocument();
 });
 
 test("register --> student profile page", () => {
@@ -39,7 +37,7 @@ test("register --> student profile page", () => {
 
   const buttonLog = screen.getByText("Register");
   fireEvent.click(buttonLog);
-  expect(screen.getByText(/Create/i)).toBeInTheDocument()
+  expect(screen.getByText(/Create/i)).toBeInTheDocument();
 });
 
 test("profile --> home page profile", () => {
@@ -47,7 +45,7 @@ test("profile --> home page profile", () => {
 
   const buttonLog = screen.getByText("Submit");
   fireEvent.click(buttonLog);
-  expect(screen.getByText(/Welcome/i)).toBeInTheDocument()
+  expect(screen.getByText(/Welcome/i)).toBeInTheDocument();
 });
 
 test("home page profile --> edit profile", () => {
@@ -55,7 +53,11 @@ test("home page profile --> edit profile", () => {
 
   const buttonLog = screen.getByText("Edit Profile");
   fireEvent.click(buttonLog);
-  expect(screen.getByText(/Please fill out this form so that we can get your matches in!/i)).toBeInTheDocument()
+  expect(
+    screen.getByText(
+      /Please fill out this form so that we can get your matches in!/i
+    )
+  ).toBeInTheDocument();
 });
 
 test("edit profile --> account home", () => {
@@ -63,7 +65,7 @@ test("edit profile --> account home", () => {
 
   const buttonLog = screen.getByText("Submit");
   fireEvent.click(buttonLog);
-  expect(screen.getByText(/Welcome/i)).toBeInTheDocument()
+  expect(screen.getByText(/Welcome/i)).toBeInTheDocument();
 });
 
 test("account home --> view study buddies", () => {
@@ -71,7 +73,7 @@ test("account home --> view study buddies", () => {
 
   const buttonLog = screen.getByText("View Study Buddies");
   fireEvent.click(buttonLog);
-  expect(screen.getByText(/View your Study Buddies!/i)).toBeInTheDocument()
+  expect(screen.getByText(/View your Study Buddies!/i)).toBeInTheDocument();
 });
 
 test("view study buddies --> view requests", () => {
@@ -79,7 +81,7 @@ test("view study buddies --> view requests", () => {
 
   const buttonLog = screen.getByText("View Requests");
   fireEvent.click(buttonLog);
-  expect(screen.getByText(/View your Requests/i)).toBeInTheDocument()
+  expect(screen.getByText(/View your Requests/i)).toBeInTheDocument();
 });
 
 test("view requests --> view matches", () => {
@@ -87,7 +89,7 @@ test("view requests --> view matches", () => {
 
   const buttonLog = screen.getByText("View Matches");
   fireEvent.click(buttonLog);
-  expect(screen.getByText(/Welcome !/i)).toBeInTheDocument()
+  expect(screen.getByText(/Welcome !/i)).toBeInTheDocument();
 });
 
 test("view matches --> view profile", () => {
@@ -95,5 +97,5 @@ test("view matches --> view profile", () => {
 
   const buttonLog = screen.getByText("View Matches");
   fireEvent.click(buttonLog);
-  expect(screen.getByText(/View Profile/i)).toBeInTheDocument()
+  expect(screen.getByText(/View Profile/i)).toBeInTheDocument();
 });
