@@ -40,7 +40,7 @@ export default function Login(props) {
     navigate("/account", {state:{userName:userName, password:password}})
   }else if(userName.endsWith("@match.com"))
   {
-    <p className="text-danger">Please login as an admin instead!</p>;
+    <p className="text-danger">Please login as an admin instead!</p>
   }
 
   const handleForgotPassword=(e)=>{

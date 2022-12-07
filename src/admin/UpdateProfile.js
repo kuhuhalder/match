@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { Form, Button } from "react-bootstrap";
 import axios from "axios";
-import { Navigate, useNavigate, useLocation } from "react-router-dom";
+import React, { useState } from "react";
+import { Button, Form } from "react-bootstrap";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function UpdateProfile(props) {
   const location = useLocation();
@@ -13,10 +13,7 @@ function UpdateProfile(props) {
   const [register, setRegister] = useState(false);
 
   const handleSubmit = (e) => {
-    // prevent the form from refreshing the whole page
     e.preventDefault();
-
-    // set configurations
     const configuration = {
       method: "post",
       url: "http://localhost:8080/api/students/update",
@@ -32,7 +29,7 @@ function UpdateProfile(props) {
     axios(configuration)
       .then((result) => {
         setRegister(true);
-        navigate('/viewaccount', {state:{userName:userName}});
+        navigate("/viewaccount", { state: { userName: userName } });
       })
       .catch((error) => {
         console.log(error);

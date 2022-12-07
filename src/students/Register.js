@@ -142,11 +142,11 @@ export default function Register(props) {
           />
         </Form.Group>
         
-        {/* {userName.endsWith("@match.com") ? (
+        {userName.endsWith("@match.com") ? (
           <p className="text-danger">Please register as an admin instead</p>
         ) : (
           <p className="text-success">Email address is valid!</p>
-        )} */}
+        )}
 
         <Form.Group controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
@@ -159,34 +159,6 @@ export default function Register(props) {
           />
         </Form.Group>
 
-        {/* <label> Account Type </label>
-        <div>
-          <input
-            type="radio"
-            name="role"
-            value="student"
-            id="student"
-            onChange={(event) => {
-              setIsAdmin(0);
-            }}
-          />
-          <label for="student"> Student </label>
-        </div>
-        <div>
-          <input
-            type="radio"
-            name="role"
-            value="admin"
-            id="admin"
-            placeholder="Admin"
-            onChange={(event) => {
-              setIsAdmin(1);
-            }}
-          />
-          <label for="admin"> Admin </label>
-        </div> */}
-
-        {/* submit button */}
         <Button
           variant="primary"
           type="submit"
@@ -194,12 +166,6 @@ export default function Register(props) {
         >
           Register
         </Button>
-
-        {/* <Button
-          onClick={()=> {navigate("/login")}}
-        >
-          Login
-        </Button> */}
       </Form>
       <br></br>
       <Link to="/login">Already have an account? Click here!</Link>

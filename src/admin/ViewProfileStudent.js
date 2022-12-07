@@ -1,7 +1,8 @@
-import React, { useState } from "react";
-import {Button} from "react-bootstrap";
-import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
+import React, { useState } from "react";
+import { Button } from "react-bootstrap";
+import { useLocation, useNavigate } from "react-router-dom";
+import Popup from "reactjs-popup";
 
 const ViewProfileStudent = (props) => {
   const location = useLocation();
@@ -42,44 +43,40 @@ const ViewProfileStudent = (props) => {
       error = new Error();
     });
 
-const deleteStudent =(e)=>{
-//     <Popup trigger={<button> Trigger</button>} position="right center">
-//     <div>Do you want to delete this student?</div>
-//   </Popup>
-const configuration = {
-    method: "delete",
-    url:
-      "http://localhost:8080/api/students/delete/" + userName,
-  };
-  console.log(configuration);
-  axios(configuration)
-    .then((result) => {
-      setDelete(true)
+  const deleteStudent = (e) => {
+    const configuration = {
+      method: "delete",
+      url: "http://localhost:8080/api/students/delete/" + userName,
+    };
+    console.log(configuration);
+    axios(configuration)
+      .then((result) => {
+        setDelete(true);
 
-navigate("/viewallstudents")
-})
-    .catch((error) => {
-      console.log(error);
-      error = new Error();
-    });
-}
-// if(del){
-//   return(
-//     <Popup trigger={<Button> Trigger</Button>} position="right center">
-//     <div>Do you want to delete this student?</div>
-//   </Popup>
-//   )
-//   }
-const editProfile = (e) => {
-  navigate("/editprofile", { state: { userName: e } });
-};
+        navigate("/viewallstudents");
+      })
+      .catch((error) => {
+        console.log(error);
+        error = new Error();
+      });
+  };
+  if (del) {
+    return (
+      <div>
+        <Popup trigger={<Button> Trigger</Button>} position="right center">
+          <div>Do you want to delete this student?</div>
+        </Popup>
+      </div>
+    );
+  }
+  const editProfile = (e) => {
+    navigate("/editprofile", { state: { userName: e } });
+  };
 
   return (
     <>
       <div id="ViewProfile">
-        {/* <SideBar /> */}
         <div id="page-wrap">
-
           <div>
             <h4> First Name: {firstName}</h4>
             <h4> Last Name: {lastName}</h4>
@@ -90,19 +87,13 @@ const editProfile = (e) => {
             <h4> Year: {year}</h4>
             <h4> Gender Preference: {genderPreference}</h4>
             <h4> Bio: {bio}</h4>
-            <Button
-                      type="submit"
-                      onClick={() => deleteStudent()}
-                    >
-                    Delete Student
-                    </Button>
+            <Button type="submit" onClick={() => deleteStudent()}>
+              Delete Student
+            </Button>
 
-                    <Button
-                      type="submit"
-                      onClick={(e) => editProfile(userName)}
-                    >
-                    Edit Profile
-                    </Button>
+            <Button type="submit" onClick={(e) => editProfile(userName)}>
+              Edit Profile
+            </Button>
           </div>
         </div>
       </div>

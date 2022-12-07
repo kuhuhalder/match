@@ -29,51 +29,45 @@ export default function RegisterAdmin(props) {
     axios(configuration)
       .then((result) => {
         setRegister(true);
-        // if (result.status == 400) {
-        //   setAccExists(true);
-        //   setRegister(false)
-        // } else if (result.status == 200) {
-        //   setRegister(true);
-        // }
       })
       .catch((error) => {
         error = new Error();
-        setAccExists(true)
+        setAccExists(true);
       });
   };
 
-  // if (register == true && userName.endsWith("@match.com")) {
-  //   <p className="text-success">You Are Registered Successfully as Admin!</p>;
-  //   navigate("/viewaccount", { state: { userName: userName } });
-  // } else if (!userName.endsWith("@match.com")) {
-  //   <p className="text-danger">Please register with a @match.com email!</p>;
-  // } else {
-  //   <p className="text-danger">
-  //     Username already exists! Login instead
-  //     <Button
-  //       onClick={() => {
-  //         navigate("/loginadmin");
-  //       }}
-  //     >
-  //       Login
-  //     </Button>
-  //   </p>;
-  // }
+  if (register == true && userName.endsWith("@match.com")) {
+    <p className="text-success">You Are Registered Successfully as Admin!</p>;
+    navigate("/viewaccount", { state: { userName: userName } });
+  } else if (!userName.endsWith("@match.com")) {
+    <p className="text-danger">Please register with a @match.com email!</p>;
+  } else {
+    <p className="text-danger">
+      Username already exists! Login instead
+      <Button
+        onClick={() => {
+          navigate("/loginadmin");
+        }}
+      >
+        Login
+      </Button>
+    </p>;
+  }
 
   if (accExists) {
     return (
       <div>
-      <p className="text-danger">
-        Username already exists! Login instead
-        <br></br>
-        <Button
-          onClick={() => {
-            navigate("./loginadmin");
-          }}
-        >
-          Login
-        </Button>
-      </p>
+        <p className="text-danger">
+          Username already exists! Login instead
+          <br></br>
+          <Button
+            onClick={() => {
+              navigate("/loginadmin");
+            }}
+          >
+            Login
+          </Button>
+        </p>
       </div>
     );
   }
@@ -133,33 +127,6 @@ export default function RegisterAdmin(props) {
           />
         </Form.Group>
 
-        {/* <label> Account Type </label>
-        <div>
-          <input
-            type="radio"
-            name="role"
-            value="student"
-            id="student"
-            onChange={(event) => {
-              setIsAdmin(0);
-            }}
-          />
-          <label for="student"> Student </label>
-        </div>
-        <div>
-          <input
-            type="radio"
-            name="role"
-            value="admin"
-            id="admin"
-            placeholder="Admin"
-            onChange={(event) => {
-              setIsAdmin(1);
-            }}
-          />
-          <label for="admin"> Admin </label>
-        </div> */}
-
         <Button
           variant="primary"
           type="submit"
@@ -167,48 +134,9 @@ export default function RegisterAdmin(props) {
         >
           Register
         </Button>
-
-        {/* {register ? (
-          <div>
-            <p className="text-success">
-              You Are Registered Successfully. Login here:
-            </p>
-
-            {
-              <Button
-                variant="primary"
-                type="submit"
-                onClick={(e) => {
-                  navigate("/loginadmin");
-                }}
-              >
-                Login
-              </Button>
-            }
-
-          </div>
-        ) : (
-          <div>
-            <p className="text-danger">
-              Username already exists. Login instead
-            </p>
-
-            {
-              <Button
-                variant="primary"
-                type="submit"
-                onClick={(e) => {
-                  navigate("/loginadmin");
-                }}
-              >
-                Login
-              </Button>
-            }
-          </div>
-        )} */}
       </Form>
 
-      <Link to='/loginadmin'>Already have an account? Click here!</Link> 
+      <Link to="/loginadmin">Already have an account? Click here!</Link>
     </>
   );
 }

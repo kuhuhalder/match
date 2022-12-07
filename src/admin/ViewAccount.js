@@ -1,7 +1,6 @@
-import React, { useState } from "react";
-import { Form, Button } from "react-bootstrap";
-import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
+import React, { useState } from "react";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 
 const ViewAccount = (props) => {
   const location = useLocation();
@@ -34,10 +33,10 @@ const ViewAccount = (props) => {
   };
 
   const logout = () => {
-    setUserName("")
-    setPassword("")
-    Navigate("/")
-}
+    setUserName("");
+    setPassword("");
+    Navigate("/");
+  };
   return (
     <div className="ViewAccount">
       <ul>
@@ -48,10 +47,28 @@ const ViewAccount = (props) => {
           <a href="/createaccount">Create an Account</a>
         </li>
         <li>
-          <a href="/updateprofile" onClick={(e) => {navigate("/updateprofile", {state:{id:userName, userName:userName}})}}>Update Profile</a>
+          <a
+            href="/updateprofile"
+            onClick={(e) => {
+              navigate("/updateprofile", {
+                state: { id: userName, userName: userName },
+              });
+            }}
+          >
+            Update Your Profile
+          </a>
         </li>
         <li>
-          <a href="/createcourse" onClick={(e) => {navigate("/createcourse", {state:{id:userName, userName:userName}})}}>Create a Course</a>
+          <a
+            href="/createcourse"
+            onClick={(e) => {
+              navigate("/createcourse", {
+                state: { id: userName, userName: userName },
+              });
+            }}
+          >
+            Create a Course
+          </a>
         </li>
         <li>
           <a href="/viewallstudents" onClick={(e) => handleViewStudents(e)}>
@@ -64,7 +81,12 @@ const ViewAccount = (props) => {
           </a>
         </li>
         <li>
-          <a href="/viewcourses" onClick={(e) => {navigate("/viewcourses")}}>
+          <a
+            href="/viewcourses"
+            onClick={(e) => {
+              navigate("/viewcourses");
+            }}
+          >
             View All Courses
           </a>
         </li>

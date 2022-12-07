@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { Form, Button } from "react-bootstrap";
-import { Navigate, useLocation, useNavigate } from "react-router-dom";
-import "./Account.css";
 import axios from "axios";
+import React, { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import NavBar from "../components/NavBar";
+import "./Account.css";
+// Account component to display the current logged in user's information
 const Account = (props) => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -17,7 +17,7 @@ const Account = (props) => {
   const [year, setYear] = useState(0);
   const [genderPreference, setGenderPreference] = useState("");
   const [userName, setUserName] = useState(location.state.userName);
-
+  //  calling the getStudent API to get
   const configuration = {
     method: "get",
     url: "http://localhost:8080/api/students/getStudent/" + userName,
@@ -42,48 +42,13 @@ const Account = (props) => {
       error = new Error();
     });
 
-  // const handleMatch = (event) => {
-  //   navigate("/matches", {
-  //     state: {
-  //       id: userName,
-  //       userName: userName,
-  //       firstName: firstName,
-  //       lastName: lastName,
-  //       pronouns: pronouns,
-  //       campus: campus,
-  //       course: course,
-  //       major: major,
-  //       bio: bio,
-  //       year: year,
-  //       genderPreference: genderPreference,
-  //     },
-  //   });
-  // };
-
-
   return (
       <div id="Account">
         <div id="page-wrap">
-
-          {/* <NavBar /> */}
-          {/* <ul>
-            <li><a href="/">Home </a></li>
-            <li><a href="/account">Account</a></li>
-            <li><a href="/profile" onClick={(e) => handleUpdate(e)}>
-              Update Profile
-            </a></li>
-            <li><a href="/matches" onClick={(e) => handleMatch(e)}>
-              View Matches
-            </a></li>
-            <li><a href="/" onClick={(e) => logout(e)}>
-              Logout
-            </a></li>
-            </ul> */}
           <NavBar></NavBar>
           <h2>
             Welcome {firstName} {lastName}!
           </h2>
-
           <div>
             <h2>Your information</h2>
             <h4>Username: {userName}</h4>

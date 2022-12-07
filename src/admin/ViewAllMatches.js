@@ -6,7 +6,6 @@ const ViewAllMatches = (props) => {
   const location = useLocation();
   const navigate = useNavigate();
   // const [userName, setUserName] = useState(location.state.userName);
-  // const [password, setPassword] = useState(location.state.password);
   const [delete1, setDeleteOne] = useState(false);
   const [deleteBoth, setDeleteBoth] = useState(false);
 
@@ -31,7 +30,8 @@ const ViewAllMatches = (props) => {
       method: "delete",
       url:
         "http://localhost:8080/api/students/deleteMatch/" +
-        userName1+"+"+
+        userName1 +
+        "+" +
         userName2,
     };
     console.log(configuration1);
@@ -48,7 +48,8 @@ const ViewAllMatches = (props) => {
       method: "delete",
       url:
         "http://localhost:8080/api/students/deleteMatch/" +
-        userName2 + "+"+
+        userName2 +
+        "+" +
         userName1,
     };
     console.log(configuration2);
@@ -89,31 +90,30 @@ const ViewAllMatches = (props) => {
           <h2> View All Study Buddies</h2>
           <Table>
             <thead>
-            <tr>
-              <th>Username 1</th>
-              <th>Username 2</th>
-            </tr>
+              <tr>
+                <th>Username 1</th>
+                <th>Username 2</th>
+              </tr>
             </thead>
             <tbody>
-            {ids.map((val, key) => {
-              return (
-                <tr key={key}>
-                  <td>{val.userOneId}</td>
-                  <td>{val.userTwoId}</td>
-                  <td>
-                  <Button
-                    type="submit"
-                    onClick={() =>
-                      deleteStudyBuddy(val.userOneId, val.userTwoId)
-                    }
-                  >
-                    Delete Study Buddy Match
-                  </Button>
-                  </td>
-                </tr>
-                
-              );
-            })}
+              {ids.map((val, key) => {
+                return (
+                  <tr key={key}>
+                    <td>{val.userOneId}</td>
+                    <td>{val.userTwoId}</td>
+                    <td>
+                      <Button
+                        type="submit"
+                        onClick={() =>
+                          deleteStudyBuddy(val.userOneId, val.userTwoId)
+                        }
+                      >
+                        Delete Study Buddy Match
+                      </Button>
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </Table>
         </div>

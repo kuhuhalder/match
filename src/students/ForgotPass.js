@@ -11,17 +11,6 @@ const ForgotPass = (props) => {
   const [password, setPassword] =useState("");
   const [passwordReset, setPasswordReset] = useState(false)
 
-//   const handleResetPassword = (e) => {
-//     Axios.post("http://localhost:8080/api/students/update", {
-//     userName: userName,
-//     password: password,    
-//     })
-//     .then(function (response) {
-//       const element = <Login userName={userName} root={props.root} />;
-//       props.root.render(element);
-//     })
-// };
-
 const handleResetPassword = (e) => {
   const configuration = {
     method: "post",

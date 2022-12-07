@@ -21,9 +21,7 @@ function Profile(props) {
   const [register, setRegister] = useState(false);
   const [courseIds, setCourseIds] = useState([]);
   const handleSubmit = (e) => {
-    // prevent the form from refreshing the whole page
     e.preventDefault();
-    // set configurations
     const configuration = {
       method: "post",
       url: "http://localhost:8080/api/students/update",
@@ -77,14 +75,6 @@ function Profile(props) {
           Please fill out your preferences so that we can get your matches in!
         </div>
         <Form onSubmit={(e) => handleSubmit(e)}>
-          {/* <Form.Label>Pronouns</Form.Label> */}
-          {/* <Form.Control
-            type="pronouns"
-            name="pronouns"
-            value={pronouns}
-            onChange={(e) => setPronouns(e.target.value)}
-            placeholder="Enter Pronouns"
-          /> */}
           <Form.Group className="mb-3" controlId="formPronouns}">
             <Form.Label> Pronouns </Form.Label>
             <Form.Select
@@ -98,17 +88,6 @@ function Profile(props) {
               <option value="they/them"> they/them </option>
             </Form.Select>
           </Form.Group>
-          {/* <Dropdown
-            label="Pronouns"
-            options={[
-              { label: "Select", value: null },
-              { label: "she/her/hers", value: "she/her/hers" },
-              { label: "he/him/his", value: "he/him/his" },
-              { label: "they/them", value: "they/them" },
-            ]}
-            value={pronouns}
-            onChange={(e) => setPronouns(e.target.value)}
-          /> */}
           <Form.Group className="mb-3" controlId="formCampus}">
             <Form.Label> Campus </Form.Label>
             <Form.Select
@@ -121,95 +100,42 @@ function Profile(props) {
               <option value="College Avenue"> College Avenue </option>
               <option value="Busch"> Busch </option>
               <option value="Cook/Douglass"> Cook/Douglass </option>
-              
             </Form.Select>
-            
           </Form.Group>
-          {/* <div className="dropdown-container">
-            <Select 
-            options = {courseIds}
-            placeholder = "Select course"
-            value={course}
-            onChange={(e) => setCourses(course =>course.concat(e.target.value))}
-            isSearchable ={true}
-            isMulti
-            />
-          </div> */}
-          {/* <Dropdown
-            label="Campus"
-            options={[
-              { label: "Select", value: null},
-              { label: "Livingston", value: "Livingston" },
-              { label: "College Avenue", value: "College Avenue" },
-              { label: "Busch", value: "Busch" },
-              { label: "Cook/Douglass", value: "Cook/Douglass" },
-            ]}
-            value={campus}
-            onChange={(e) => setCampus(e.target.value)}
-          /> */}
 
           <Form.Group className="mb-3" controlId="formCourseName">
             <Form.Label>Courses You Want Matches for</Form.Label>
-            <Form.Select onChange={(e) => setCourses(course =>course.concat(e.target.value))}>
+            <Form.Select
+              onChange={(e) =>
+                setCourses((course) => course.concat(e.target.value))
+              }
+            >
               <option value=""> Select Course </option>
               {courseIds.map((val, key) => {
                 return <option key={val.courseName}> {val.courseName} </option>;
               })}
             </Form.Select>
           </Form.Group>
-         
-
-          {/* <select onChange={(e)=>setCourses(e.target.value)}>
-            <option value=""> Select Course Name </option>
-                        {
-                            courseIds.map((val, key) => {
-                              <option key = {courseIds.courseName} value ={courseIds.courseName} >
-                                courseIds.
-                              </option>
-                                // return (
-                                //     <option key={key}> {val.courseName} </option>
-                                // ) 
-                            })
-                        }
-            </select> */}
-          {/* <Dropdown
-            label="Course"
-            options={[
-              { label: "Select", value: "none"},
-              {
-                label: "Introduction to Computer Science",
-                value: "Introduction to Computer Science",
-              },
-              { label: "Data Structures", value: "Data Structures" },
-              {
-                label: "Computer Architecture",
-                value: "Computer Architecture",
-              },
-              {
-                label: "Discrete Structures I",
-                value: "Discrete Structures I",
-              },
-            ]}
-            value={course}
-            onChange={(e) => setCourses(course =>course.concat(e.target.value))}
-          /> */}
-          <Form.Label># Years in College</Form.Label>
-          <Form.Control
-            type="year"
-            name="year"
-            value={Number(year)}
-            onChange={(e) => setYear(e.target.value)}
-            placeholder="# Years in College"
-          />
-          <Form.Label>Major</Form.Label>
-          <Form.Control
-            type="major"
-            name="major"
-            value={major}
-            onChange={(e) => setMajor(e.target.value)}
-            placeholder="Major"
-          />
-
+          <Form.Group className="mb-3" controlId="formYearsinCollege">
+            <Form.Label># Years in College</Form.Label>
+            <Form.Control
+              type="year"
+              name="year"
+              value={Number(year)}
+              onChange={(e) => setYear(e.target.value)}
+              placeholder="# Years in College"
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formMajor">
+            <Form.Label>Major</Form.Label>
+            <Form.Control
+              type="major"
+              name="major"
+              value={major}
+              onChange={(e) => setMajor(e.target.value)}
+              placeholder="Major"
+            />
+          </Form.Group>
           <Form.Group className="mb-3" controlId="formGenderPreferences">
             <Form.Label> Gender Preferences </Form.Label>
             <Form.Select
@@ -223,26 +149,16 @@ function Profile(props) {
               <option value="Non-binary">Non-binary </option>
             </Form.Select>
           </Form.Group>
-          {/* <Dropdown
-            label="Gender Preferences"
-            options={[
-              { label: "Select", value: null },
-              { label: "Female", value: "Female" },
-              { label: "Male", value: "Male" },
-              { label: "Non-binary", value: "Non-binary" },
-            ]}
-            value={genderPreference}
-            onChange={(e) => setGenderPreference(e.target.value)}
-            /> */}
-
-          <Form.Label>Bio</Form.Label>
-          <Form.Control
-            type="bio"
-            name="bio"
-            value={bio}
-            onChange={(e) => setBio(e.target.value)}
-            placeholder="Enter bio"
-          />
+          <Form.Group className="mb-3" controlId="formBio">
+            <Form.Label>Bio</Form.Label>
+            <Form.Control
+              type="bio"
+              name="bio"
+              value={bio}
+              onChange={(e) => setBio(e.target.value)}
+              placeholder="Enter bio"
+            />
+          </Form.Group>
 
           <Button
             variant="primary"

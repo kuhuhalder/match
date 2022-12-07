@@ -9,7 +9,7 @@ export default function CreateCourse(props) {
   const [courseName, setCourseName] = useState("");
   const [id, setId] = useState("");
   const [addCourse, setAddCourse] = useState(false);
-
+  // calling the addCourse API to add the course name entered by the admin
   const handleAddCourse = (e) => {
     e.preventDefault();
     const configuration = {
@@ -30,25 +30,21 @@ export default function CreateCourse(props) {
       });
   };
 
-  if(addCourse){
-    return(
+  //  displaying a message if course has been added successfully
+  if (addCourse) {
+    return (
       <div>
-        <p className="text-success">
-          Course Added!
-        </p>
-    <Link
-            to="/viewaccount"
-            state={{userName:state.userName}}
-          >
-            Go back to account
-          </Link>
+        <p className="text-success">Course Added!</p>
+        <Link to="/viewaccount" state={{ userName: state.userName }}>
+          Go back to account
+        </Link>
       </div>
-    )
+    );
   }
-
   return (
-    <>
+    <div>
       <h2>Create a Course</h2>
+      {/* creating form fields to accept course ID and course name */}
       <Form onSubmit={(e) => handleAddCourse(e)}>
         <Form.Label>Course Id</Form.Label>
         <Form.Control
@@ -76,6 +72,7 @@ export default function CreateCourse(props) {
           Create Course
         </Button>
 
+        {/*  displaying a message if course has been added successfully or not */}
         {addCourse ? (
           <div>
             <p className="text-success">Course Added!</p>
@@ -94,6 +91,6 @@ export default function CreateCourse(props) {
           </div>
         )}
       </Form>
-    </>
+    </div>
   );
 }

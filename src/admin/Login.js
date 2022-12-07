@@ -4,10 +4,8 @@ import axios from "axios";
 import { Navigate, useNavigate, Link } from "react-router-dom";
 import Login from "../students/Login";
 
-
 export default function LoginAdmin(props) {
-  const navigate = useNavigate()
-  const [wrongDisp, setWrongDisp] = useState(<div></div>);
+  const navigate = useNavigate();
   const [wrong, setWrong] = useState(false);
   const [userName, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -17,46 +15,44 @@ export default function LoginAdmin(props) {
     e.preventDefault();
     const configuration = {
       method: "get",
-      url: "http://localhost:8080/api/students/validate/"+userName+"/"+password,
+      url:
+        "http://localhost:8080/api/students/validate/" +
+        userName +
+        "/" +
+        password,
     };
 
     axios(configuration)
       .then((result) => {
-
-        if(result.data == true && userName.endsWith("@match.com")){  
+        if (result.data == true && userName.endsWith("@match.com")) {
           setLogin(true);
-          
-        }
-        else{
+        } else {
           setWrong(true);
         }
-        
       })
       .catch((error) => {
         error = new Error();
       });
   };
 
-  if(login && userName.endsWith("@match.com")){
-    navigate("/viewaccount", {state:{userName:userName, password:password}})
-  }else if(!userName.endsWith("@match.com"))
-  {
-    <p className="text-danger">Please use a valid @match.com email address!</p>
+  if (login && userName.endsWith("@match.com")) {
+    navigate("/viewaccount", {
+      state: { userName: userName, password: password },
+    });
+  } else if (!userName.endsWith("@match.com")) {
+    <p className="text-danger">Please use a valid @match.com email address!</p>;
   }
 
-
-  const handleForgotPassword=(e)=>{
-    navigate("/forgotpass", {state:{id:userName, userName:userName}})
-
-  }
-  if(wrong){
+  const handleForgotPassword = (e) => {
+    navigate("/forgotpass", { state: { id: userName, userName: userName } });
+  };
+  if (wrong) {
     return (
-        <div>
-          <div> Please provide a valid username and password!! </div>
-          <Login></Login>
-        </div>
-      )
-    
+      <div>
+        <div> Please provide a valid username and password!! </div>
+        <LoginAdmin></LoginAdmin>
+      </div>
+    );
   }
 
   return (
@@ -101,26 +97,27 @@ export default function LoginAdmin(props) {
           Login
         </Button>
 
-
         {/* forgot password button */}
         <Button
-            variant="primary"
-            type="submit"
-            onClick={(e) => {
-            handleForgotPassword()
-            }}          >
-            Forgot Password?
-          </Button>
+          variant="primary"
+          type="submit"
+          onClick={(e) => {
+            handleForgotPassword();
+          }}
+        >
+          Forgot Password?
+        </Button>
 
-        {login? (
+        {login ? (
           <p className="text-success">You Are Logged in Successfully</p>
         ) : (
-          <p className="text-danger">Please login with a valid @match.com email address</p>
+          <p className="text-danger">
+            Please login with a valid @match.com email address
+          </p>
         )}
       </Form>
 
-      <Link to='/registeradmin'>Don't have an account? Register here!</Link>
+      <Link to="/registeradmin">Don't have an account? Register here!</Link>
     </div>
   );
 }
-

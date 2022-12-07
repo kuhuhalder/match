@@ -6,6 +6,8 @@ import axios from "axios";
 export default function Register(props) {
   const navigate = useNavigate();
   const [userName, setEmail] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
   const [isAdmin, setIsAdmin] = useState(0);
@@ -39,7 +41,7 @@ export default function Register(props) {
         details
       </p>
     </div>;
-    navigate("/profile", { state: { userName: userName } });
+    navigate("/editprofile", { state: { userName: userName } });
   } else if (userName.endsWith("@match.com")) {
     <div>
       <p className="text-danger">
@@ -49,13 +51,12 @@ export default function Register(props) {
   } else {
     <div>
       <p className="text-danger">Username already exists. Login instead</p>
-
       {
         <Button
           variant="primary"
           type="submit"
           onClick={(e) => {
-            navigate("./login");
+            navigate("/login");
           }}
         >
           Login
@@ -63,9 +64,6 @@ export default function Register(props) {
       }
     </div>;
   }
-  const handleUpdateProfile = (e) => {
-    navigate("/profile", { state: { userName: userName, isAdmin: isAdmin } });
-  };
 
   return (
     <>
@@ -73,6 +71,7 @@ export default function Register(props) {
       <Form onSubmit={(e) => handleRegister(e)}>
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
+          <p>Your email address is your username</p>
           <Form.Control
             type="email"
             name="email"
@@ -82,6 +81,27 @@ export default function Register(props) {
               setId(e.target.value);
             }}
             placeholder="Enter email"
+          />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formFirstName">
+          <Form.Label>First Name</Form.Label>
+          <Form.Control
+            type="firstName"
+            name="firstName"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            placeholder="Enter first name"
+          />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formLastName">
+          <Form.Label>Last Name</Form.Label>
+          <Form.Control
+            type="lastName"
+            name="lastName"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+            placeholder="Enter last name"
           />
         </Form.Group>
 
@@ -101,35 +121,6 @@ export default function Register(props) {
             placeholder="Password"
           />
         </Form.Group>
-
-        {/* <label> Account Type </label>
-        <div>
-          <input
-            type="radio"
-            name="role"
-            value="student"
-            id="student"
-            onChange={(event) => {
-              setIsAdmin(0);
-            }}
-          />
-          <label for="student"> Student </label>
-        </div>
-        <div>
-          <input
-            type="radio"
-            name="role"
-            value="admin"
-            id="admin"
-            placeholder="Admin"
-            onChange={(event) => {
-              setIsAdmin(1);
-            }}
-          />
-          <label for="admin"> Admin </label>
-        </div> */}
-
-        {/* submit button */}
         <Button
           variant="primary"
           type="submit"
@@ -137,43 +128,6 @@ export default function Register(props) {
         >
           Register
         </Button>
-
-        {register ? (
-          <div>
-            <p className="text-success">
-              You Are Registered Successfully. Click here to add the rest of
-              your details
-            </p>
-
-            {
-              <Button
-                variant="primary"
-                type="submit"
-                onClick={(e) => handleUpdateProfile(e)}
-              >
-                Update Profile
-              </Button>
-            }
-          </div>
-        ) : (
-          <div>
-            <p className="text-danger">
-              Username already exists. Login instead
-            </p>
-
-            {
-              <Button
-                variant="primary"
-                type="submit"
-                onClick={(e) => {
-                  navigate("/login");
-                }}
-              >
-                Login
-              </Button>
-            }
-          </div>
-        )}
       </Form>
     </>
   );
