@@ -1,8 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { Button, Container, Form, Col, Table } from "react-bootstrap";
+import { Button, Container, Form, Table } from "react-bootstrap";
 import { useLocation, useNavigate } from "react-router-dom";
-import Multiselect from "multiselect-react-dropdown";
 import NavBar from "../components/NavBar";
 
 //  Profile component is to enter or update criteria to match with other students.
@@ -71,11 +70,10 @@ function Profile(props) {
       console.log(error);
       error = new Error();
     });
-  const removePeople = (i) => {
-    const newFormValues = [...course];
-    console.log(newFormValues)
-    newFormValues.splice(i, 1);
-    setCourses(newFormValues);
+  const removeCourseSelection = (i) => {
+    const newCourse = [...course];
+    newCourse.splice(i, 1);
+    setCourses(newCourse);
   };
 
   return (
@@ -108,7 +106,7 @@ function Profile(props) {
             placeholder="Enter or change last name"
           />
         </Form.Group>
-        <Form.Group className="mb-3" controlId="formPronouns}">
+        <Form.Group className="mb-3" controlId="formPronouns">
           <Form.Label> Pronouns </Form.Label>
           <Form.Select
             defaultValue={""}
@@ -137,6 +135,7 @@ function Profile(props) {
         <Form.Group className="mb-3" controlId="formCourseName">
           <Form.Label>Courses You Want Matches for</Form.Label>
           <Form.Select
+            defaultValue={""}
             onChange={(e) =>
               setCourses((course) => course.concat(e.target.value))
             }
@@ -160,7 +159,7 @@ function Profile(props) {
                 <tr key={key}>
                   <td>{val}</td>
                   <td>
-                    <Button onClick={(e) => removePeople(key)}>
+                    <Button onClick={(e) => removeCourseSelection(key)}>
                       Remove selection
                     </Button>
                   </td>
@@ -169,47 +168,6 @@ function Profile(props) {
             })}
           </tbody>
         </Table>
-
-        {/* <Form.Group as={Col} controlId="my_multiselect_field">
-      <Form.Label>My multiselect</Form.Label>
-      <Form.Control as="select" multiple value={field} onChange={e => setField([].slice.call(e.target.selectedOptions).map(item => item.value))}>
-        <option value="field1">Field 1</option>
-        <option value="field2">Field 2</option>
-        <option value="field3">Field 3</option>
-      </Form.Control>
-    </Form.Group> */}
-        {/* <Form.Group className="mb-3" controlId="formCourseName">
-          <Form.Label>Courses You Want Matches for</Form.Label>
-          <Form.Control as="select" multiple value={course} onChange={(e)=>setCourses((course) => course.concat(e.target.value))}>
-          <option value=""> Select Course </option>
-            {courseIds.map((val, key) => {
-              return <option key={val.courseName}> {val.courseName} </option>;
-            })}
-  </Form.Control>
-        </Form.Group> */}
-        {/* <form>
-          <select
-            multiple={true}
-            onChange={(e) =>
-              setCourses((course) => course.concat(e.target.value))
-            }
-          >
-            <option value=""> Select Course </option>
-            {courseIds.map((val, key) => {
-              return <option key={val.courseName}> {val.courseName} </option>;
-            })}
-          </select>
-        </form> */}
-        {/* <Multiselect
-options={courseIds.map((val, key) => {
-  return <option key={val.courseName}> {val.courseName} </option>;
-})}
-selectedValues={courseIds.courseName} // Preselected value to persist in dropdown
-onSelect={setCourses((course) => course.concat(courseIds.courseName))} // Function will trigger on select event
-// onRemove={this.onRemove} // Function will trigger on remove event
-displayValue = {courseIds} // Property name to display in the dropdown options
-/> */}
-
         <Form.Group className="mb-3" controlId="formYearsinCollege">
           <Form.Label>Year</Form.Label>
           <Form.Select

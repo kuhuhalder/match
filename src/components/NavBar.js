@@ -89,73 +89,70 @@ const NavBar = (props) => {
     navigate("/");
   };
   return (
-    <ul>
-      <li>
-        <a href="/account" onClick ={(e)=>navigate("/account", {state:{userName:userName}})}>Account</a>
-      </li>
-      <li>
-        <a href="/profile" onClick={(e) => handleUpdate(e)}>
-          Update Profile
-        </a>
-      </li>
-      <li>
-        <a href="/viewstudybuddies" onClick={(e) => handleViewStudyBuddies(e)}>
-          View Study Buddies
-        </a>
-      </li>
-      <li>
-        <a href="/matches" onClick={(e) => handleMatch(e)}>
-          View Matches
-        </a>
-      </li>
-      <li>
-        <a href="/viewrequests" onClick={(e) => handleRequests(e)}>
-          View Requests
-        </a>
-      </li>
-      <li className="justify-content-end">
-        <a href="/" onClick={(e) => logout(e)}>
-          Logout
-        </a>
-      </li>
-    </ul>
-    //   <Navbar bg="dark" variant="dark">
-    //   <Container>
-    //     <Navbar.Brand href="/home">
-    //       {/* <img
-    //         alt=""
-    //         src={Logo}
-    //         width="30"
-    //         height="30"
-    //         className="d-inline-block align-top"
-    //       />{' '} */}
-    //      Match
-    //     </Navbar.Brand>
+    // <ul>
+    //   <li>
+    //     <a href="/account" onClick ={(e)=>navigate("/account", {state:{userName:userName}})}>Account</a>
+    //   </li>
+    //   <li>
+    //     <a href="/profile" onClick={(e) => handleUpdate(e)}>
+    //       Update Profile
+    //     </a>
+    //   </li>
+    //   <li>
+    //     <a href="/viewstudybuddies" onClick={(e) => handleViewStudyBuddies(e)}>
+    //       View Study Buddies
+    //     </a>
+    //   </li>
+    //   <li>
+    //     <a href="/matches" onClick={(e) => handleMatch(e)}>
+    //       View Matches
+    //     </a>
+    //   </li>
+    //   <li>
+    //     <a href="/viewrequests" onClick={(e) => handleRequests(e)}>
+    //       View Requests
+    //     </a>
+    //   </li>
+    //   <li className="justify-content-end">
+    //     <a href="/" onClick={(e) => logout(e)}>
+    //       Logout
+    //     </a>
+    //   </li>
+    // </ul>
+      <Navbar className = "color-nav" variant="light">
+      <Container>
+        <Navbar.Brand href="/home">
+          {/* <img
+            alt=""
+            src={Logo}
+            width="30"
+            height="30"
+            className="d-inline-block align-top"
+          />{' '} */}
+         Match
+        </Navbar.Brand>
 
-    //     <Nav className="me-auto">
-    //       <Nav.Link href="/account" onClick={(e) => handleAccount(e)}>Account</Nav.Link>
-    //   <Nav.Link href="/profile" onClick={(e) => handleUpdate(e)}>
-    //    Update Profile
-    //   </Nav.Link>
-    //   <Nav.Link href="/viewstudybuddies" onClick={(e) => handleViewStudyBuddies(e)}>
-    //      View Study Buddies
-    //   </Nav.Link>
-    //   <Nav.Link href="/matches" onClick={(e) => handleMatch(e)}>
-    //      View Matches
-    //   </Nav.Link>
-    //   <Nav.Link href="/viewrequests" onClick={(e) => handleRequests(e)}>
-    //      View Requests
-    //   </Nav.Link>
-    //   {/* <Nav.Link href="/" onClick={(e) => logout(e)}>
-    //     Logout
-    //   </Nav.Link> */}
-    //     </Nav>
+        <Nav className="me-auto">
+          <Nav.Link href="/account" onClick={(e) => handleAccount(e)}>Account</Nav.Link>
+      <Nav.Link href="/profile" onClick={(e) => handleUpdate(e)}>
+       Update Profile
+      </Nav.Link>
+      <Nav.Link href="/viewstudybuddies" onClick={(e) => handleViewStudyBuddies(e)}>
+         View Study Buddies
+      </Nav.Link>
+      <Nav.Link href="/matches" onClick={(e) => handleMatch(e)}>
+         View Matches
+      </Nav.Link>
+      <Nav.Link href="/viewrequests" onClick={(e) => handleRequests(e)}>
+         View Requests
+      </Nav.Link>
+        </Nav>
 
-    //     <Nav className="justify-content-end">
-    //       <Nav.Link onClick={logout}>Logout</Nav.Link>
-    //     </Nav>
-    //   </Container>
-    // </Navbar>
+        <Nav className="justify-content-end">
+          <Nav.Link onClick={logout}>Logout</Nav.Link>
+        </Nav>
+      </Container>
+    </Navbar>
   );
 };
 export default NavBar;
