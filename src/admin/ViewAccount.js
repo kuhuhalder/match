@@ -60,7 +60,7 @@ const ViewAccount = (props) => {
         </li>
         <li>
           <a href="/viewallmatches" onClick={(e) => handleViewMatches(e)}>
-            View All Matches
+            View All Study Buddies
           </a>
         </li>
         <li>

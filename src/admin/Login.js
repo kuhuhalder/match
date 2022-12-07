@@ -29,7 +29,6 @@ export default function LoginAdmin(props) {
         }
         else{
           setWrong(true);
-          setWrongDisp = <div> Please provide a valid username and password!! </div>
         }
         
       })
@@ -56,14 +55,13 @@ export default function LoginAdmin(props) {
           <div> Please provide a valid username and password!! </div>
           <Login></Login>
         </div>
-      );
+      )
     
   }
 
   return (
     <div>
       <h2>Login</h2>
-      {wrongDisp}
       <Form onSubmit={(e) => handleSubmit(e)}>
         {/* email */}
         <Form.Group controlId="formBasicEmail">
