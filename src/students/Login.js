@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
-
+//  Login component is to verify if an username exists and if the password is correct
 export default function Login(props) {
   const navigate = useNavigate();
   const [wrongDisp, setWrongDisp] = useState(<div></div>);
@@ -10,7 +10,7 @@ export default function Login(props) {
   const [userName, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [login, setLogin] = useState(false);
-
+  //  Call the validate API to validate login information
   const handleSubmit = (e) => {
     e.preventDefault();
     const configuration = {
@@ -44,10 +44,11 @@ export default function Login(props) {
   const handleForgotPassword = (e) => {
     navigate("/forgotpass", { state: { id: userName, userName: userName } });
   };
+  
   if (wrong) {
     return (
       <div>
-        <div> Please provide a valid username and password!! </div>;
+        <div> Username doesn't exist or password is incorrect </div>
         <Login></Login>
       </div>
     );
@@ -57,7 +58,7 @@ export default function Login(props) {
     <div>
       <h2>Login</h2>
       <Form onSubmit={(e) => handleSubmit(e)}>
-        {/* email */}
+
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control
@@ -69,7 +70,6 @@ export default function Login(props) {
           />
         </Form.Group>
 
-        {/* password */}
         <Form.Group controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
           <Form.Control
@@ -81,7 +81,6 @@ export default function Login(props) {
           />
         </Form.Group>
 
-        {/* submit button */}
         <Button
           variant="primary"
           type="submit"
@@ -90,7 +89,6 @@ export default function Login(props) {
           Login
         </Button>
 
-        {/* forgot password button */}
         <Button
           variant="primary"
           type="submit"

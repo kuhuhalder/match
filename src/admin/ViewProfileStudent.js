@@ -14,7 +14,7 @@ const ViewProfileStudent = (props) => {
   const [course, setCourse] = useState(null);
   const [major, setMajor] = useState("");
   const [bio, setBio] = useState("");
-  const [year, setYear] = useState(0);
+  const [year, setYear] = useState("");
   const [genderPreference, setGenderPreference] = useState(null);
   const [userName, setUserName] = useState(location.state.userName);
   const [password, setPassword] = useState(location.state.password);

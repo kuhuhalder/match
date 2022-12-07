@@ -1,8 +1,12 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { Button, Container, Form } from "react-bootstrap";
+import { Button, Container, Form, Col, Table } from "react-bootstrap";
 import { useLocation, useNavigate } from "react-router-dom";
+import Multiselect from "multiselect-react-dropdown";
+import NavBar from "../components/NavBar";
 
+//  Profile component is to enter or update criteria to match with other students.
+//  It also updates user information.
 function Profile(props) {
   const { state } = useLocation();
   const navigate = useNavigate();
@@ -20,6 +24,8 @@ function Profile(props) {
   const [genderPreference, setGenderPreference] = useState(null);
   const [register, setRegister] = useState(false);
   const [courseIds, setCourseIds] = useState([]);
+  const listItems = courseIds.map((number) => <li>{number.courseName}</li>);
+  // handleSubmit function is to call the update API and update the critera and information of the logged in user.
   const handleSubmit = (e) => {
     e.preventDefault();
     const configuration = {
@@ -28,6 +34,8 @@ function Profile(props) {
       data: {
         id,
         userName,
+        firstName,
+        lastName,
         pronouns,
         campus,
         course,
@@ -50,7 +58,7 @@ function Profile(props) {
         error = new Error();
       });
   };
-
+  //  Function to get all the courses to display in the courses dropdown
   const configuration = {
     method: "get",
     url: "http://localhost:8080/api/students/getAllCourses",
@@ -58,118 +66,206 @@ function Profile(props) {
   axios(configuration)
     .then(function (result) {
       setCourseIds(result.data);
-      console.log(courseIds);
     })
     .catch((error) => {
       console.log(error);
       error = new Error();
     });
+  const removePeople = (i) => {
+    const newFormValues = [...course];
+    console.log(newFormValues)
+    newFormValues.splice(i, 1);
+    setCourses(newFormValues);
+  };
 
   return (
-    <>
-      <Container>
-        <h4>
-          Welcome {firstName} {lastName}!
-        </h4>
-        <div>
-          Please fill out your preferences so that we can get your matches in!
-        </div>
-        <Form onSubmit={(e) => handleSubmit(e)}>
-          <Form.Group className="mb-3" controlId="formPronouns}">
-            <Form.Label> Pronouns </Form.Label>
-            <Form.Select
-              required
-              defaultValue={""}
-              onChange={(e) => setPronouns(e.target.value)}
-            >
-              <option value=""> Select Your Pronouns </option>
-              <option value="she/her/hers"> she/her/hers </option>
-              <option value="he/him/his"> he/him/his </option>
-              <option value="they/them"> they/them </option>
-            </Form.Select>
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="formCampus}">
-            <Form.Label> Campus </Form.Label>
-            <Form.Select
-              required
-              defaultValue={""}
-              onChange={(e) => setCampus(e.target.value)}
-            >
-              <option value=""> Select Campus </option>
-              <option value="Livingston"> Livingston </option>
-              <option value="College Avenue"> College Avenue </option>
-              <option value="Busch"> Busch </option>
-              <option value="Cook/Douglass"> Cook/Douglass </option>
-            </Form.Select>
-          </Form.Group>
-
-          <Form.Group className="mb-3" controlId="formCourseName">
-            <Form.Label>Courses You Want Matches for</Form.Label>
-            <Form.Select
-              onChange={(e) =>
-                setCourses((course) => course.concat(e.target.value))
-              }
-            >
-              <option value=""> Select Course </option>
-              {courseIds.map((val, key) => {
-                return <option key={val.courseName}> {val.courseName} </option>;
-              })}
-            </Form.Select>
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="formYearsinCollege">
-            <Form.Label># Years in College</Form.Label>
-            <Form.Control
-              type="year"
-              name="year"
-              value={Number(year)}
-              onChange={(e) => setYear(e.target.value)}
-              placeholder="# Years in College"
-            />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="formMajor">
-            <Form.Label>Major</Form.Label>
-            <Form.Control
-              type="major"
-              name="major"
-              value={major}
-              onChange={(e) => setMajor(e.target.value)}
-              placeholder="Major"
-            />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="formGenderPreferences">
-            <Form.Label> Gender Preferences </Form.Label>
-            <Form.Select
-              required
-              defaultValue={""}
-              onChange={(e) => setGenderPreference(e.target.value)}
-            >
-              <option value=""> Select Gender Preferences </option>
-              <option value="Female">Female </option>
-              <option value="Male"> Male </option>
-              <option value="Non-binary">Non-binary </option>
-            </Form.Select>
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="formBio">
-            <Form.Label>Bio</Form.Label>
-            <Form.Control
-              type="bio"
-              name="bio"
-              value={bio}
-              onChange={(e) => setBio(e.target.value)}
-              placeholder="Enter bio"
-            />
-          </Form.Group>
-
-          <Button
-            variant="primary"
-            type="submit"
-            onClick={(e) => handleSubmit(e)}
+    <Container>
+      <NavBar></NavBar>
+      <h4>
+        Welcome {firstName} {lastName}!
+      </h4>
+      <div>
+        Please fill out your preferences so that we can get your matches in!
+      </div>
+      <Form onSubmit={(e) => handleSubmit(e)}>
+        <Form.Group className="mb-3" controlId="formFirstName">
+          <Form.Label required>First Name</Form.Label>
+          <Form.Control
+            type="firstName"
+            name="firstName"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            placeholder="Enter or change first name"
+          />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formLastName">
+          <Form.Label>Last Name</Form.Label>
+          <Form.Control
+            type="lastName"
+            name="lastName"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+            placeholder="Enter or change last name"
+          />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formPronouns}">
+          <Form.Label> Pronouns </Form.Label>
+          <Form.Select
+            defaultValue={""}
+            onChange={(e) => setPronouns(e.target.value)}
           >
-            Submit
-          </Button>
-        </Form>
-      </Container>
-    </>
+            <option value=""> Select Your Pronouns </option>
+            <option value="she/her/hers"> she/her/hers </option>
+            <option value="he/him/his"> he/him/his </option>
+            <option value="they/them"> they/them </option>
+          </Form.Select>
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formCampus">
+          <Form.Label> Preferred Campus to Study/ Meet </Form.Label>
+          <Form.Select
+            defaultValue={""}
+            onChange={(e) => setCampus(e.target.value)}
+          >
+            <option value=""> Select Campus </option>
+            <option value="Livingston"> Livingston </option>
+            <option value="College Avenue"> College Avenue </option>
+            <option value="Busch"> Busch </option>
+            <option value="Cook/Douglass"> Cook/Douglass </option>
+          </Form.Select>
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formCourseName">
+          <Form.Label>Courses You Want Matches for</Form.Label>
+          <Form.Select
+            onChange={(e) =>
+              setCourses((course) => course.concat(e.target.value))
+            }
+          >
+            <option value=""> Select Course </option>
+            {courseIds.map((val, key) => {
+              return <option key={val.courseName}> {val.courseName} </option>;
+            })}
+          </Form.Select>
+        </Form.Group>
+
+        <Table striped hover>
+          <thead>
+            <tr>
+              <th>Courses Selected</th>
+            </tr>
+          </thead>
+          <tbody>
+            {course.map((val, key) => {
+              return (
+                <tr key={key}>
+                  <td>{val}</td>
+                  <td>
+                    <Button onClick={(e) => removePeople(key)}>
+                      Remove selection
+                    </Button>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </Table>
+
+        {/* <Form.Group as={Col} controlId="my_multiselect_field">
+      <Form.Label>My multiselect</Form.Label>
+      <Form.Control as="select" multiple value={field} onChange={e => setField([].slice.call(e.target.selectedOptions).map(item => item.value))}>
+        <option value="field1">Field 1</option>
+        <option value="field2">Field 2</option>
+        <option value="field3">Field 3</option>
+      </Form.Control>
+    </Form.Group> */}
+        {/* <Form.Group className="mb-3" controlId="formCourseName">
+          <Form.Label>Courses You Want Matches for</Form.Label>
+          <Form.Control as="select" multiple value={course} onChange={(e)=>setCourses((course) => course.concat(e.target.value))}>
+          <option value=""> Select Course </option>
+            {courseIds.map((val, key) => {
+              return <option key={val.courseName}> {val.courseName} </option>;
+            })}
+  </Form.Control>
+        </Form.Group> */}
+        {/* <form>
+          <select
+            multiple={true}
+            onChange={(e) =>
+              setCourses((course) => course.concat(e.target.value))
+            }
+          >
+            <option value=""> Select Course </option>
+            {courseIds.map((val, key) => {
+              return <option key={val.courseName}> {val.courseName} </option>;
+            })}
+          </select>
+        </form> */}
+        {/* <Multiselect
+options={courseIds.map((val, key) => {
+  return <option key={val.courseName}> {val.courseName} </option>;
+})}
+selectedValues={courseIds.courseName} // Preselected value to persist in dropdown
+onSelect={setCourses((course) => course.concat(courseIds.courseName))} // Function will trigger on select event
+// onRemove={this.onRemove} // Function will trigger on remove event
+displayValue = {courseIds} // Property name to display in the dropdown options
+/> */}
+
+        <Form.Group className="mb-3" controlId="formYearsinCollege">
+          <Form.Label>Year</Form.Label>
+          <Form.Select
+            defaultValue={""}
+            onChange={(e) => setYear(e.target.value)}
+          >
+            <option value=""> Select Year </option>
+            <option value="Freshman"> Freshman </option>
+            <option value="Sophomore"> Sophomore </option>
+            <option value="Junior"> Junior </option>
+            <option value="Senior"> Senior </option>
+          </Form.Select>
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formMajor">
+          <Form.Label>Major</Form.Label>
+          <Form.Control
+            type="major"
+            name="major"
+            value={major}
+            onChange={(e) => setMajor(e.target.value)}
+            placeholder="Major"
+          />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formGenderPreferences">
+          <Form.Label> Gender Preferences </Form.Label>
+          <Form.Select
+            defaultValue={""}
+            onChange={(e) => setGenderPreference(e.target.value)}
+          >
+            <option value=""> Select Gender Preferences </option>
+            <option value="Female">Female </option>
+            <option value="Male"> Male </option>
+            <option value="Non-binary">Non-binary </option>
+          </Form.Select>
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formBio">
+          <Form.Label>Bio</Form.Label>
+          <Form.Control
+            type="bio"
+            name="bio"
+            value={bio}
+            onChange={(e) => setBio(e.target.value)}
+            placeholder="Enter bio"
+          />
+        </Form.Group>
+
+        <Button
+          variant="primary"
+          type="submit"
+          onClick={(e) => handleSubmit(e)}
+        >
+          Submit
+        </Button>
+      </Form>
+    </Container>
   );
 }
 export default Profile;

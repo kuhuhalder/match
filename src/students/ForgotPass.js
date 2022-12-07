@@ -2,7 +2,7 @@ import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import axios from "axios";
-
+// ForgotPass component to update a user's password in case they forget their password
 const ForgotPass = (props) => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -10,7 +10,7 @@ const ForgotPass = (props) => {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [passwordReset, setPasswordReset] = useState(false);
-
+  //  Function to make an API call to update and update a user's password
   const handleResetPassword = (e) => {
     const configuration = {
       method: "post",

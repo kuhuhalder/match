@@ -39,7 +39,12 @@ const NavBar = (props) => {
       console.log(error);
       error = new Error();
     });
-
+  const handleAccount =(e) =>{
+    navigate("/account", {
+      state:{
+        userName:userName
+      }
+  })}
   const handleMatch = (event) => {
     navigate("/matches", {
       state: {
@@ -108,7 +113,7 @@ const NavBar = (props) => {
           View Requests
         </a>
       </li>
-      <li>
+      <li className="justify-content-end">
         <a href="/" onClick={(e) => logout(e)}>
           Logout
         </a>
@@ -128,10 +133,7 @@ const NavBar = (props) => {
     //     </Navbar.Brand>
 
     //     <Nav className="me-auto">
-    //       {/* <Nav.Link href="/account">About Us</Nav.Link>
-    //       <Nav.Link onClick={goLogin}>Login</Nav.Link>
-    //       <Nav.Link  onClick={goRegister}>Register</Nav.Link> */}
-    //       <Nav.Link href="/account">Account</Nav.Link>
+    //       <Nav.Link href="/account" onClick={(e) => handleAccount(e)}>Account</Nav.Link>
     //   <Nav.Link href="/profile" onClick={(e) => handleUpdate(e)}>
     //    Update Profile
     //   </Nav.Link>

@@ -105,12 +105,6 @@ export default function Register(props) {
           />
         </Form.Group>
 
-        {userName.endsWith("@match.com") ? (
-          <p className="text-danger">Please register as an admin instead</p>
-        ) : (
-          <p className="text-success">Email address is valid!</p>
-        )}
-
         <Form.Group controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
           <Form.Control

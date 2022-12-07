@@ -1,13 +1,13 @@
  html, body {
-    display: grid;
+    /* display: grid;
     height: 100%;
-    place-items: center;
+    place-items: center; */
     background-color: cornflowerblue;
   }
   
   .App {
     overflow: hidden;
-    max-width: 390px;
+    /* max-width: 390px; */
     background: #fff;
     padding: 50px;
     border-radius: 5px;
@@ -38,7 +38,6 @@
   .main {
       width: 350px;
       height: 500px;
-      background: red;
       overflow: hidden;
       border-radius: 10px;
       box-shadow: 5px 20px 50px #000;

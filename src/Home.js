@@ -10,6 +10,7 @@ const Home = (props) => {
       <div>
         <img src={homeImage} alt="homeImage" />;
       </div>
+
       <Row>
         <Col>
           <h2>Students</h2>

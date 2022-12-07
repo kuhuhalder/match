@@ -111,14 +111,18 @@ function EditProfile(props) {
           </Form.Select>
         </Form.Group>
         <Form.Group className="mb-3" controlId="formYearsinCollege">
-          <Form.Label># Years in College</Form.Label>
-          <Form.Control
-            type="year"
-            name="year"
-            value={Number(year)}
+          <Form.Label>Year</Form.Label>
+          <Form.Select
+            required
+            defaultValue={""}
             onChange={(e) => setYear(e.target.value)}
-            placeholder="# Years in College"
-          />
+          >
+            <option value=""> Select Year </option>
+            <option value="Freshman"> Freshman </option>
+            <option value="Sophomore"> Sophomore </option>
+            <option value="Junior"> Junior </option>
+            <option value="Senior"> Senior </option>
+          </Form.Select>
         </Form.Group>
         <Form.Group className="mb-3" controlId="formMajor">
           <Form.Label>Major</Form.Label>

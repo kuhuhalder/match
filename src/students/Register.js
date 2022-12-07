@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Form, Button, Container } from "react-bootstrap";
 import { useLocation, useNavigate, Link } from "react-router-dom";
 import axios from "axios";
-
+//  Register component is to register a new student on our platform.
 export default function Register(props) {
   const navigate = useNavigate();
   const [userName, setEmail] = useState("");
@@ -14,6 +14,8 @@ export default function Register(props) {
   const [register, setRegister] = useState(false);
   const [userNameExists, setUserNameExists] = useState(false);
   const { state } = useLocation();
+  const [emptyFields, setEmptyFields] = useState(false);
+  // handleUpdateProfile function is to redirect to the update profile page
   const handleUpdateProfile = (e) => {
     navigate("/profile", {
       state: {
@@ -24,16 +26,10 @@ export default function Register(props) {
       },
     });
   };
+  //  handleRegister function is to call the add API to add a new Student object
   const handleRegister = (e) => {
     if (userName == "" || password == "" || firstName == "" || lastName == "") {
-      return (
-        <div>
-          <p className="text-danger">
-            Please fill out the fields correctly.
-            <Register></Register>
-          </p>
-        </div>
-      );
+      setEmptyFields(true);
     }
     e.preventDefault();
     const configuration = {
@@ -58,11 +54,19 @@ export default function Register(props) {
         setUserNameExists(true);
       });
   };
+  if (emptyFields) {
+    return (
+      <div>
+        <p className="text-danger">Please fill out the all the fields.</p>
+        <Register></Register>
+      </div>
+    );
+  }
+
   if (userNameExists) {
     return (
       <div>
         <p className="text-danger">Username already exists. Login instead</p>
-
         {
           <Button
             variant="primary"
@@ -108,11 +112,13 @@ export default function Register(props) {
   return (
     <Container>
       <h2>Create an Account</h2>
+
       <Form onSubmit={(e) => handleRegister(e)}>
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <p>Your email address is your username</p>
           <Form.Control
+          required
             type="email"
             name="email"
             value={userName}
@@ -127,6 +133,7 @@ export default function Register(props) {
         <Form.Group className="mb-3" controlId="formFirstName">
           <Form.Label>First Name</Form.Label>
           <Form.Control
+          required
             type="firstName"
             name="firstName"
             value={firstName}
@@ -137,6 +144,7 @@ export default function Register(props) {
         <Form.Group className="mb-3" controlId="formLastName">
           <Form.Label>Last Name</Form.Label>
           <Form.Control
+          required
             type="lastName"
             name="lastName"
             value={lastName}
@@ -145,15 +153,10 @@ export default function Register(props) {
           />
         </Form.Group>
 
-        {userName.endsWith("@match.com") ? (
-          <p className="text-danger">Please register as an admin instead</p>
-        ) : (
-          <p className="text-success">Email address is valid!</p>
-        )}
-
         <Form.Group controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
           <Form.Control
+          required
             type="password"
             name="password"
             value={password}

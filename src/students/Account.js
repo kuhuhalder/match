@@ -14,16 +14,15 @@ const Account = (props) => {
   const [course, setCourse] = useState([]);
   const [major, setMajor] = useState("");
   const [bio, setBio] = useState("");
-  const [year, setYear] = useState(0);
+  const [year, setYear] = useState("");
   const [genderPreference, setGenderPreference] = useState("");
   const [userName, setUserName] = useState(location.state.userName);
-  //  calling the getStudent API to get
+  //  Calling the getStudent API to get the information of the logged in user
   const configuration = {
     method: "get",
     url: "http://localhost:8080/api/students/getStudent/" + userName,
   };
   console.log(configuration);
-
   axios(configuration)
     .then((result) => {
       console.log(result);

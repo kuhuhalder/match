@@ -4,6 +4,7 @@ import { Button, Col, Container, Table } from "react-bootstrap";
 import { useLocation, useNavigate } from "react-router-dom";
 import NavBar from "../components/NavBar";
 import "../css/Match.css";
+// Match component to display a list of all possible matches determined by our matching algorithm
 const Match = (props) => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ const Match = (props) => {
   const [userName2, setUserName2] = useState(location.state.userName);
 
   const [ids, setIds] = useState([]);
-
+  //  Call the matches API on the username of the logged-in user to fetch the list of Matches object
   const configuration = {
     method: "get",
     url:
