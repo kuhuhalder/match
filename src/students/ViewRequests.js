@@ -60,7 +60,7 @@ const ViewRequests = (props) => {
   const handleDenyMatch = (e) => {
     const configuration = {
       method: "delete",
-      url: "http://localhost:8080/api/students/deleteMatch/" + e,
+      url: "http://localhost:8080/api/students/deleteMatch/" + e+"+"+userName,
     };
     console.log(configuration);
     axios(configuration)
@@ -73,10 +73,11 @@ const ViewRequests = (props) => {
   };
 
   if (deleteRequest) {
+    setDeleteRequest(false)
     return (
       <div>
-        <Alert>Matched deleted</Alert>
-        <Link
+        <Alert>Match request deleted</Alert>
+        {/* <Link
           to="/viewrequests"
           state={{
             userName: userName,
@@ -84,6 +85,13 @@ const ViewRequests = (props) => {
         >
           Go back to requests
         </Link>
+        <ViewRequests></ViewRequests> */}
+        
+         <Button type="submit" onClick={() => navigate("/viewrequests", {state:{userName:userName}})}>
+                    Accept
+                  </Button>
+
+        
       </div>
     );
   }
