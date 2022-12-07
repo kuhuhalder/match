@@ -15,6 +15,7 @@ const ViewProfileRequests = (props) => {
   const [year, setYear] = useState(0);
   const [genderPreference, setGenderPreference] = useState(null);
   const [userName, setUserName] = useState(location.state.userName);
+  const [loggedInUser, setLoggedInUser] = useState(location.state.loggedInUser);
 
   const configuration = {
     method: "get",
@@ -40,7 +41,6 @@ const ViewProfileRequests = (props) => {
     });
 
   return (
-    <>
       <div id="ViewProfile">
         <div id="page-wrap">
 
@@ -53,11 +53,15 @@ const ViewProfileRequests = (props) => {
             <h4> Major: {major}</h4>
             <h4> Year: {year}</h4>
             <h4> Gender Preference: {genderPreference}</h4>
-            <h4> Bio: {bio}</h4>            
+            <h4> Bio: {bio}</h4>   
+            <Button type="submit" onClick={() => navigate("/viewrequests", {state:{userName:loggedInUser}})}>
+                    Go back to requests
+                 </Button>
+
           </div>
         </div>
       </div>
-    </>
+   
   );
 };
 export default ViewProfileRequests;

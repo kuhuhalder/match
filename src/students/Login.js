@@ -28,7 +28,6 @@ export default function Login(props) {
         }
         else{
           setWrong(true);
-          setWrongDisp = <div> Please provide a valid username and password!! </div>;
         }
         
       })

@@ -72,17 +72,14 @@ const Match = (props) => {
                     <td>{val.year}</td>
                     <td>{val.major}</td>
                     <td>{val.pronouns}</td>
-                    {/* <td><a href="View Profile">{val.userName}</a></td> */}
-                  {/* <a onClick={handleViewProfile(val.userName)}>View Profile</a> */}
-
+                    <td>
                     <Button
                       type="submit"
                       onClick={() => handleViewProfile(val.userName)}
                     >
                       View Profile
                     </Button>
-  
-                    {/* <button onClick={()=>{handleViewProfile(val.userName)}}>View Profile </button> */}
+                    </td>
                   </tr>
                 );
               })

@@ -56,23 +56,20 @@ const ViewStudyBuddies = (props) => {
             {usernames.map((val, key) => {
                 return (
                   <tr key={key}>
-                    <td>{val} accepted your request. Chat with them!</td>
+                    <td>{val} and you are study buddies. Chat with them!</td>
                     {/* <td>{val.firstName}</td>
                     <td>{val.course}</td>
                     <td>{val.year}</td>
                     <td>{val.major}</td>
                     <td>{val.pronouns}</td> */}
-                    {/* <td><a href="View Profile">{val.userName}</a></td> */}
-                  {/* <a onClick={handleViewProfile(val.userName)}>View Profile</a> */}
 
                     {/* <Button
                       type="submit"
                       onClick={() => handleViewProfile(val.userName)}
                     >
                       View Profile
-                    </Button> */}
-  
-                    {/* <button onClick={()=>{handleViewProfile(val.userName)}}>View Profile </button> */}
+                    </Button>
+   */}
                   </tr>
                 );
               })

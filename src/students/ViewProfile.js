@@ -50,12 +50,11 @@ const ViewProfile = (props) => {
     });
 
   const handleRequestMatch = () => {
-    // <div>You have requested to match with this student: {firstName} {lastName}</div>
     const configuration = {
       method: "post",
       url: "http://localhost:8080/api/students/matchAdd",
       data: {
-        matchId,
+        id:matchId,
         userOneId: userName2,
         userTwoId: userName,
       },
@@ -64,9 +63,13 @@ const ViewProfile = (props) => {
     axios(configuration)
       .then((result) => {
         setMatch(true);
-        if (result.status == 400) {
-          setMatchedAlready(true);
-        }
+        // if (result.status == 400) {
+        //   setMatchedAlready(true);
+        //   setMatch(false)
+        // }
+        // else if(result.status == 200){
+        //   setMatch(true);
+        // }
       })
       .catch((error) => {
         error = new Error();
@@ -125,10 +128,13 @@ const ViewProfile = (props) => {
             <h4> Year: {year}</h4>
             <h4> Gender Preference: {genderPreference}</h4>
             <h4> Bio: {bio}</h4>
-            {/* <button onClick={()=>{handleRequestMatch(userName)}}>Match </button> */}
             <Button type="submit" onClick={(e) => handleRequestMatch()}>
               Match
             </Button>
+            <Button type="submit" onClick={(e) => navigate("/matches", {state:{userName:userName2, firstName:firstName2, lastName:lastName2}})}>
+              Go back to Matches
+            </Button>
+
           </div>
         </div>
       </div>
