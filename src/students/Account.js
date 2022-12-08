@@ -42,13 +42,11 @@ const Account = (props) => {
     });
 
   return (
-    // <div id="Account">
-    //   <div id="page-wrap">
     <Container>
       <Row>
         <NavBar></NavBar>
-        </Row>
-        <Col>
+      </Row>
+      <Col>
         <h1>
           Welcome {firstName} {lastName}!
         </h1>
@@ -73,9 +71,7 @@ const Account = (props) => {
           <h4> Gender Preference: {genderPreference}</h4>
           <h4> Bio: {bio}</h4>
         </div>
-        </Col>
-      {/* </div>
-    </div> */}
+      </Col>
     </Container>
   );
 };

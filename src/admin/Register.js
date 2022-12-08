@@ -23,7 +23,7 @@ export default function RegisterAdmin(props) {
         id,
         userName,
         password,
-        firstName, 
+        firstName,
         lastName,
         isAdmin,
       },

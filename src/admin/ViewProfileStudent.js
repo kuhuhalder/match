@@ -2,7 +2,6 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import { useLocation, useNavigate } from "react-router-dom";
-import Popup from "reactjs-popup";
 // ViewProfileStudent component allows the admin to view the profile information of a student.
 const ViewProfileStudent = (props) => {
   const location = useLocation();
@@ -62,14 +61,18 @@ const ViewProfileStudent = (props) => {
         console.log(error);
         error = new Error();
       });
-
   };
-
-
 
   // editProfile function allows the admin to edit the profile of a student.
   const editProfile = (e) => {
-    navigate("/editprofile", { state: { userName: e, loggedInUser: loggedInUser } });
+    navigate("/editprofile", {
+      state: {
+        userName: e,
+        loggedInUser: loggedInUser,
+        firstName: firstName,
+        lastName: lastName,
+      },
+    });
   };
 
   return (

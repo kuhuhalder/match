@@ -6,7 +6,7 @@ import NavBarAdmin from "../components/NavBarAdmin";
 // CreateStudent component gives admin the functionality to create a new student account
 export default function CreateStudent(props) {
   const navigate = useNavigate();
-  const location = useLocation()
+  const location = useLocation();
   const [userName, setUsername] = useState(location.state.userName);
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -15,7 +15,7 @@ export default function CreateStudent(props) {
   const [password, setPassword] = useState("");
   const [isAdmin, setIsAdmin] = useState(0);
   const [register, setRegister] = useState(false);
-  const [userNameExists, setAccExists] = useState(false)
+  const [userNameExists, setAccExists] = useState(false);
   const [emptyFields, setEmptyFields] = useState(false);
   const [validated, setValidated] = useState(false);
   // handleRegister function calls the add API to create a student.
@@ -28,61 +28,68 @@ export default function CreateStudent(props) {
     if (form.checkValidity() === false) {
       e.preventDefault();
       e.stopPropagation();
+    } else {
+      setValidated(true);
 
-      
+      if (email.endsWith("@match.com")) {
+        <div>
+          <p className="text-danger">
+            Please register as an admin instead with the @match.com email
+            address or use a valid email address.
+          </p>
+          <CreateStudent></CreateStudent>
+        </div>;
+        return;
+      }
+      const configuration = {
+        method: "post",
+        url: "http://localhost:8080/api/students/add",
+        data: {
+          id,
+          userName: email,
+          password,
+          isAdmin,
+        },
+      };
+
+      console.log(configuration);
+      axios(configuration)
+        .then((result) => {
+          setRegister(true);
+        })
+        .catch((error) => {
+          setAccExists(true);
+          error = new Error();
+        });
     }
+  };
 
-    else{setValidated(true);
-
-    if (email.endsWith("@match.com")) {
+  if (userNameExists) {
+    return (
       <div>
         <p className="text-danger">
-          Please register as an admin instead with the @match.com email address or use a valid email address.
+          Username already exists. Use a different email address/ username
         </p>
         <CreateStudent></CreateStudent>
       </div>
-      return
-    }
-    const configuration = {
-      method: "post",
-      url: "http://localhost:8080/api/students/add",
-      data: {
-        id,
-        userName:email,
-        password,
-        isAdmin,
-      },
-    };
-    
-    console.log(configuration);
-    axios(configuration)
-      .then((result) => {
-        setRegister(true);
-      })
-      .catch((error) => {
-        setAccExists(true)
-        error = new Error();
-      });
-  };
-}
-
-  if (userNameExists){
-  return(
-      <div>
-        <p className="text-danger">Username already exists. Use a different email address/ username</p>
-        <CreateStudent></CreateStudent>
-      </div>
-  )
+    );
   }
   if (register && !email.endsWith("@match.com")) {
     <div>
       <p className="text-success">
-        Student is registered successfully. Click here to add the rest of the profile
-        details.
+        Student is registered successfully. Click here to add the rest of the
+        profile details.
       </p>
-    </div>
-    navigate("/editprofile", { state: { userName: email, loggedInUser:userName } });
-  } 
+    </div>;
+    navigate("/editprofile", {
+      state: {
+        userName: email,
+        loggedInUser: userName,
+        firstName: firstName,
+        lastName: lastName,
+      },
+    });
+  }
   if (emptyFields) {
     return (
       <div>
@@ -96,7 +103,11 @@ export default function CreateStudent(props) {
     <div>
       <NavBarAdmin></NavBarAdmin>
       <h2>Create a Student Account</h2>
-      <Form noValidate validated={validated} onSubmit={(e) => handleRegister(e)}>
+      <Form
+        noValidate
+        validated={validated}
+        onSubmit={(e) => handleRegister(e)}
+      >
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <p>Your email address is your username</p>
@@ -111,21 +122,23 @@ export default function CreateStudent(props) {
             required
             placeholder="Enter email"
           />
-           <Form.Control.Feedback type="invalid">
-              Please choose a username.
-            </Form.Control.Feedback>
+          <Form.Control.Feedback type="invalid">
+            Please choose a username.
+          </Form.Control.Feedback>
         </Form.Group>
         {email.endsWith("@match.com") ? (
-          <p className="text-danger">Please register as an admin instead with the @match.com email address or use a valid email address.</p>
+          <p className="text-danger">
+            Please register as an admin instead with the @match.com email
+            address or use a valid email address.
+          </p>
         ) : (
           <p className="text-success">Email address is valid!</p>
         )}
 
-
         <Form.Group className="mb-3" controlId="formFirstName">
           <Form.Label>First Name</Form.Label>
           <Form.Control
-          required
+            required
             type="firstName"
             name="firstName"
             value={firstName}
@@ -136,7 +149,7 @@ export default function CreateStudent(props) {
         <Form.Group className="mb-3" controlId="formLastName">
           <Form.Label>Last Name</Form.Label>
           <Form.Control
-          required
+            required
             type="lastName"
             name="lastName"
             value={lastName}
@@ -148,7 +161,7 @@ export default function CreateStudent(props) {
         <Form.Group controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
           <Form.Control
-          required
+            required
             type="password"
             name="password"
             value={password}

@@ -29,7 +29,9 @@ const ViewStudyBuddies = (props) => {
     });
   // handleViewProfile function to redirect the user to view the profile of the student who sent the request
   const handleViewProfile = (e) => {
-    navigate("/viewprofilestudybuddies", { state: { userName: e, loggedInUser:location.state.userName} });
+    navigate("/viewprofilestudybuddies", {
+      state: { userName: e, loggedInUser: location.state.userName },
+    });
   };
 
   return (
@@ -48,12 +50,9 @@ const ViewStudyBuddies = (props) => {
               <tr key={key}>
                 <td>{val} and you are study buddies. Chat with them!</td>
                 <td>
-                <Button
-                  type="submit"
-                  onClick={() => handleViewProfile(val)}
-                >
-                  View their Profile
-                </Button>
+                  <Button type="submit" onClick={() => handleViewProfile(val)}>
+                    View their Profile
+                  </Button>
                 </td>
               </tr>
             );

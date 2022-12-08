@@ -12,8 +12,8 @@ function EditProfile(props) {
   const [userName, setUserName] = useState(location.state.loggedInUser);
   const [userName2, setUserName2] = useState(location.state.userName);
   const [isAdmin, setIsAdmin] = useState(0);
-  const [firstName, setFirstName] = useState(null);
-  const [lastName, setLastName] = useState(null);
+  const [firstName, setFirstName] = useState(location.state.firstName);
+  const [lastName, setLastName] = useState(location.state.lastName);
   const [pronouns, setPronouns] = useState(null);
   const [campus, setCampus] = useState(null);
   const [course, setCourses] = useState([]);

@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { useLocation, useNavigate } from "react-router-dom";
+import logo from "../images/logo.jpeg";
 const NavBarAdmin = (props) => {
   const { state } = useLocation();
   const navigate = useNavigate();
@@ -34,10 +35,10 @@ const NavBarAdmin = (props) => {
   };
 
   const handleViewMatches = (e) => {
-    navigate("/viewallmatches", {state:{userName:userName}});
+    navigate("/viewallmatches", { state: { userName: userName } });
   };
   const handleViewStudents = (e) => {
-    navigate("/viewallstudents", {state:{userName:userName}});
+    navigate("/viewallstudents", { state: { userName: userName } });
   };
 
   const logout = () => {
@@ -49,13 +50,13 @@ const NavBarAdmin = (props) => {
     <Navbar className="color-nav" variant="light">
       <Container>
         <Navbar.Brand href="/home">
-          {/* <img
+          <img
             alt=""
-            src={Logo}
+            src={logo}
             width="30"
             height="30"
             className="d-inline-block align-top"
-          />{' '} */}
+          />{' '}
           Match
         </Navbar.Brand>
 
@@ -77,7 +78,12 @@ const NavBarAdmin = (props) => {
             href="/updateprofile"
             onClick={(e) => {
               navigate("/updateprofile", {
-                state: { id: userName, userName: userName, firstName:firstName, lastName:lastName },
+                state: {
+                  id: userName,
+                  userName: userName,
+                  firstName: firstName,
+                  lastName: lastName,
+                },
               });
             }}
           >
@@ -108,7 +114,9 @@ const NavBarAdmin = (props) => {
           <Nav.Link
             href="/viewcourses"
             onClick={(e) => {
-              navigate("/viewcourses", {state: { id: userName, userName: userName }});
+              navigate("/viewcourses", {
+                state: { id: userName, userName: userName },
+              });
             }}
           >
             View All Courses

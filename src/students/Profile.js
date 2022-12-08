@@ -200,7 +200,7 @@ function Profile(props) {
             onChange={(e) => setGenderPreference(e.target.value)}
           >
             <option value=""> Select Gender Preferences </option>
-            <option value ="No Preferences">No Preferences</option>
+            <option value="No Preferences">No Preferences</option>
             <option value="Female">Female </option>
             <option value="Male"> Male </option>
             <option value="Non-binary">Non-binary </option>

@@ -6,8 +6,8 @@ import NavBarAdmin from "../components/NavBarAdmin";
 const ViewAccount = (props) => {
   const location = useLocation();
   const navigate = useNavigate();
-  const [firstName, setFirstName] = useState(location.state.firstName);
-  const [lastName, setLastName] = useState(location.state.lastName);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [userName, setUserName] = useState(location.state.userName);
   const [password, setPassword] = useState(location.state.password);
 
@@ -32,7 +32,6 @@ const ViewAccount = (props) => {
       <NavBarAdmin></NavBarAdmin>
       <h2>
         Welcome {firstName} {lastName}!
-
       </h2>
       <h2>Your Information</h2>
       <h4>Username: {userName} </h4>

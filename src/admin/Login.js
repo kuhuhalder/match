@@ -43,7 +43,9 @@ export default function LoginAdmin(props) {
   }
   // handleForgotPassword function is to redirect to forgotPass and change an admin's password
   const handleForgotPassword = (e) => {
-    navigate("/forgotpass", { state: { id: userName, userName: userName, isAdmin:1 } });
+    navigate("/forgotpass", {
+      state: { id: userName, userName: userName, isAdmin: 1 },
+    });
   };
   if (wrong) {
     return (
@@ -80,7 +82,7 @@ export default function LoginAdmin(props) {
         <Form.Group controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
           <Form.Control
-          required
+            required
             type="password"
             name="password"
             value={password}

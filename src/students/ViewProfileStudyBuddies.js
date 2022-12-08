@@ -45,7 +45,7 @@ const ViewProfileStudyBuddies = (props) => {
     <div id="ViewProfile">
       <div id="page-wrap">
         <div>
-        <h4> Username: {userName}</h4>
+          <h4> Username: {userName}</h4>
           <h4> First Name: {firstName}</h4>
           <h4> Last Name: {lastName}</h4>
           <h4> Pronouns: {pronouns}</h4>

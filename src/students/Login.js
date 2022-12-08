@@ -42,9 +42,11 @@ export default function Login(props) {
   }
 
   const handleForgotPassword = (e) => {
-    navigate("/forgotpass", { state: { id: userName, userName: userName, isAdmin:0 } });
+    navigate("/forgotpass", {
+      state: { id: userName, userName: userName, isAdmin: 0 },
+    });
   };
-  
+
   if (wrong) {
     return (
       <div>
@@ -58,11 +60,10 @@ export default function Login(props) {
     <div>
       <h2>Login</h2>
       <Form onSubmit={(e) => handleSubmit(e)}>
-
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control
-          required
+            required
             type="email"
             name="email"
             value={userName}
@@ -74,7 +75,7 @@ export default function Login(props) {
         <Form.Group controlId="formBasicPassword">
           <Form.Label required>Password</Form.Label>
           <Form.Control
-          required
+            required
             type="password"
             name="password"
             value={password}
@@ -108,7 +109,7 @@ export default function Login(props) {
         )}
       </Form>
       <br></br>
-      <Link to="/">Don't have an account?  here!</Link>
+      <Link to="/">Don't have an account? here!</Link>
     </div>
   );
 }

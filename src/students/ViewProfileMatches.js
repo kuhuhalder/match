@@ -118,14 +118,14 @@ const ViewProfileMatches = (props) => {
             <h4> Pronouns: {pronouns}</h4>
             <h4> Campus: {campus}</h4>
             <h4>
-            {" "}
-            Courses:
-            {course.map((val) => (
-              <ul>
-                <li>- {val}</li>
-              </ul>
-            ))}
-          </h4>
+              {" "}
+              Courses:
+              {course.map((val) => (
+                <ul>
+                  <li>- {val}</li>
+                </ul>
+              ))}
+            </h4>
             <h4> Major: {major}</h4>
             <h4> Year: {year}</h4>
             <h4> Gender Preference: {genderPreference}</h4>

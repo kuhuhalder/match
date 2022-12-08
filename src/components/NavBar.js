@@ -1,7 +1,8 @@
-import React, { useState } from "react";
-import { Nav, Navbar, Container } from "react-bootstrap";
-import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
+import React, { useState } from "react";
+import { Container, Nav, Navbar } from "react-bootstrap";
+import { useLocation, useNavigate } from "react-router-dom";
+import logo from "../images/logo.jpeg";
 const NavBar = (props) => {
   const { state } = useLocation();
   const navigate = useNavigate();
@@ -39,12 +40,13 @@ const NavBar = (props) => {
       console.log(error);
       error = new Error();
     });
-  const handleAccount =(e) =>{
+  const handleAccount = (e) => {
     navigate("/account", {
-      state:{
-        userName:userName
-      }
-  })}
+      state: {
+        userName: userName,
+      },
+    });
+  };
   const handleMatch = (event) => {
     navigate("/matches", {
       state: {
@@ -89,63 +91,38 @@ const NavBar = (props) => {
     navigate("/");
   };
   return (
-    // <ul>
-    //   <li>
-    //     <a href="/account" onClick ={(e)=>navigate("/account", {state:{userName:userName}})}>Account</a>
-    //   </li>
-    //   <li>
-    //     <a href="/profile" onClick={(e) => handleUpdate(e)}>
-    //       Update Profile
-    //     </a>
-    //   </li>
-    //   <li>
-    //     <a href="/viewstudybuddies" onClick={(e) => handleViewStudyBuddies(e)}>
-    //       View Study Buddies
-    //     </a>
-    //   </li>
-    //   <li>
-    //     <a href="/matches" onClick={(e) => handleMatch(e)}>
-    //       View Matches
-    //     </a>
-    //   </li>
-    //   <li>
-    //     <a href="/viewrequests" onClick={(e) => handleRequests(e)}>
-    //       View Requests
-    //     </a>
-    //   </li>
-    //   <li className="justify-content-end">
-    //     <a href="/" onClick={(e) => logout(e)}>
-    //       Logout
-    //     </a>
-    //   </li>
-    // </ul>
-      <Navbar className = "color-nav" variant="light">
+    <Navbar className="color-nav" variant="light">
       <Container>
         <Navbar.Brand href="/home">
-          {/* <img
+          <img
             alt=""
-            src={Logo}
+            src={logo}
             width="30"
             height="30"
             className="d-inline-block align-top"
-          />{' '} */}
-         Match
+          />{' '}
+          Match
         </Navbar.Brand>
 
         <Nav className="me-auto">
-          <Nav.Link href="/account" onClick={(e) => handleAccount(e)}>Account</Nav.Link>
-      <Nav.Link href="/profile" onClick={(e) => handleUpdate(e)}>
-       Update Profile
-      </Nav.Link>
-      <Nav.Link href="/viewstudybuddies" onClick={(e) => handleViewStudyBuddies(e)}>
-         View Study Buddies
-      </Nav.Link>
-      <Nav.Link href="/matches" onClick={(e) => handleMatch(e)}>
-         View Matches
-      </Nav.Link>
-      <Nav.Link href="/viewrequests" onClick={(e) => handleRequests(e)}>
-         View Requests
-      </Nav.Link>
+          <Nav.Link href="/account" onClick={(e) => handleAccount(e)}>
+            Account
+          </Nav.Link>
+          <Nav.Link href="/profile" onClick={(e) => handleUpdate(e)}>
+            Update Profile
+          </Nav.Link>
+          <Nav.Link
+            href="/viewstudybuddies"
+            onClick={(e) => handleViewStudyBuddies(e)}
+          >
+            View Study Buddies
+          </Nav.Link>
+          <Nav.Link href="/matches" onClick={(e) => handleMatch(e)}>
+            View Matches
+          </Nav.Link>
+          <Nav.Link href="/viewrequests" onClick={(e) => handleRequests(e)}>
+            View Requests
+          </Nav.Link>
         </Nav>
 
         <Nav className="justify-content-end">

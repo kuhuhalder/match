@@ -43,7 +43,9 @@ function UpdateProfile(props) {
   return (
     <div>
       <NavBarAdmin></NavBarAdmin>
-      <h2>Welcome {firstName} {lastName}!</h2>
+      <h2>
+        Welcome {firstName} {lastName}!
+      </h2>
       <h3>Update your profile!</h3>
       <Form onSubmit={(e) => handleSubmit(e)}>
         <Form.Group controlId="formFirstName">

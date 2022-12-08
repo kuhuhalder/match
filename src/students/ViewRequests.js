@@ -26,7 +26,7 @@ const ViewRequests = (props) => {
       console.log(error);
       error = new Error();
     });
-  
+
   // handleAcceptMatch function is to accept the match request sent by a student
   const handleAcceptMatch = (e) => {
     const configuration = {

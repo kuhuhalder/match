@@ -2,16 +2,23 @@ import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "./css/Home.css";
-import homeImage from "./images/Home.png";
+import banner from "./images/banner.jpeg";
 const AboutUs = () => {
   const navigate = useNavigate();
   return (
     <Container>
-      <Row></Row>
       <Row>
-        <Col className="text-center">
-          <img src={homeImage} alt="homeImage" />
+        <Col></Col>
+        <Col>
+          <div>
+            <img class = "banner" src={banner} alt="banner" />
+            <h4>
+              MATCH is a web-app that pairs students or forms groups where
+              students can study together.
+            </h4>
+          </div>
         </Col>
+        <Col></Col>
       </Row>
     </Container>
   );

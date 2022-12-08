@@ -11,7 +11,7 @@ const ForgotPass = (props) => {
   const [password, setPassword] = useState("");
   const [isAdmin, setIsAdmin] = useState(location.state.isAdmin);
   const [passwordReset, setPasswordReset] = useState(false);
-  const [noUsername, setNoUserName] = useState(false)
+  const [noUsername, setNoUserName] = useState(false);
   //  Function to make an API call to update and update a user's password
   const handleResetPassword = (e) => {
     const configuration = {
@@ -21,7 +21,7 @@ const ForgotPass = (props) => {
         id,
         userName,
         password,
-        isAdmin
+        isAdmin,
       },
     };
     console.log(configuration);
@@ -32,12 +32,12 @@ const ForgotPass = (props) => {
       })
       .catch((error) => {
         console.log(error);
-        setNoUserName(true)
+        setNoUserName(true);
         error = new Error();
       });
   };
 
-  if (passwordReset && isAdmin==0) {
+  if (passwordReset && isAdmin == 0) {
     return (
       <div>
         <p className="text-success">Password changed successfully</p>
@@ -54,7 +54,7 @@ const ForgotPass = (props) => {
     );
   }
 
-  if (passwordReset && isAdmin==1) {
+  if (passwordReset && isAdmin == 1) {
     return (
       <div>
         <p className="text-success">Password changed successfully</p>
@@ -70,10 +70,12 @@ const ForgotPass = (props) => {
       </div>
     );
   }
-  if (noUsername){
+  if (noUsername) {
     return (
       <div>
-        <p className="text-danger">Username doesn't exist. Please go back to home</p>
+        <p className="text-danger">
+          Username doesn't exist. Please go back to home
+        </p>
         <Button
           variant="primary"
           type="submit"

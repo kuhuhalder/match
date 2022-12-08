@@ -31,7 +31,7 @@ export default function Register(props) {
     if (userName == "" || password == "" || firstName == "" || lastName == "") {
       setEmptyFields(true);
     }
-    
+
     e.preventDefault();
     const configuration = {
       method: "post",
@@ -119,7 +119,7 @@ export default function Register(props) {
           <Form.Label>Email address</Form.Label>
           <p>Your email address is your username</p>
           <Form.Control
-          required
+            required
             type="email"
             name="email"
             value={userName}
@@ -131,7 +131,10 @@ export default function Register(props) {
           />
         </Form.Group>
         {userName.endsWith("@match.com") ? (
-          <p className="text-danger">Please register as an admin instead with the @match.com email address or use a valid email address.</p>
+          <p className="text-danger">
+            Please register as an admin instead with the @match.com email
+            address or use a valid email address.
+          </p>
         ) : (
           <p className="text-success">Email address is valid!</p>
         )}
@@ -139,19 +142,18 @@ export default function Register(props) {
         <Form.Group className="mb-3" controlId="formFirstName" required>
           <Form.Label>First Name</Form.Label>
           <Form.Control
-          required
+            required
             type="firstName"
             name="firstName"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
             placeholder="Enter first name"
           />
-          
         </Form.Group>
         <Form.Group className="mb-3" controlId="formLastName">
           <Form.Label>Last Name</Form.Label>
           <Form.Control
-          required
+            required
             type="lastName"
             name="lastName"
             value={lastName}
@@ -163,7 +165,7 @@ export default function Register(props) {
         <Form.Group controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
           <Form.Control
-          required
+            required
             type="password"
             name="password"
             value={password}

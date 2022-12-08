@@ -2,15 +2,25 @@ import React from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "./css/Home.css";
-import homeImage from "./images/Home.png";
+import banner from "./images/banner.jpeg";
 const Home = (props) => {
   const navigate = useNavigate();
   return (
     <Container>
       <div>
-        <img src={homeImage} alt="homeImage" />
+        <img class="banner" src={banner} alt="homeImage" />
       </div>
-
+      <Row>
+        <Button
+          variant="primary"
+          type="submit"
+          onClick={() => {
+            navigate("/home");
+          }}
+        >
+          Learn about us
+        </Button>
+      </Row>
       <Row>
         <Col>
           <h2>Students</h2>

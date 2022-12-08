@@ -1,17 +1,22 @@
+@import url('https://fonts.googleapis.com/css?family=PT-Serif');
  html, body {
     display: grid;
     height: 100%;
     /* place-items: center; */
     background-color: cornflowerblue;
+    font-family: 'Times New Roman', Times, serif;
   }
-
+  #page-wrap {
+    text-align: center;
+    overflow: auto;
+  }
   body {
     margin: 10px;
     padding: 10px;
     display: flex;
     justify-content: center;
     align-items: top;
-    font-family: 'Jost', sans-serif;
+    font-family:'Courier New', Courier, monospace;
 }
 
 .main {
@@ -104,12 +109,13 @@
   }
   
   
-  img {
+  .banner {
     width: 500px;
     height: 200px;
     display: flex;
     align-items: center;
     justify-content: center;
+    place-items: center;
  }
   
   .color-nav {

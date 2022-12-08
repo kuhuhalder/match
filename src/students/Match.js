@@ -66,9 +66,7 @@ const Match = (props) => {
                 return (
                   <tr key={key}>
                     <td>{val.firstName}</td>
-                    <td>
-                      {val.course}
-                    </td>
+                    <td>{val.course}</td>
                     <td>{val.year}</td>
                     <td>{val.major}</td>
                     <td>{val.pronouns}</td>
