@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import { useLocation, useNavigate } from "react-router-dom";
 import Popup from "reactjs-popup";
-
+// ViewProfileStudent component allows the admin to view the profile information of a student.
 const ViewProfileStudent = (props) => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -42,7 +42,8 @@ const ViewProfileStudent = (props) => {
       console.log(error);
       error = new Error();
     });
-
+  
+  // deleteStudent function allows the admin to delete a student.
   const deleteStudent = (e) => {
     const configuration = {
       method: "delete",
@@ -69,6 +70,7 @@ const ViewProfileStudent = (props) => {
       </div>
     );
   }
+  // editProfile function allows the admin to edit the profile of a student.
   const editProfile = (e) => {
     navigate("/editprofile", { state: { userName: e } });
   };

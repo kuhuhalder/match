@@ -30,7 +30,7 @@ const Match = (props) => {
     });
 
   const handleViewProfile = (e) => {
-    navigate("/viewprofile", {
+    navigate("/viewprofilematches", {
       state: {
         userName: e,
         userName2: userName2,

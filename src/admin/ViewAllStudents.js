@@ -2,11 +2,14 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Button, Table } from "react-bootstrap";
 import { useLocation, useNavigate } from "react-router-dom";
+// ViewAllStudents component is to view all the students in the system.
 const ViewAllStudents = (props) => {
   const location = useLocation();
   const navigate = useNavigate();
   const [ids, setIds] = useState([]);
+  const [userName, setUserName] = useState(location.state.userName);
 
+  // handleViewProfile function redirects to the profile page of the student.
   const handleViewProfile = (e) => {
     navigate("/viewprofilestudent", { state: { userName: e } });
   };
@@ -28,6 +31,14 @@ const ViewAllStudents = (props) => {
     <div className="ViewAllStudents">
       <div id="page-wrap">
         <h2> View All Students</h2>
+        <Button
+            type="submit"
+            onClick={() =>
+              navigate("/viewaccount", { state: { userName: userName } })
+            }
+          >
+            Go back to Account
+          </Button>
         <Table striped bordered hover>
           <thead>
             <tr>

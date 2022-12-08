@@ -13,15 +13,16 @@
     
   th {
     border-bottom: 1px solid black;
+    text-align: center;
   }
     
   td {
     text-align: center;
   }
 
-  /* button {
-    width: 100%;
+  button {
+    /* width: 100%; */
       height: 40px;
       margin: 1px;
-  } */
+  }
 

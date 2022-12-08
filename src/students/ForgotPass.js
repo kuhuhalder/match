@@ -1,6 +1,6 @@
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Container } from "react-bootstrap";
 import axios from "axios";
 // ForgotPass component to update a user's password in case they forget their password
 const ForgotPass = (props) => {
@@ -9,6 +9,7 @@ const ForgotPass = (props) => {
   const [id, setId] = useState("");
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  const [isAdmin, setIsAdmin] = useState(location.state.isAdmin);
   const [passwordReset, setPasswordReset] = useState(false);
   //  Function to make an API call to update and update a user's password
   const handleResetPassword = (e) => {
@@ -19,6 +20,7 @@ const ForgotPass = (props) => {
         id,
         userName,
         password,
+        isAdmin
       },
     };
     console.log(configuration);
@@ -33,7 +35,7 @@ const ForgotPass = (props) => {
       });
   };
 
-  if (passwordReset) {
+  if (passwordReset && isAdmin==0) {
     return (
       <div>
         <p className="text-success">Password changed successfully</p>
@@ -49,8 +51,25 @@ const ForgotPass = (props) => {
       </div>
     );
   }
+
+  if (passwordReset && isAdmin==1) {
+    return (
+      <div>
+        <p className="text-success">Password changed successfully</p>
+        <Button
+          variant="primary"
+          type="submit"
+          onClick={() => {
+            navigate("/loginadmin");
+          }}
+        >
+          Login
+        </Button>
+      </div>
+    );
+  }
   return (
-    <div>
+    <Container>
       <h2>Forgot Password</h2>
       <Form onSubmit={(e) => handleResetPassword(e)}>
         <Form.Group className="mb-3" controlId="formUsername">
@@ -84,7 +103,7 @@ const ForgotPass = (props) => {
       >
         Change Password
       </Button>
-    </div>
+    </Container>
   );
 };
 export default ForgotPass;

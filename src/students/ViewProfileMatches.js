@@ -2,7 +2,8 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Alert, Button } from "react-bootstrap";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-const ViewProfile = (props) => {
+// ViewProfileMatches component is to view the profile of the students who are possible matches with the current user
+const ViewProfileMatches = (props) => {
   const location = useLocation();
   const navigate = useNavigate();
   const [firstName, setFirstName] = useState(null);
@@ -144,4 +145,4 @@ const ViewProfile = (props) => {
     </>
   );
 };
-export default ViewProfile;
+export default ViewProfileMatches;

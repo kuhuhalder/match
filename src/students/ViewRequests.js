@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Alert, Button, Container, Table } from "react-bootstrap";
 import { useLocation, useNavigate } from "react-router-dom";
 import NavBar from "../components/NavBar";
+// ViewRequests component is to view the match requests sent by other students
 const ViewRequests = (props) => {
   const { state } = useLocation();
   const navigate = useNavigate();
@@ -25,7 +26,8 @@ const ViewRequests = (props) => {
       console.log(error);
       error = new Error();
     });
-
+  
+  // handleAcceptMatch function is to accept the match request sent by a student
   const handleAcceptMatch = (e) => {
     const configuration = {
       method: "post",
@@ -45,7 +47,7 @@ const ViewRequests = (props) => {
         error = new Error();
       });
   };
-
+  // handleDenyMatch function is to deny the match request sent by a student
   const handleDenyMatch = (e) => {
     const configuration = {
       method: "delete",

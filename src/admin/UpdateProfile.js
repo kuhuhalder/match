@@ -2,7 +2,8 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useLocation, useNavigate } from "react-router-dom";
-
+import NavBarAdmin from "../components/NavBarAdmin";
+// UpdateProfile component is to update the admin's profile information
 function UpdateProfile(props) {
   const location = useLocation();
   const navigate = useNavigate();
@@ -11,7 +12,7 @@ function UpdateProfile(props) {
   const [firstName, setFirstName] = useState(null);
   const [lastName, setLastName] = useState(null);
   const [register, setRegister] = useState(false);
-
+  // handleSubmit function is to call the update API to update the admin's information
   const handleSubmit = (e) => {
     e.preventDefault();
     const configuration = {
@@ -36,9 +37,11 @@ function UpdateProfile(props) {
         error = new Error();
       });
   };
+
   return (
     <>
       <h4>Welcome {userName}!</h4>
+      <NavBarAdmin></NavBarAdmin>
       <div>Update your profile!</div>
       <Form onSubmit={(e) => handleSubmit(e)}>
         <Form.Group controlId="formFirstName">

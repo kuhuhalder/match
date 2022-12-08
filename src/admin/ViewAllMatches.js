@@ -1,13 +1,14 @@
-import React, { useState } from "react";
-import { Form, Button, Table } from "react-bootstrap";
 import axios from "axios";
+import React, { useState } from "react";
+import { Button, Table } from "react-bootstrap";
 import { useLocation, useNavigate } from "react-router-dom";
+// ViewAllMatches component is to display all the current studybuddies and delete any of the studybuddy pairing.
 const ViewAllMatches = (props) => {
   const location = useLocation();
   const navigate = useNavigate();
-  // const [userName, setUserName] = useState(location.state.userName);
   const [delete1, setDeleteOne] = useState(false);
   const [deleteBoth, setDeleteBoth] = useState(false);
+  const [userName, setUserName] = useState(location.state.userName);
 
   const [ids, setIds] = useState([]);
 
@@ -24,7 +25,7 @@ const ViewAllMatches = (props) => {
       console.log(error);
       error = new Error();
     });
-
+  // deleteStudyBuddy function is to delete a study budding matching pair.
   const deleteStudyBuddy = (userName1, userName2) => {
     const configuration1 = {
       method: "delete",
@@ -62,32 +63,20 @@ const ViewAllMatches = (props) => {
         error = new Error();
       });
   };
-  // const logout = () => {
-  //   setUserName("");
-  //   setPassword("");
-  //   navigate("/");
-  // };
+
   return (
     <>
       <div className="Match">
         <div id="page-wrap">
-          <ul>
-            <li>
-              <a href="/viewaccount">Account</a>
-            </li>
-            <li>
-              <a href="/viewallstudents">View All Students</a>
-            </li>
-            <li>
-              <a href="/viewallmatches">View All Study Buddies</a>
-            </li>
-            {/* <li>
-              <a href="/" onClick={(e) => logout(e)}>
-                Logout
-              </a>
-            </li> */}
-          </ul>
           <h2> View All Study Buddies</h2>
+          <Button
+            type="submit"
+            onClick={() =>
+              navigate("/viewaccount", { state: { userName: userName } })
+            }
+          >
+            Go back to Account
+          </Button>
           <Table>
             <thead>
               <tr>

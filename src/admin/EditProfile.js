@@ -1,8 +1,9 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Button, Form, Table } from "react-bootstrap";
 import { useLocation, useNavigate } from "react-router-dom";
-
+import NavBarAdmin from "../components/NavBarAdmin";
+// EditProfile is to edit any student's information/ criteria for matching
 function EditProfile(props) {
   const location = useLocation();
   const navigate = useNavigate();
@@ -33,6 +34,7 @@ function EditProfile(props) {
       console.log(error);
       error = new Error();
     });
+  // handleSubmit function is to call the update API to update a student's information
   const handleSubmit = (e) => {
     e.preventDefault();
     const configuration = {
@@ -65,8 +67,15 @@ function EditProfile(props) {
         error = new Error();
       });
   };
+  // removeCourseSelection is to remove any selected course.
+  const removeCourseSelection = (i) => {
+    const newCourse = [course];
+    newCourse.splice(i, 1);
+    setCourses(newCourse);
+  };
   return (
     <div>
+      <NavBarAdmin></NavBarAdmin>
       <h4>Edit {userName}!</h4>
       <Form onSubmit={(e) => handleSubmit(e)}>
         <Form.Group className="mb-3" controlId="formPronouns}">
@@ -110,6 +119,29 @@ function EditProfile(props) {
             })}
           </Form.Select>
         </Form.Group>
+
+        <Table striped hover>
+          <thead>
+            <tr>
+              <th>Courses Selected</th>
+            </tr>
+          </thead>
+          <tbody>
+            {course.map((val, key) => {
+              return (
+                <tr key={key}>
+                  <td>{val}</td>
+                  <td>
+                    <Button onClick={(e) => removeCourseSelection(key)}>
+                      Remove selection
+                    </Button>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </Table>
+
         <Form.Group className="mb-3" controlId="formYearsinCollege">
           <Form.Label>Year</Form.Label>
           <Form.Select

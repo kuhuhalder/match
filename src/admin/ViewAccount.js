@@ -1,12 +1,13 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
-
+import NavBarAdmin from "../components/NavBarAdmin";
+// ViewAccount component is to display the admin's information
 const ViewAccount = (props) => {
   const location = useLocation();
   const navigate = useNavigate();
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const [firstName, setFirstName] = useState(location.state.firstName);
+  const [lastName, setLastName] = useState(location.state.lastName);
   const [userName, setUserName] = useState(location.state.userName);
   const [password, setPassword] = useState(location.state.password);
 
@@ -25,79 +26,13 @@ const ViewAccount = (props) => {
       console.log(error);
       error = new Error();
     });
-  const handleViewMatches = (e) => {
-    Navigate("/viewallmatches");
-  };
-  const handleViewStudents = (e) => {
-    Navigate("/viewallstudents");
-  };
 
-  const logout = () => {
-    setUserName("");
-    setPassword("");
-    Navigate("/");
-  };
   return (
     <div className="ViewAccount">
-      <ul>
-        <li>
-          <a href="/viewaccount">Account</a>
-        </li>
-        <li>
-          <a href="/createaccount">Create an Account</a>
-        </li>
-        <li>
-          <a
-            href="/updateprofile"
-            onClick={(e) => {
-              navigate("/updateprofile", {
-                state: { id: userName, userName: userName },
-              });
-            }}
-          >
-            Update Your Profile
-          </a>
-        </li>
-        <li>
-          <a
-            href="/createcourse"
-            onClick={(e) => {
-              navigate("/createcourse", {
-                state: { id: userName, userName: userName },
-              });
-            }}
-          >
-            Create a Course
-          </a>
-        </li>
-        <li>
-          <a href="/viewallstudents" onClick={(e) => handleViewStudents(e)}>
-            View All Students
-          </a>
-        </li>
-        <li>
-          <a href="/viewallmatches" onClick={(e) => handleViewMatches(e)}>
-            View All Study Buddies
-          </a>
-        </li>
-        <li>
-          <a
-            href="/viewcourses"
-            onClick={(e) => {
-              navigate("/viewcourses");
-            }}
-          >
-            View All Courses
-          </a>
-        </li>
-        <li>
-          <a href="/" onClick={(e) => logout(e)}>
-            Logout
-          </a>
-        </li>
-      </ul>
+      <NavBarAdmin></NavBarAdmin>
       <h2>
         Welcome {firstName} {lastName}!
+
       </h2>
       <h2>Your Information</h2>
       <h4>Username: {userName} </h4>

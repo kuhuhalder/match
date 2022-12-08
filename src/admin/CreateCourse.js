@@ -2,14 +2,15 @@ import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import { useLocation, useNavigate, Link } from "react-router-dom";
 import axios from "axios";
-
+import NavBarAdmin from "../components/NavBarAdmin";
+// CreateCourse component is used to create a new course by the admin
 export default function CreateCourse(props) {
   const navigate = useNavigate();
   const { state } = useLocation();
   const [courseName, setCourseName] = useState("");
   const [id, setId] = useState("");
   const [addCourse, setAddCourse] = useState(false);
-  // calling the addCourse API to add the course name entered by the admin
+  // handleAddCourse function is to call the addCourse API to add the course name entered by the admin
   const handleAddCourse = (e) => {
     e.preventDefault();
     const configuration = {
@@ -43,6 +44,7 @@ export default function CreateCourse(props) {
   }
   return (
     <div>
+      <NavBarAdmin></NavBarAdmin>
       <h2>Create a Course</h2>
       {/* creating form fields to accept course ID and course name */}
       <Form onSubmit={(e) => handleAddCourse(e)}>
@@ -62,8 +64,6 @@ export default function CreateCourse(props) {
           onChange={(e) => setCourseName(e.target.value)}
           placeholder="Enter course name"
         />
-
-        {/* submit button */}
         <Button
           variant="primary"
           type="submit"
@@ -71,8 +71,6 @@ export default function CreateCourse(props) {
         >
           Create Course
         </Button>
-
-        {/*  displaying a message if course has been added successfully or not */}
         {addCourse ? (
           <div>
             <p className="text-success">Course Added!</p>

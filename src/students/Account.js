@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { Col, Row, Container } from "react-bootstrap";
 import { useLocation, useNavigate } from "react-router-dom";
 import NavBar from "../components/NavBar";
 import "../css/Account.css";
@@ -25,7 +26,6 @@ const Account = (props) => {
   console.log(configuration);
   axios(configuration)
     .then((result) => {
-      console.log(result);
       setFirstName(result.data.firstName);
       setLastName(result.data.lastName);
       setPronouns(result.data.pronouns);
@@ -42,12 +42,16 @@ const Account = (props) => {
     });
 
   return (
-    <div id="Account">
-      <div id="page-wrap">
+    // <div id="Account">
+    //   <div id="page-wrap">
+    <Container>
+      <Row>
         <NavBar></NavBar>
-        <h2>
+        </Row>
+        <Col>
+        <h1>
           Welcome {firstName} {lastName}!
-        </h2>
+        </h1>
         <div>
           <h2>Your information</h2>
           <h4>Username: {userName}</h4>
@@ -69,8 +73,10 @@ const Account = (props) => {
           <h4> Gender Preference: {genderPreference}</h4>
           <h4> Bio: {bio}</h4>
         </div>
-      </div>
-    </div>
+        </Col>
+      {/* </div>
+    </div> */}
+    </Container>
   );
 };
 export default Account;

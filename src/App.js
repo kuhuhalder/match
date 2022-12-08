@@ -11,7 +11,6 @@ import Profile from "./students/Profile";
 import Account from "./students/Account";
 import Match from "./students/Match";
 import ForgotPass from "./students/ForgotPass";
-import ViewProfile from "./students/ViewProfile"
 import ViewRequests from "./students/ViewRequests"
 import ViewAccount from "./admin/ViewAccount";
 import ViewAllStudents from "./admin/ViewAllStudents"
@@ -25,6 +24,8 @@ import CreateCourse from "./admin/CreateCourse";
 import EditProfile from "./admin/EditProfile"
 import ViewProfileRequests from "./students/ViewProfileRequests";
 import ViewProfileStudyBuddies from "./students/ViewProfileStudyBuddies";
+import ViewProfileMatches from "./students/ViewProfileMatches";
+import AboutUs from "./AboutUs";
 const App = () => {
   return (
     <Container>
@@ -38,13 +39,14 @@ const App = () => {
     <Router>
     <Routes>
     <Route exact path="/" element={<Home />} />
+    <Route exact path="/home" element={<AboutUs />} />
     <Route exact path="/login" element={<Login />} />
     <Route exact path="/register" element={<Register />} />
     <Route exact path="/profile" element={<Profile />} />
     <Route exact path="/account" element={<Account />} />
     <Route exact path="/matches" element={<Match/>} />
     <Route exact path="/forgotpass" element={<ForgotPass/>} />
-    <Route exact path="/viewprofile" element={<ViewProfile/>} />
+    <Route exact path="/viewprofilematches" element={<ViewProfileMatches/>} />
     <Route exact path="/viewrequests" element={<ViewRequests/>} />
     <Route exact path="/viewstudybuddies" element={<ViewStudyBuddies/>} />
     <Route exact path="/viewprofilerequests" element={<ViewProfileRequests/>} />

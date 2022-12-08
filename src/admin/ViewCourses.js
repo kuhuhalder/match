@@ -4,11 +4,13 @@ import { Container, Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Table from "react-bootstrap/Table";
 import { useLocation, useNavigate } from "react-router-dom";
+// ViewCourses component is to view all the courses.
 function ViewCourses() {
   const navigate = useNavigate();
   const { state } = useLocation();
   const [ids, setIds] = useState([]);
   const [del, setDelete] = useState(false);
+  const [userName, setUserName] = useState(state.userName);
 
   Axios.get("http://localhost:8080/api/students/getAllCourses")
     .then(function (result) {
@@ -34,6 +36,14 @@ function ViewCourses() {
       <Row>
         <Container>
           <h1> Course List</h1>
+          <Button
+            type="submit"
+            onClick={() =>
+              navigate("/viewaccount", { state: { userName: userName } })
+            }
+          >
+            Go back to Account
+          </Button>
 
           <Table striped bordered hover>
             <thead>

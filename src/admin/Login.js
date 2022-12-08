@@ -1,16 +1,15 @@
-import React, { useState } from "react";
-import { Form, Button } from "react-bootstrap";
 import axios from "axios";
-import { Navigate, useNavigate, Link } from "react-router-dom";
-import Login from "../students/Login";
-
+import React, { useState } from "react";
+import { Button, Form } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
+// LoginAdmin component is to validate an admin's login information
 export default function LoginAdmin(props) {
   const navigate = useNavigate();
   const [wrong, setWrong] = useState(false);
   const [userName, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [login, setLogin] = useState(false);
-
+  // handleSubmit function is to call the validate API to validate an admin's login information
   const handleSubmit = (e) => {
     e.preventDefault();
     const configuration = {
@@ -42,9 +41,9 @@ export default function LoginAdmin(props) {
   } else if (!userName.endsWith("@match.com")) {
     <p className="text-danger">Please use a valid @match.com email address!</p>;
   }
-
+  // handleForgotPassword function is to redirect to forgotPass and change an admin's password
   const handleForgotPassword = (e) => {
-    navigate("/forgotpass", { state: { id: userName, userName: userName } });
+    navigate("/forgotpass", { state: { id: userName, userName: userName, isAdmin:1 } });
   };
   if (wrong) {
     return (

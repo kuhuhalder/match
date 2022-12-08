@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
+// RegisterAdmin component is to register/ create a new account for an admin
 export default function RegisterAdmin(props) {
   const navigate = useNavigate();
   const [userName, setEmail] = useState("");
@@ -12,7 +13,7 @@ export default function RegisterAdmin(props) {
   const [lastName, setLastName] = useState(null);
   const [register, setRegister] = useState(false);
   const [accExists, setAccExists] = useState(false);
-
+  // handleRegister function is to call the add API to create an account for admin
   const handleRegister = (e) => {
     e.preventDefault();
     const configuration = {
@@ -75,7 +76,7 @@ export default function RegisterAdmin(props) {
   }
 
   return (
-    <>
+    <div>
       <h2>Create an Account</h2>
       <Form onSubmit={(e) => handleRegister(e)}>
         <Form.Group controlId="formBasicEmail">
@@ -139,6 +140,6 @@ export default function RegisterAdmin(props) {
       </Form>
 
       <Link to="/loginadmin">Already have an account? Click here!</Link>
-    </>
+    </div>
   );
 }

@@ -42,7 +42,7 @@ export default function Login(props) {
   }
 
   const handleForgotPassword = (e) => {
-    navigate("/forgotpass", { state: { id: userName, userName: userName } });
+    navigate("/forgotpass", { state: { id: userName, userName: userName, isAdmin:0 } });
   };
   
   if (wrong) {

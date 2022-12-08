@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Container, Table, Button } from "react-bootstrap";
 import { useLocation, useNavigate } from "react-router-dom";
 import NavBar from "../components/NavBar";
+// ViewStudyBuddies component is to view the list of confirmed matches/ study buddies for the current logged in user
 const ViewStudyBuddies = (props) => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -26,7 +27,7 @@ const ViewStudyBuddies = (props) => {
       console.log(error);
       error = new Error();
     });
-
+  // handleViewProfile function to redirect the user to view the profile of the student who sent the request
   const handleViewProfile = (e) => {
     navigate("/viewprofilestudybuddies", { state: { userName: e, loggedInUser:location.state.userName} });
   };
@@ -46,12 +47,14 @@ const ViewStudyBuddies = (props) => {
             return (
               <tr key={key}>
                 <td>{val} and you are study buddies. Chat with them!</td>
+                <td>
                 <Button
                   type="submit"
                   onClick={() => handleViewProfile(val)}
                 >
                   View their Profile
                 </Button>
+                </td>
               </tr>
             );
           })}

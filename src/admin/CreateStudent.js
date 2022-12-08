@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-
-export default function Register(props) {
+import NavBarAdmin from "../components/NavBarAdmin";
+// CreateStudent component gives admin the functionality to create a new student account
+export default function CreateStudent(props) {
   const navigate = useNavigate();
   const [userName, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -12,7 +13,7 @@ export default function Register(props) {
   const [password, setPassword] = useState("");
   const [isAdmin, setIsAdmin] = useState(0);
   const [register, setRegister] = useState(false);
-
+  // handleRegister function calls the add API to create a student.
   const handleRegister = (e) => {
     e.preventDefault();
     const configuration = {
@@ -66,8 +67,9 @@ export default function Register(props) {
   }
 
   return (
-    <>
-      <h2>Create an Account</h2>
+    <div>
+      <NavBarAdmin></NavBarAdmin>
+      <h2>Create a Student Account</h2>
       <Form onSubmit={(e) => handleRegister(e)}>
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
@@ -123,6 +125,6 @@ export default function Register(props) {
           Register
         </Button>
       </Form>
-    </>
+    </div>
   );
 }
