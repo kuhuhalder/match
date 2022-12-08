@@ -11,6 +11,7 @@ function UpdateProfile(props) {
   const [userName, setUserName] = useState(location.state.userName);
   const [firstName, setFirstName] = useState(location.state.firstName);
   const [lastName, setLastName] = useState(location.state.lastName);
+  const [isAdmin, setIsAdmin] = useState(1);
   const [register, setRegister] = useState(false);
   // handleSubmit function is to call the update API to update the admin's information
   const handleSubmit = (e) => {
@@ -23,6 +24,7 @@ function UpdateProfile(props) {
         userName,
         firstName,
         lastName,
+        isAdmin,
       },
     };
     console.log(configuration);

@@ -62,6 +62,7 @@ export default function LoginAdmin(props) {
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control
+            required
             type="email"
             name="email"
             value={userName}
@@ -79,6 +80,7 @@ export default function LoginAdmin(props) {
         <Form.Group controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
           <Form.Control
+          required
             type="password"
             name="password"
             value={password}

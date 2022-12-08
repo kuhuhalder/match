@@ -82,9 +82,9 @@ function Profile(props) {
       <h4>
         Welcome {firstName} {lastName}!
       </h4>
-      <div>
+      <h5>
         Please fill out your preferences so that we can get your matches in!
-      </div>
+      </h5>
       <Form onSubmit={(e) => handleSubmit(e)}>
         <Form.Group className="mb-3" controlId="formFirstName">
           <Form.Label required>First Name</Form.Label>
@@ -134,6 +134,7 @@ function Profile(props) {
 
         <Form.Group className="mb-3" controlId="formCourseName">
           <Form.Label>Courses You Want Matches for</Form.Label>
+          <p>Previous Course Selections will be removed</p>
           <Form.Select
             defaultValue={""}
             onChange={(e) =>
@@ -199,6 +200,7 @@ function Profile(props) {
             onChange={(e) => setGenderPreference(e.target.value)}
           >
             <option value=""> Select Gender Preferences </option>
+            <option value ="No Preferences">No Preferences</option>
             <option value="Female">Female </option>
             <option value="Male"> Male </option>
             <option value="Non-binary">Non-binary </option>

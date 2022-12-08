@@ -9,7 +9,8 @@ function EditProfile(props) {
   const navigate = useNavigate();
   const [loggedInUser, setLoggedInUser] = useState(location.state.loggedInUser);
   const [id, setId] = useState(location.state.userName);
-  const [userName, setUserName] = useState(location.state.userName);
+  const [userName, setUserName] = useState(location.state.loggedInUser);
+  const [userName2, setUserName2] = useState(location.state.userName);
   const [isAdmin, setIsAdmin] = useState(0);
   const [firstName, setFirstName] = useState(null);
   const [lastName, setLastName] = useState(null);
@@ -43,7 +44,7 @@ function EditProfile(props) {
       url: "http://localhost:8080/api/students/update",
       data: {
         id,
-        userName,
+        userName2,
         firstName,
         lastName,
         pronouns,
@@ -77,7 +78,7 @@ function EditProfile(props) {
   return (
     <div>
       <NavBarAdmin></NavBarAdmin>
-      <h4>Edit {userName}!</h4>
+      <h4>Edit {userName2}!</h4>
       <Form onSubmit={(e) => handleSubmit(e)}>
         <Form.Group className="mb-3" controlId="formFirstName">
           <Form.Label required>First Name</Form.Label>

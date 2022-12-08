@@ -31,6 +31,7 @@ export default function Register(props) {
     if (userName == "" || password == "" || firstName == "" || lastName == "") {
       setEmptyFields(true);
     }
+    
     e.preventDefault();
     const configuration = {
       method: "post",
@@ -114,7 +115,7 @@ export default function Register(props) {
       <h2>Create an Account</h2>
 
       <Form onSubmit={(e) => handleRegister(e)}>
-        <Form.Group controlId="formBasicEmail">
+        <Form.Group controlId="formBasicEmail" required>
           <Form.Label>Email address</Form.Label>
           <p>Your email address is your username</p>
           <Form.Control
@@ -129,8 +130,13 @@ export default function Register(props) {
             placeholder="Enter email"
           />
         </Form.Group>
+        {userName.endsWith("@match.com") ? (
+          <p className="text-danger">Please register as an admin instead with the @match.com email address or use a valid email address.</p>
+        ) : (
+          <p className="text-success">Email address is valid!</p>
+        )}
 
-        <Form.Group className="mb-3" controlId="formFirstName">
+        <Form.Group className="mb-3" controlId="formFirstName" required>
           <Form.Label>First Name</Form.Label>
           <Form.Control
           required
@@ -140,6 +146,7 @@ export default function Register(props) {
             onChange={(e) => setFirstName(e.target.value)}
             placeholder="Enter first name"
           />
+          
         </Form.Group>
         <Form.Group className="mb-3" controlId="formLastName">
           <Form.Label>Last Name</Form.Label>

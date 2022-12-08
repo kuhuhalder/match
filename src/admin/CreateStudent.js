@@ -16,9 +16,33 @@ export default function CreateStudent(props) {
   const [isAdmin, setIsAdmin] = useState(0);
   const [register, setRegister] = useState(false);
   const [userNameExists, setAccExists] = useState(false)
+  const [emptyFields, setEmptyFields] = useState(false);
+  const [validated, setValidated] = useState(false);
   // handleRegister function calls the add API to create a student.
   const handleRegister = (e) => {
     e.preventDefault();
+    if (email == "" || password == "" || firstName == "" || lastName == "") {
+      setEmptyFields(true);
+    }
+    const form = e.currentTarget;
+    if (form.checkValidity() === false) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      
+    }
+
+    else{setValidated(true);
+
+    if (email.endsWith("@match.com")) {
+      <div>
+        <p className="text-danger">
+          Please register as an admin instead with the @match.com email address or use a valid email address.
+        </p>
+        <CreateStudent></CreateStudent>
+      </div>
+      return
+    }
     const configuration = {
       method: "post",
       url: "http://localhost:8080/api/students/add",
@@ -29,6 +53,7 @@ export default function CreateStudent(props) {
         isAdmin,
       },
     };
+    
     console.log(configuration);
     axios(configuration)
       .then((result) => {
@@ -39,6 +64,7 @@ export default function CreateStudent(props) {
         error = new Error();
       });
   };
+}
 
   if (userNameExists){
   return(
@@ -55,21 +81,22 @@ export default function CreateStudent(props) {
         details.
       </p>
     </div>
-    navigate("/editprofile", { state: { userName: email } });
-  } else if (email.endsWith("@match.com")) {
-    <div>
-      <p className="text-danger">
-        Please register as an admin instead with the @match.com email address or use a valid email address.
-      </p>
-      <CreateStudent></CreateStudent>
-    </div>;
+    navigate("/editprofile", { state: { userName: email, loggedInUser:userName } });
+  } 
+  if (emptyFields) {
+    return (
+      <div>
+        <p className="text-danger">Please fill out the all the fields.</p>
+        <CreateStudent></CreateStudent>
+      </div>
+    );
   }
 
   return (
     <div>
       <NavBarAdmin></NavBarAdmin>
       <h2>Create a Student Account</h2>
-      <Form onSubmit={(e) => handleRegister(e)}>
+      <Form noValidate validated={validated} onSubmit={(e) => handleRegister(e)}>
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <p>Your email address is your username</p>
@@ -81,13 +108,24 @@ export default function CreateStudent(props) {
               setEmail(e.target.value);
               setId(e.target.value);
             }}
+            required
             placeholder="Enter email"
           />
+           <Form.Control.Feedback type="invalid">
+              Please choose a username.
+            </Form.Control.Feedback>
         </Form.Group>
+        {email.endsWith("@match.com") ? (
+          <p className="text-danger">Please register as an admin instead with the @match.com email address or use a valid email address.</p>
+        ) : (
+          <p className="text-success">Email address is valid!</p>
+        )}
+
 
         <Form.Group className="mb-3" controlId="formFirstName">
           <Form.Label>First Name</Form.Label>
           <Form.Control
+          required
             type="firstName"
             name="firstName"
             value={firstName}
@@ -98,6 +136,7 @@ export default function CreateStudent(props) {
         <Form.Group className="mb-3" controlId="formLastName">
           <Form.Label>Last Name</Form.Label>
           <Form.Control
+          required
             type="lastName"
             name="lastName"
             value={lastName}
@@ -109,6 +148,7 @@ export default function CreateStudent(props) {
         <Form.Group controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
           <Form.Control
+          required
             type="password"
             name="password"
             value={password}

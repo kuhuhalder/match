@@ -10,24 +10,24 @@
     padding: 10px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: top;
     font-family: 'Jost', sans-serif;
 }
 
 .main {
-    width: 350px;
-    height: 500px;
+    /* width: 350px;
+    height: 500px; */
     overflow: hidden;
     border-radius: 10px;
     box-shadow: 5px 20px 50px #000;
 }
-  
+/*   
   .App {
     overflow: hidden;
     background: #fff;
     padding: 50px;
     border-radius: 5px;
-  }
+  } */
   
   .App .title-text {
     display: flex;
@@ -114,6 +114,8 @@
   
   .color-nav {
     background-color: darkblue;
+    position: sticky;
+    top: 0;
   }
 
 
@@ -128,3 +130,4 @@
     background-color: #111;
     color: white;
   }
+

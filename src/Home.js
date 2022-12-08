@@ -8,7 +8,7 @@ const Home = (props) => {
   return (
     <Container>
       <div>
-        <img src={homeImage} alt="homeImage" />;
+        <img src={homeImage} alt="homeImage" />
       </div>
 
       <Row>

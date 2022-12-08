@@ -65,8 +65,8 @@ const ViewAllMatches = (props) => {
   };
 
   return (
-    <>
-      <div className="Match">
+    <div>
+      <div className="ViewMatches">
         <div id="page-wrap">
           <h2> View All Study Buddies</h2>
           <Button
@@ -107,7 +107,7 @@ const ViewAllMatches = (props) => {
           </Table>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 export default ViewAllMatches;

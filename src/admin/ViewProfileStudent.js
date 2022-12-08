@@ -16,14 +16,15 @@ const ViewProfileStudent = (props) => {
   const [bio, setBio] = useState("");
   const [year, setYear] = useState("");
   const [genderPreference, setGenderPreference] = useState(null);
-  const [userName, setUserName] = useState(location.state.userName);
+  const [userName, setUserName] = useState(location.state.loggedInUser);
+  const [userName2, setUserName2] = useState(location.state.userName);
   const [loggedInUser, setLoggedInUser] = useState(location.state.loggedInUser);
   const [password, setPassword] = useState(location.state.password);
   const [del, setDelete] = useState(false);
 
   const configuration = {
     method: "get",
-    url: "http://localhost:8080/api/students/getStudent/" + userName,
+    url: "http://localhost:8080/api/students/getStudent/" + userName2,
   };
   console.log(configuration);
 
@@ -43,37 +44,32 @@ const ViewProfileStudent = (props) => {
       console.log(error);
       error = new Error();
     });
-  
+
   // deleteStudent function allows the admin to delete a student.
   const deleteStudent = (e) => {
     const configuration = {
       method: "delete",
-      url: "http://localhost:8080/api/students/delete/" + userName,
+      url: "http://localhost:8080/api/students/delete/" + userName2,
     };
     console.log(configuration);
     axios(configuration)
       .then((result) => {
         setDelete(true);
 
-        navigate("/viewallstudents",{state:{userName:loggedInUser}});
+        navigate("/viewallstudents", { state: { userName: loggedInUser } });
       })
       .catch((error) => {
         console.log(error);
         error = new Error();
       });
+
   };
-  if (del) {
-    return (
-      <div>
-        <Popup trigger={<Button> Trigger</Button>} position="right center">
-          <div>Do you want to delete this student?</div>
-        </Popup>
-      </div>
-    );
-  }
+
+
+
   // editProfile function allows the admin to edit the profile of a student.
   const editProfile = (e) => {
-    navigate("/editprofile", { state: { userName: e, loggedInUser:loggedInUser } });
+    navigate("/editprofile", { state: { userName: e, loggedInUser: loggedInUser } });
   };
 
   return (
@@ -81,7 +77,7 @@ const ViewProfileStudent = (props) => {
       <div id="ViewProfile">
         <div id="page-wrap">
           <div>
-          <h4> Email address: {userName}</h4>
+            <h4> Email address: {userName2}</h4>
             <h4> First Name: {firstName}</h4>
             <h4> Last Name: {lastName}</h4>
             <h4> Pronouns: {pronouns}</h4>
@@ -95,7 +91,7 @@ const ViewProfileStudent = (props) => {
               Delete Student
             </Button>
 
-            <Button type="submit" onClick={(e) => editProfile(userName)}>
+            <Button type="submit" onClick={(e) => editProfile(userName2)}>
               Edit Profile
             </Button>
           </div>

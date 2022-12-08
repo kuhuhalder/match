@@ -62,6 +62,7 @@ export default function Login(props) {
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control
+          required
             type="email"
             name="email"
             value={userName}
@@ -71,8 +72,9 @@ export default function Login(props) {
         </Form.Group>
 
         <Form.Group controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
+          <Form.Label required>Password</Form.Label>
           <Form.Control
+          required
             type="password"
             name="password"
             value={password}
@@ -106,7 +108,7 @@ export default function Login(props) {
         )}
       </Form>
       <br></br>
-      <Link to="/register">Don't have an account? Register here!</Link>
+      <Link to="/">Don't have an account?  here!</Link>
     </div>
   );
 }
