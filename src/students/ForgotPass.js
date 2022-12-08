@@ -11,6 +11,7 @@ const ForgotPass = (props) => {
   const [password, setPassword] = useState("");
   const [isAdmin, setIsAdmin] = useState(location.state.isAdmin);
   const [passwordReset, setPasswordReset] = useState(false);
+  const [noUsername, setNoUserName] = useState(false)
   //  Function to make an API call to update and update a user's password
   const handleResetPassword = (e) => {
     const configuration = {
@@ -31,6 +32,7 @@ const ForgotPass = (props) => {
       })
       .catch((error) => {
         console.log(error);
+        setNoUserName(true)
         error = new Error();
       });
   };
@@ -64,6 +66,22 @@ const ForgotPass = (props) => {
           }}
         >
           Login
+        </Button>
+      </div>
+    );
+  }
+  if (noUsername){
+    return (
+      <div>
+        <p className="text-danger">Username doesn't exist. Please go back to home</p>
+        <Button
+          variant="primary"
+          type="submit"
+          onClick={() => {
+            navigate("/");
+          }}
+        >
+          Home
         </Button>
       </div>
     );

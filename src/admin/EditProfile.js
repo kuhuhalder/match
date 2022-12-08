@@ -7,6 +7,7 @@ import NavBarAdmin from "../components/NavBarAdmin";
 function EditProfile(props) {
   const location = useLocation();
   const navigate = useNavigate();
+  const [loggedInUser, setLoggedInUser] = useState(location.state.loggedInUser);
   const [id, setId] = useState(location.state.userName);
   const [userName, setUserName] = useState(location.state.userName);
   const [isAdmin, setIsAdmin] = useState(0);
@@ -60,7 +61,7 @@ function EditProfile(props) {
     axios(configuration)
       .then((result) => {
         setRegister(true);
-        navigate("/accountadmin", { state: { userName: userName } });
+        navigate("/viewallstudents", { state: { userName: loggedInUser } });
       })
       .catch((error) => {
         console.log(error);
@@ -78,7 +79,27 @@ function EditProfile(props) {
       <NavBarAdmin></NavBarAdmin>
       <h4>Edit {userName}!</h4>
       <Form onSubmit={(e) => handleSubmit(e)}>
-        <Form.Group className="mb-3" controlId="formPronouns}">
+        <Form.Group className="mb-3" controlId="formFirstName">
+          <Form.Label required>First Name</Form.Label>
+          <Form.Control
+            type="firstName"
+            name="firstName"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            placeholder="Enter or change first name"
+          />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formLastName">
+          <Form.Label>Last Name</Form.Label>
+          <Form.Control
+            type="lastName"
+            name="lastName"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+            placeholder="Enter or change last name"
+          />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formPronouns">
           <Form.Label> Pronouns </Form.Label>
           <Form.Select
             required
@@ -91,7 +112,7 @@ function EditProfile(props) {
             <option value="they/them"> they/them </option>
           </Form.Select>
         </Form.Group>
-        <Form.Group className="mb-3" controlId="formCampus}">
+        <Form.Group className="mb-3" controlId="formCampus">
           <Form.Label> Campus </Form.Label>
           <Form.Select
             required

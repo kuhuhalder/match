@@ -9,8 +9,8 @@ function UpdateProfile(props) {
   const navigate = useNavigate();
   const [id, setId] = useState(location.state.id);
   const [userName, setUserName] = useState(location.state.userName);
-  const [firstName, setFirstName] = useState(null);
-  const [lastName, setLastName] = useState(null);
+  const [firstName, setFirstName] = useState(location.state.firstName);
+  const [lastName, setLastName] = useState(location.state.lastName);
   const [register, setRegister] = useState(false);
   // handleSubmit function is to call the update API to update the admin's information
   const handleSubmit = (e) => {
@@ -39,10 +39,10 @@ function UpdateProfile(props) {
   };
 
   return (
-    <>
-      <h4>Welcome {userName}!</h4>
+    <div>
       <NavBarAdmin></NavBarAdmin>
-      <div>Update your profile!</div>
+      <h2>Welcome {firstName} {lastName}!</h2>
+      <h3>Update your profile!</h3>
       <Form onSubmit={(e) => handleSubmit(e)}>
         <Form.Group controlId="formFirstName">
           <Form.Label>First Name</Form.Label>
@@ -70,7 +70,7 @@ function UpdateProfile(props) {
           </Button>
         </Form.Group>
       </Form>
-    </>
+    </div>
   );
 }
 export default UpdateProfile;

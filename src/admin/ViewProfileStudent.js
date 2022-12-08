@@ -17,6 +17,7 @@ const ViewProfileStudent = (props) => {
   const [year, setYear] = useState("");
   const [genderPreference, setGenderPreference] = useState(null);
   const [userName, setUserName] = useState(location.state.userName);
+  const [loggedInUser, setLoggedInUser] = useState(location.state.loggedInUser);
   const [password, setPassword] = useState(location.state.password);
   const [del, setDelete] = useState(false);
 
@@ -54,7 +55,7 @@ const ViewProfileStudent = (props) => {
       .then((result) => {
         setDelete(true);
 
-        navigate("/viewallstudents");
+        navigate("/viewallstudents",{state:{userName:loggedInUser}});
       })
       .catch((error) => {
         console.log(error);
@@ -72,7 +73,7 @@ const ViewProfileStudent = (props) => {
   }
   // editProfile function allows the admin to edit the profile of a student.
   const editProfile = (e) => {
-    navigate("/editprofile", { state: { userName: e } });
+    navigate("/editprofile", { state: { userName: e, loggedInUser:loggedInUser } });
   };
 
   return (
@@ -80,6 +81,7 @@ const ViewProfileStudent = (props) => {
       <div id="ViewProfile">
         <div id="page-wrap">
           <div>
+          <h4> Email address: {userName}</h4>
             <h4> First Name: {firstName}</h4>
             <h4> Last Name: {lastName}</h4>
             <h4> Pronouns: {pronouns}</h4>

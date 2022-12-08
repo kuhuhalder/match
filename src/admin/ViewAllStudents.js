@@ -11,7 +11,7 @@ const ViewAllStudents = (props) => {
 
   // handleViewProfile function redirects to the profile page of the student.
   const handleViewProfile = (e) => {
-    navigate("/viewprofilestudent", { state: { userName: e } });
+    navigate("/viewprofilestudent", { state: { userName: e, loggedInUser: userName } });
   };
   const configuration = {
     method: "get",

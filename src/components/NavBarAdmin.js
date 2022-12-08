@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { Nav, Navbar, Container } from "react-bootstrap";
-import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
+import React, { useState } from "react";
+import { Container, Nav, Navbar } from "react-bootstrap";
+import { useLocation, useNavigate } from "react-router-dom";
 const NavBarAdmin = (props) => {
   const { state } = useLocation();
   const navigate = useNavigate();
@@ -34,10 +34,10 @@ const NavBarAdmin = (props) => {
   };
 
   const handleViewMatches = (e) => {
-    Navigate("/viewallmatches", {state:{userName:userName}});
+    navigate("/viewallmatches", {state:{userName:userName}});
   };
   const handleViewStudents = (e) => {
-    Navigate("/viewallstudents");
+    navigate("/viewallstudents", {state:{userName:userName}});
   };
 
   const logout = () => {
@@ -77,7 +77,7 @@ const NavBarAdmin = (props) => {
             href="/updateprofile"
             onClick={(e) => {
               navigate("/updateprofile", {
-                state: { id: userName, userName: userName },
+                state: { id: userName, userName: userName, firstName:firstName, lastName:lastName },
               });
             }}
           >
@@ -108,7 +108,7 @@ const NavBarAdmin = (props) => {
           <Nav.Link
             href="/viewcourses"
             onClick={(e) => {
-              navigate("/viewcourses");
+              navigate("/viewcourses", {state: { id: userName, userName: userName }});
             }}
           >
             View All Courses

@@ -10,6 +10,7 @@ export default function CreateCourse(props) {
   const [courseName, setCourseName] = useState("");
   const [id, setId] = useState("");
   const [addCourse, setAddCourse] = useState(false);
+  const [userName, setUserName] = useState(state.userName)
   // handleAddCourse function is to call the addCourse API to add the course name entered by the admin
   const handleAddCourse = (e) => {
     e.preventDefault();

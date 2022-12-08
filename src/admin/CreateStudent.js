@@ -1,18 +1,21 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import NavBarAdmin from "../components/NavBarAdmin";
 // CreateStudent component gives admin the functionality to create a new student account
 export default function CreateStudent(props) {
   const navigate = useNavigate();
-  const [userName, setEmail] = useState("");
+  const location = useLocation()
+  const [userName, setUsername] = useState(location.state.userName);
+  const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
   const [isAdmin, setIsAdmin] = useState(0);
   const [register, setRegister] = useState(false);
+  const [userNameExists, setAccExists] = useState(false)
   // handleRegister function calls the add API to create a student.
   const handleRegister = (e) => {
     e.preventDefault();
@@ -21,7 +24,7 @@ export default function CreateStudent(props) {
       url: "http://localhost:8080/api/students/add",
       data: {
         id,
-        userName,
+        userName:email,
         password,
         isAdmin,
       },
@@ -32,37 +35,33 @@ export default function CreateStudent(props) {
         setRegister(true);
       })
       .catch((error) => {
+        setAccExists(true)
         error = new Error();
       });
   };
-  if (register && !userName.endsWith("@match.com")) {
+
+  if (userNameExists){
+  return(
+      <div>
+        <p className="text-danger">Username already exists. Use a different email address/ username</p>
+        <CreateStudent></CreateStudent>
+      </div>
+  )
+  }
+  if (register && !email.endsWith("@match.com")) {
     <div>
       <p className="text-success">
-        You Are Registered Successfully. Click here to add the rest of your
-        details
+        Student is registered successfully. Click here to add the rest of the profile
+        details.
       </p>
-    </div>;
-    navigate("/editprofile", { state: { userName: userName } });
-  } else if (userName.endsWith("@match.com")) {
+    </div>
+    navigate("/editprofile", { state: { userName: email } });
+  } else if (email.endsWith("@match.com")) {
     <div>
       <p className="text-danger">
-        Please register as an admin instead with the @match.com email address
+        Please register as an admin instead with the @match.com email address or use a valid email address.
       </p>
-    </div>;
-  } else {
-    <div>
-      <p className="text-danger">Username already exists. Login instead</p>
-      {
-        <Button
-          variant="primary"
-          type="submit"
-          onClick={(e) => {
-            navigate("/login");
-          }}
-        >
-          Login
-        </Button>
-      }
+      <CreateStudent></CreateStudent>
     </div>;
   }
 
@@ -77,7 +76,7 @@ export default function CreateStudent(props) {
           <Form.Control
             type="email"
             name="email"
-            value={userName}
+            value={email}
             onChange={(e) => {
               setEmail(e.target.value);
               setId(e.target.value);
