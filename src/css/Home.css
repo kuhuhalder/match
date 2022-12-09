@@ -2,8 +2,7 @@
  html, body {
     display: grid;
     height: 100%;
-    /* place-items: center; */
-    background-color: cornflowerblue;
+    background-color:#f9e1e0;
     font-family: 'Times New Roman', Times, serif;
   }
   #page-wrap {
@@ -20,8 +19,6 @@
 }
 
 .main {
-    /* width: 350px;
-    height: 500px; */
     overflow: hidden;
     border-radius: 10px;
     box-shadow: 5px 20px 50px #000;
@@ -107,6 +104,15 @@
       transition: .2s ease-in;
       cursor: pointer;
   }
+
+  .btn-custom {
+    background: #5d5be7;
+    color:#fff
+    
+  }
+  .btn-custom:hover{
+    background: #957dad;
+  }
   
   
   .banner {
@@ -118,22 +124,24 @@
     place-items: center;
  }
   
-  .color-nav {
-    background-color: darkblue;
-    position: sticky;
-    top: 0;
-  }
-
-
-  .color-nav a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
+ .color-nav {
+  background-color: #bc85a3;
+  position: sticky;
+  top: 0;
+  border-radius: 20px;   
 }
-  .color-nav a:hover {
-    background-color: #111;
-    color: white;
-  }
+
+
+.color-nav a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+.color-nav a:hover {
+  background-color: #957dad;
+  color: white;
+  border-radius: 20px; 
+}
 

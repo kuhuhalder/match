@@ -31,7 +31,7 @@ const App = () => {
     <Container>
       <Row>
         <Col className="text-center">
-          <h1>MATCH</h1>
+          <h1><b>MATCH</b></h1>
         </Col>
       </Row>
 

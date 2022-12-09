@@ -12,7 +12,7 @@ const Home = (props) => {
       </div>
       <Row>
         <Button
-          variant="primary"
+          variant="custom"
           type="submit"
           onClick={() => {
             navigate("/home");
