@@ -4,6 +4,8 @@
     height: 100%;
     background-color:#f9e1e0;
     font-family: 'Times New Roman', Times, serif;
+
+
   }
   #page-wrap {
     text-align: center;
@@ -23,13 +25,14 @@
     border-radius: 10px;
     box-shadow: 5px 20px 50px #000;
 }
-/*   
+
+  
   .App {
     overflow: hidden;
     background: #fff;
     padding: 50px;
     border-radius: 5px;
-  } */
+  }
   
   .App .title-text {
     display: flex;

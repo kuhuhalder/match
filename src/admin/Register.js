@@ -139,7 +139,7 @@ export default function RegisterAdmin(props) {
         </Button>
       </Form>
 
-      <Link to="/loginadmin">Already have an account? Click here!</Link>
+      <Link to="/loginadmin">Already have an account? Click here to login!</Link>
     </div>
   );
 }

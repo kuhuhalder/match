@@ -1,11 +1,14 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Alert, Button, Container, Table } from "react-bootstrap";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 import NavBar from "../components/NavBar";
+import Confetti from 'react-confetti'
+import useWindowSize from 'react-use/lib/useWindowSize'
 // ViewRequests component is to view the match requests sent by other students
 const ViewRequests = (props) => {
   const { state } = useLocation();
+  const { width, height } = useWindowSize()
   const navigate = useNavigate();
   const [userName, setUserName] = useState(state.userName);
   const [ids, setIds] = useState([]);
@@ -46,7 +49,30 @@ const ViewRequests = (props) => {
       .catch((error) => {
         error = new Error();
       });
+      
   };
+  if(studyBuddies)
+  {
+    return(
+      <div>
+    <Confetti
+      width={width}
+      height={height}
+    />
+    <Alert>
+          You have accepted the match.
+        </Alert>
+        <Link
+          to="/viewrequests"
+          state={{
+            userName: userName,
+          }}
+        >
+          Go back to requests.
+        </Link>
+    </div>
+    );
+  }
   // handleDenyMatch function is to deny the match request sent by a student
   const handleDenyMatch = (e) => {
     const configuration = {
@@ -65,7 +91,7 @@ const ViewRequests = (props) => {
   };
 
   if (deleteRequest) {
-    setDeleteRequest(false);
+    // setDeleteRequest(false);
     return (
       <div>
         <Alert>Match request deleted</Alert>
@@ -83,10 +109,10 @@ const ViewRequests = (props) => {
     );
   }
 
-  return (
+  return (  
     <Container>
       <NavBar></NavBar>
-      <h2>View your Requests</h2>
+      <h2>View your Requests!</h2>
       <Table striped hover>
         <thead>
           <tr>

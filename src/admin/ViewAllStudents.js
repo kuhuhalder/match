@@ -61,7 +61,7 @@ const ViewAllStudents = (props) => {
         <Modal.Header closeButton>
           <Modal.Title>Delete Student</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Do you want to delete this student?</Modal.Body>
+        <Modal.Body>Are you sure you want to delete this student?</Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             No

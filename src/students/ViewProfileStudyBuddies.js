@@ -45,23 +45,46 @@ const ViewProfileStudyBuddies = (props) => {
     <div id="ViewProfile">
       <div id="page-wrap">
         <div>
-          <h4> Username: {userName}</h4>
-          <h4> First Name: {firstName}</h4>
-          <h4> Last Name: {lastName}</h4>
-          <h4> Pronouns: {pronouns}</h4>
-          <h4> Campus: {campus}</h4>
           <h4>
             {" "}
-            Courses:
-            {course.map((val) => (
-              <ul>
-                <li>- {val}</li>
-              </ul>
-            ))}
+            Username: <b>{userName}</b>
           </h4>
-          <h4> Major: {major}</h4>
-          <h4> Year: {year}</h4>
-          <h4> Gender Preference: {genderPreference}</h4>
+          <h4>
+            {" "}
+            First Name: <b>{firstName} </b>
+          </h4>
+          <h4>
+            {" "}
+            Last Name: <b>{lastName}</b>
+          </h4>
+          <h4> Pronouns: {pronouns}</h4>
+          <h4>
+            {" "}
+            Campus: <b>{campus}</b>
+          </h4>
+          <h4>
+            <b>
+              {" "}
+              Courses:
+              {course.map((val) => (
+                <ul>
+                  <li>- {val}</li>
+                </ul>
+              ))}
+            </b>
+          </h4>
+          <h4>
+            {" "}
+            Major: <b>{major}</b>
+          </h4>
+          <h4>
+            {" "}
+            Year: <b>{year}</b>
+          </h4>
+          <h4>
+            {" "}
+            Gender Preferences: <b>{genderPreference}</b>
+          </h4>
           <h4> Bio: {bio}</h4>
           <Button
             type="submit"

@@ -109,7 +109,7 @@ export default function Login(props) {
         )}
       </Form>
       <br></br>
-      <Link to="/">Don't have an account? here!</Link>
+      <Link to="/register">Don't have an account? You can login here instead!</Link>
     </div>
   );
 }

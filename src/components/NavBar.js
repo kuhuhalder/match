@@ -93,7 +93,7 @@ const NavBar = (props) => {
   return (
     <Navbar className="color-nav" variant="light">
       <Container>
-        <Navbar.Brand href="/home">
+        <Navbar.Brand href="/home" className= "justify-content-start">
           <img
             alt=""
             src={logo}
@@ -104,24 +104,24 @@ const NavBar = (props) => {
           Match
         </Navbar.Brand>
 
-        <Nav className="me-auto">
+        <Nav className="justify-content-center">
           <Nav.Link href="/account" onClick={(e) => handleAccount(e)}>
             Account
           </Nav.Link>
           <Nav.Link href="/profile" onClick={(e) => handleUpdate(e)}>
             Update Profile
           </Nav.Link>
+          <Nav.Link href="/matches" onClick={(e) => handleMatch(e)}>
+            View Potential Matches
+          </Nav.Link>
+          <Nav.Link href="/viewrequests" onClick={(e) => handleRequests(e)}>
+            View Requests
+          </Nav.Link>
           <Nav.Link
             href="/viewstudybuddies"
             onClick={(e) => handleViewStudyBuddies(e)}
           >
             View Study Buddies
-          </Nav.Link>
-          <Nav.Link href="/matches" onClick={(e) => handleMatch(e)}>
-            View Matches
-          </Nav.Link>
-          <Nav.Link href="/viewrequests" onClick={(e) => handleRequests(e)}>
-            View Requests
           </Nav.Link>
         </Nav>
 

@@ -24,6 +24,9 @@ function Profile(props) {
   const [register, setRegister] = useState(false);
   const [courseIds, setCourseIds] = useState([]);
   const listItems = courseIds.map((number) => <li>{number.courseName}</li>);
+
+ 
+
   // handleSubmit function is to call the update API and update the critera and information of the logged in user.
   const handleSubmit = (e) => {
     e.preventDefault();

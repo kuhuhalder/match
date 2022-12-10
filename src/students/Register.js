@@ -15,6 +15,7 @@ export default function Register(props) {
   const [userNameExists, setUserNameExists] = useState(false);
   const { state } = useLocation();
   const [emptyFields, setEmptyFields] = useState(false);
+  const [invalidFields, setInvalidFields] = useState(false)
   // handleUpdateProfile function is to redirect to the update profile page
   const handleUpdateProfile = (e) => {
     navigate("/profile", {
@@ -30,6 +31,9 @@ export default function Register(props) {
   const handleRegister = (e) => {
     if (userName == "" || password == "" || firstName == "" || lastName == "") {
       setEmptyFields(true);
+    }
+    if (userName.endsWith("@match.com") || userName.endsWith("scarletmail.rutgers.edu") ){
+      invalidFields(true)
     }
 
     e.preventDefault();
@@ -63,6 +67,14 @@ export default function Register(props) {
       </div>
     );
   }
+  if(invalidFields){
+    return (
+      <div>
+        <p className="text-danger">Please register with a @scarletmail.rutgers.edu email address only.</p>
+        <Register></Register>
+      </div>
+    );
+  }
 
   if (userNameExists) {
     return (
@@ -82,7 +94,7 @@ export default function Register(props) {
       </div>
     );
   }
-  if (register && !userName.endsWith("@match.com")) {
+  if (register && !userName.endsWith("@match.com") && userName.endsWith("scarletmail.rutgers.edu")) {
     return (
       <div>
         <p className="text-success">
@@ -183,7 +195,7 @@ export default function Register(props) {
         </Button>
       </Form>
       <br></br>
-      <Link to="/login">Already have an account? Click here!</Link>
+      <Link to="/login">Already have an account? Click here to login!</Link>
     </Container>
   );
 }

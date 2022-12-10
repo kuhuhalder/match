@@ -74,7 +74,7 @@ export default function LoginAdmin(props) {
         </Form.Group>
 
         {!userName.endsWith("@match.com") ? (
-          <p className="text-danger">Please register with a @match.com email</p>
+          <p className="text-danger">Please login with a @match.com email</p>
         ) : (
           <p className="text-success">Valid email address!</p>
         )}
@@ -120,7 +120,7 @@ export default function LoginAdmin(props) {
         )}
       </Form>
 
-      <Link to="/registeradmin">Don't have an account? Register here!</Link>
+      <Link to="/registeradmin">Don't have an account? You can create an account here!</Link>
     </div>
   );
 }

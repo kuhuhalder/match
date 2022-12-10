@@ -48,7 +48,7 @@ const Match = (props) => {
       <Col>
         <Container>
           <h2>
-            {firstName} {lastName}, View Your Matches!
+            {firstName} {lastName}, View Your Potential Matches!
           </h2>
           <Table>
             <thead>
