@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "./css/Home.css";
 import banner from "./images/banner.jpeg";
 /**
  * Home component to display the home page.
- * @param {*} props 
+ * @param {*} props
  * @returns React component
  */
 const Home = (props) => {
@@ -56,7 +56,7 @@ const Home = (props) => {
             variant="primary"
             type="submit"
             onClick={() => {
-              navigate("/registeradmin");
+              navigate("/registerverify");
             }}
           >
             Admin Register
@@ -66,7 +66,7 @@ const Home = (props) => {
             variant="primary"
             type="submit"
             onClick={() => {
-              navigate("/loginadmin");
+              navigate("/loginverify");
             }}
           >
             Admin Login

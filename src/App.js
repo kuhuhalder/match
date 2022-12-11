@@ -28,6 +28,8 @@ import ViewProfileMatches from "./students/ViewProfileMatches";
 import ViewRequestsSent from "./students/ViewRequestsSent";
 import ViewProfileRequestsSent from "./students/ViewProfileRequestsSent";
 import AboutUs from "./AboutUs";
+import LoginVerify from "./admin/LoginVerify";
+import RegisterVerify from "./admin/RegisterVerify";
 /**
  * App component that renders the entire application.
  * @param {*} props 
@@ -84,6 +86,8 @@ const App = () => {
             />
 
             <Route exact path="/registeradmin" element={<RegisterAdmin />} />
+            <Route exact path="/registerverify" element={<RegisterVerify />} />
+            <Route exact path="/loginverify" element={<LoginVerify />} />
             <Route
               exact
               path="/viewprofilestudent"
