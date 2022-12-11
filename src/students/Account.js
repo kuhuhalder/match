@@ -4,7 +4,11 @@ import { Col, Row, Container } from "react-bootstrap";
 import { useLocation, useNavigate } from "react-router-dom";
 import NavBar from "../components/NavBar";
 import "../css/Account.css";
-// Account component to display the current logged in user's information
+/**
+ * Account component to display the current logged in user's information.
+ * @param {*} props 
+ * @returns React component
+ */
 const Account = (props) => {
   const location = useLocation();
   const navigate = useNavigate();

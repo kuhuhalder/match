@@ -1,15 +1,6 @@
-import { render, screen, fireEvent } from "@testing-library/react";
-import { BrowserRouter, Router, Routes, Route } from "react-router-dom";
+import { fireEvent, render, screen } from "@testing-library/react";
 
 import App from "./App";
-import Home from "./Home";
-import Login from "./students/Login";
-import Register from "./students/Register";
-import RegisterAdmin from "./admin/Register";
-import LoginAdmin from "./admin/Login";
-import Profile from "./students/Profile";
-import Account from "./students/Account";
-import Match from "./students/Match";
 
 //a test suite has been created to test the test cases
 describe("button click events on home page", () => {

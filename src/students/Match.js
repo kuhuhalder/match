@@ -4,7 +4,11 @@ import { Button, Col, Container, Table } from "react-bootstrap";
 import { useLocation, useNavigate } from "react-router-dom";
 import NavBar from "../components/NavBar";
 import "../css/Match.css";
-// Match component to display a list of all possible matches determined by our matching algorithm
+/**
+ * Match component to display a list of all possible matches determined by our matching algorithm.
+ * @param {*} props 
+ * @returns React component
+ */
 const Match = (props) => {
   const location = useLocation();
   const navigate = useNavigate();

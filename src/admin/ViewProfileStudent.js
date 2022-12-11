@@ -2,7 +2,11 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import { useLocation, useNavigate } from "react-router-dom";
-// ViewProfileStudent component allows the admin to view the profile information of a student.
+/**
+ * ViewProfileStudent component allows the admin to view the profile information of a student.
+ * @param {*} props 
+ * @returns React component
+ */
 const ViewProfileStudent = (props) => {
   const location = useLocation();
   const navigate = useNavigate();

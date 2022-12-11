@@ -2,7 +2,11 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
-//  Login component is to verify if an username exists and if the password is correct
+/**
+ * Login component is to validate a student's login information.
+ * @param {*} props 
+ * @returns React component
+ */
 export default function Login(props) {
   const navigate = useNavigate();
   const [wrong, setWrong] = useState(false);
@@ -130,7 +134,7 @@ export default function Login(props) {
       <br></br>
 
       <Button
-        variant="secondary"
+        variant="primary"
         onClick={() => {
           handleForgotPassword();
         }}

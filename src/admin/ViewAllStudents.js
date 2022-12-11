@@ -2,7 +2,11 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Button, Modal, Table } from "react-bootstrap";
 import { useLocation, useNavigate } from "react-router-dom";
-// ViewAllStudents component is to view all the students in the system.
+/**
+ * ViewAllStudents component is to view all the students in the system.
+ * @param {*} props 
+ * @returns React component
+ */
 const ViewAllStudents = (props) => {
   const location = useLocation();
   const navigate = useNavigate();

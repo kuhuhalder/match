@@ -3,7 +3,11 @@ import React, { useState } from "react";
 import { Button, Container, Table } from "react-bootstrap";
 import { useLocation, useNavigate } from "react-router-dom";
 import NavBar from "../components/NavBar";
-// ViewRequests component is to view the match requests sent by other students
+/**
+ * ViewRequestsSent component is to view the match requests sent by the logged in student.
+ * @param {*} props 
+ * @returns React component
+ */
 const ViewRequestsSent = (props) => {
   const { state } = useLocation();
   const navigate = useNavigate();

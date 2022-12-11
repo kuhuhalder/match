@@ -28,6 +28,11 @@ import ViewProfileMatches from "./students/ViewProfileMatches";
 import ViewRequestsSent from "./students/ViewRequestsSent";
 import ViewProfileRequestsSent from "./students/ViewProfileRequestsSent";
 import AboutUs from "./AboutUs";
+/**
+ * App component that renders the entire application.
+ * @param {*} props 
+ * @returns React component
+ */
 const App = () => {
   return (
     <Container>

@@ -3,7 +3,11 @@ import { Form, Button } from "react-bootstrap";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import NavBarAdmin from "../components/NavBarAdmin";
-// CreateStudent component gives admin the functionality to create a new student account
+/**
+ * CreateStudent component  gives admin the functionality to create a new student account.
+ * @param {*} props
+ *  @returns React component
+ * */
 export default function CreateStudent(props) {
   const navigate = useNavigate();
   const location = useLocation();

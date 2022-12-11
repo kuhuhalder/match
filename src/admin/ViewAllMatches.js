@@ -2,7 +2,11 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Button, Table } from "react-bootstrap";
 import { useLocation, useNavigate } from "react-router-dom";
-// ViewAllMatches component is to display all the current studybuddies and delete any of the studybuddy pairing.
+/**
+ * ViewAllMatches component is to display all the current studybuddies and delete any of the studybuddy pairing.
+ * @param {*} props 
+ * @returns React component
+ */
 const ViewAllMatches = (props) => {
   const location = useLocation();
   const navigate = useNavigate();

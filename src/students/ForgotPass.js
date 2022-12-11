@@ -1,8 +1,12 @@
-import { Navigate, useLocation, useNavigate } from "react-router-dom";
-import React, { useState } from "react";
-import { Form, Button, Container } from "react-bootstrap";
 import axios from "axios";
-// ForgotPass component to update a user's password in case they forget their password
+import React, { useState } from "react";
+import { Button, Container, Form } from "react-bootstrap";
+import { useLocation, useNavigate } from "react-router-dom";
+/**
+ * ForgotPass component to update a user's password in case they forget their password.
+ * @param {*} props 
+ * @returns React component
+ */
 const ForgotPass = (props) => {
   const navigate = useNavigate();
   const location = useLocation();

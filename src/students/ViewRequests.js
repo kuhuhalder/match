@@ -5,7 +5,11 @@ import { useLocation, useNavigate, Link } from "react-router-dom";
 import NavBar from "../components/NavBar";
 import Confetti from "react-confetti";
 import useWindowSize from "react-use/lib/useWindowSize";
-// ViewRequests component is to view the match requests sent by other students
+/**
+ * ViewRequests component is to view the match requests sent by other students.
+ * @param {*} props 
+ * @returns React component
+ */
 const ViewRequests = (props) => {
   const { state } = useLocation();
   const { width, height } = useWindowSize();

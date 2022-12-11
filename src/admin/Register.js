@@ -2,7 +2,11 @@ import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
-// RegisterAdmin component is to register/ create a new account for an admin
+/**
+ * RegisterAdmin component is to register/ create a new account for an admin.
+ * @param {*} props 
+ * @returns React component
+ */
 export default function RegisterAdmin(props) {
   const navigate = useNavigate();
   const [userName, setEmail] = useState("");

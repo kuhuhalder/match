@@ -1,8 +1,12 @@
-import React, { useState } from "react";
-import { Form, Button, Container } from "react-bootstrap";
-import { useLocation, useNavigate, Link } from "react-router-dom";
 import axios from "axios";
-//  Register component is to register a new student on our platform.
+import React, { useState } from "react";
+import { Button, Container, Form } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
+/**
+ * Register component is to register a new student on our platform.
+ * @param {*} props 
+ * @returns React component
+ */
 export default function Register(props) {
   const navigate = useNavigate();
   const [userName, setEmail] = useState("");

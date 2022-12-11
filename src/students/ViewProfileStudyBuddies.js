@@ -2,7 +2,11 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import { useLocation, useNavigate } from "react-router-dom";
-// ViewProfileStudyBuddies component is to view the profile of the students who are study buddies with the current logged in user
+/**
+ * ViewProfileStudyBuddies component is to view the profile of the students who are study buddies with the current logged in user.
+ * @param {*} props 
+ * @returns React component
+ */
 const ViewProfileStudyBuddies = (props) => {
   const location = useLocation();
   const navigate = useNavigate();

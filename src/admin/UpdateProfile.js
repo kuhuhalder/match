@@ -3,7 +3,11 @@ import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useLocation, useNavigate } from "react-router-dom";
 import NavBarAdmin from "../components/NavBarAdmin";
-// UpdateProfile component is to update the admin's profile information
+/**
+ * UpdateProfile component is to update the admin's profile information.
+ * @param {*} props 
+ * @returns React component
+ */
 function UpdateProfile(props) {
   const location = useLocation();
   const navigate = useNavigate();

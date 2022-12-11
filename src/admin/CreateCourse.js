@@ -3,7 +3,11 @@ import { Form, Button } from "react-bootstrap";
 import { useLocation, useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import NavBarAdmin from "../components/NavBarAdmin";
-
+/**
+ * CreateCourse component is to create a course by the admin.
+ * @param {*} props 
+ * @returns React component
+ */
 export default function CreateCourse(props) {
   const navigate = useNavigate();
   const { state } = useLocation();

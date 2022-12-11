@@ -3,6 +3,11 @@ import React, { useState } from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { useLocation, useNavigate } from "react-router-dom";
 import logo from "../images/logo.jpeg";
+/**
+ * NavBar component is to display the navigation bar.
+ * @param {*} props 
+ * @returns React component
+ */
 const NavBar = (props) => {
   const { state } = useLocation();
   const navigate = useNavigate();

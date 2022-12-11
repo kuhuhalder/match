@@ -3,9 +3,12 @@ import React, { useState } from "react";
 import { Button, Container, Form, Table } from "react-bootstrap";
 import { useLocation, useNavigate } from "react-router-dom";
 import NavBar from "../components/NavBar";
-
-//  Profile component is to enter or update criteria to match with other students.
-//  It also updates user information.
+/**
+ * Profile component is to enter or update criteria to match with other students.
+ * It also updates user information.
+ * @param {*} props 
+ * @returns React component
+ */
 function Profile(props) {
   const { state } = useLocation();
   const navigate = useNavigate();

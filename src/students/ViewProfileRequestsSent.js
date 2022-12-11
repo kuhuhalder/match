@@ -2,7 +2,11 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import { useLocation, useNavigate } from "react-router-dom";
-// ViewProfileRequests component is to view the profile of the students who are sent requests to the current logged in user
+/**
+ * ViewProfileRequestsSent component is to display the profile of the student who the logged in user has sent requests to.
+ * @param {*} props 
+ * @returns React component
+ */
 const ViewProfileRequestsSent = (props) => {
   const location = useLocation();
   const navigate = useNavigate();

@@ -2,7 +2,11 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
-// LoginAdmin component is to validate an admin's login information
+/**
+ * LoginAdmin component is to validate an admin's login information.
+ * @param {*} props 
+ * @returns React component
+ */
 export default function LoginAdmin(props) {
   const navigate = useNavigate();
   const [wrong, setWrong] = useState(false);

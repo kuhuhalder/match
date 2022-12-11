@@ -2,7 +2,11 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Alert, Button } from "react-bootstrap";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-// ViewProfileMatches component is to view the profile of the students who are possible matches with the current user
+/**
+ * ViewProfileMatches component is to view the profile of the students who are possible matches with the current user.
+ * @param {*} props 
+ * @returns React component
+ */
 const ViewProfileMatches = (props) => {
   const location = useLocation();
   const navigate = useNavigate();

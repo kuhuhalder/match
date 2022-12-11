@@ -4,7 +4,11 @@ import { Container, Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Table from "react-bootstrap/Table";
 import { useLocation, useNavigate } from "react-router-dom";
-// ViewCourses component is to view all the courses.
+/**
+ * ViewCourses component is to view all the courses.
+ * @param {*} props 
+ * @returns React component
+ */
 function ViewCourses() {
   const navigate = useNavigate();
   const { state } = useLocation();

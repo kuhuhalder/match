@@ -2,7 +2,11 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import NavBarAdmin from "../components/NavBarAdmin";
-// ViewAccount component is to display the admin's information
+/**
+ * ViewAccount component is to display the admin's information.
+ * @param {*} props 
+ * @returns React component
+ */
 const ViewAccount = (props) => {
   const location = useLocation();
   const navigate = useNavigate();
