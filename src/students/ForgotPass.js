@@ -6,8 +6,8 @@ import axios from "axios";
 const ForgotPass = (props) => {
   const navigate = useNavigate();
   const location = useLocation();
-  const [id, setId] = useState("");
-  const [userName, setUserName] = useState("");
+  const [id, setId] = useState(location.state.userName);
+  const [userName, setUserName] = useState(location.state.userName);
   const [password, setPassword] = useState("");
   const [isAdmin, setIsAdmin] = useState(location.state.isAdmin);
   const [passwordReset, setPasswordReset] = useState(false);
@@ -45,10 +45,12 @@ const ForgotPass = (props) => {
           variant="primary"
           type="submit"
           onClick={() => {
-            navigate("/login");
+            navigate("/viewallstudents", {
+              state: { userName: location.state.loggedInUser },
+            });
           }}
         >
-          Login
+          Go back to view all students.
         </Button>
       </div>
     );
@@ -73,9 +75,7 @@ const ForgotPass = (props) => {
   if (noUsername) {
     return (
       <div>
-        <p className="text-danger">
-          Username doesn't exist. Please go back to home
-        </p>
+        <p className="text-danger">Username doesn't exist. Please try again.</p>
         <Button
           variant="primary"
           type="submit"

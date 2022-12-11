@@ -3,16 +3,17 @@ import React, { useState } from "react";
 import { Alert, Button, Container, Table } from "react-bootstrap";
 import { useLocation, useNavigate, Link } from "react-router-dom";
 import NavBar from "../components/NavBar";
-import Confetti from 'react-confetti'
-import useWindowSize from 'react-use/lib/useWindowSize'
+import Confetti from "react-confetti";
+import useWindowSize from "react-use/lib/useWindowSize";
 // ViewRequests component is to view the match requests sent by other students
 const ViewRequests = (props) => {
   const { state } = useLocation();
-  const { width, height } = useWindowSize()
+  const { width, height } = useWindowSize();
   const navigate = useNavigate();
   const [userName, setUserName] = useState(state.userName);
   const [ids, setIds] = useState([]);
   const [studyBuddies, setStudyBuddies] = useState(false);
+  const [studyBuddy, setStudyBuddy] = useState("");
   const [deleteRequest, setDeleteRequest] = useState(false);
 
   const configuration = {
@@ -45,22 +46,19 @@ const ViewRequests = (props) => {
     axios(configuration)
       .then((result) => {
         setStudyBuddies(true);
+        setStudyBuddy(e);
       })
       .catch((error) => {
         error = new Error();
       });
-      
   };
-  if(studyBuddies)
-  {
-    return(
+  if (studyBuddies) {
+    return (
       <div>
-    <Confetti
-      width={width}
-      height={height}
-    />
-    <Alert>
-          You have accepted the match.
+        <Confetti width={width} height={height} />
+        <Alert>
+          You have accepted the match. You and {studyBuddy} are now study
+          buddies!
         </Alert>
         <Link
           to="/viewrequests"
@@ -70,7 +68,7 @@ const ViewRequests = (props) => {
         >
           Go back to requests.
         </Link>
-    </div>
+      </div>
     );
   }
   // handleDenyMatch function is to deny the match request sent by a student
@@ -91,12 +89,9 @@ const ViewRequests = (props) => {
   };
 
   if (deleteRequest) {
-    // setDeleteRequest(false);
     return (
       <div>
         <Alert>Match request deleted</Alert>
-        {/* <ViewRequests></ViewRequests> */}
-
         <Button
           type="submit"
           onClick={() =>
@@ -109,38 +104,49 @@ const ViewRequests = (props) => {
     );
   }
 
-  return (  
+  return (
     <Container>
       <NavBar></NavBar>
       <h2>View your Requests!</h2>
       <Table striped hover>
         <thead>
           <tr>
-            <th>Username</th>
+            <th>Name</th>
           </tr>
         </thead>
         <tbody>
           {ids.map((val, key) => {
             return (
               <tr key={key}>
-                <td>{val}</td>
+                <td>
+                  {val.firstName} {val.lastName}
+                </td>
                 <td>
                   <Button
                     type="submit"
                     onClick={() =>
                       navigate("/viewprofilerequests", {
-                        state: { userName: val, loggedInUser: userName },
+                        state: {
+                          userName: val.userName,
+                          loggedInUser: userName,
+                        },
                       })
                     }
                   >
                     View Profile
                   </Button>
 
-                  <Button type="submit" onClick={() => handleAcceptMatch(val)}>
+                  <Button
+                    type="submit"
+                    onClick={() => handleAcceptMatch(val.userName)}
+                  >
                     Accept
                   </Button>
 
-                  <Button type="submit" onClick={() => handleDenyMatch(val)}>
+                  <Button
+                    type="submit"
+                    onClick={() => handleDenyMatch(val.userName)}
+                  >
                     Deny
                   </Button>
                 </td>

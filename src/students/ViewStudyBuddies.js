@@ -38,6 +38,11 @@ const ViewStudyBuddies = (props) => {
     <Container>
       <NavBar></NavBar>
       <h2>View your Study Buddies!</h2>
+      <h5>
+        {" "}
+        You view the contact information/ email addresses of your study buddies
+        in their profiles.
+      </h5>
       <Table striped hover>
         <thead>
           <tr>
@@ -48,9 +53,15 @@ const ViewStudyBuddies = (props) => {
           {usernames.map((val, key) => {
             return (
               <tr key={key}>
-                <td>{val} and you are study buddies. Chat with them!</td>
                 <td>
-                  <Button type="submit" onClick={() => handleViewProfile(val)}>
+                  {val.firstName} {val.lastName} and you are study buddies. Chat
+                  with them!
+                </td>
+                <td>
+                  <Button
+                    type="submit"
+                    onClick={() => handleViewProfile(val.userName)}
+                  >
                     View their Profile
                   </Button>
                 </td>

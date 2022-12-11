@@ -120,7 +120,9 @@ export default function LoginAdmin(props) {
         )}
       </Form>
 
-      <Link to="/registeradmin">Don't have an account? You can create an account here!</Link>
+      <Link to="/registeradmin">
+        Don't have an account? You can create an account here!
+      </Link>
     </div>
   );
 }

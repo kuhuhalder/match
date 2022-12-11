@@ -21,6 +21,7 @@ export default function CreateStudent(props) {
   // handleRegister function calls the add API to create a student.
   const handleRegister = (e) => {
     e.preventDefault();
+
     if (email == "" || password == "" || firstName == "" || lastName == "") {
       setEmptyFields(true);
     }
@@ -31,15 +32,19 @@ export default function CreateStudent(props) {
     } else {
       setValidated(true);
 
-      if (email.endsWith("@match.com")) {
-        <div>
-          <p className="text-danger">
-            Please register as an admin instead with the @match.com email
-            address or use a valid email address.
-          </p>
-          <CreateStudent></CreateStudent>
-        </div>;
-        return;
+      if (
+        email.endsWith("@match.com") ||
+        !email.endsWith("scarletmail.rutgers.edu")
+      ) {
+        return (
+          <div>
+            <p className="text-danger">
+              Please register a student using a valid @scarletmail.rutgers.edu
+              email only.
+            </p>
+            <CreateStudent></CreateStudent>
+          </div>
+        );
       }
       const configuration = {
         method: "post",
@@ -68,7 +73,7 @@ export default function CreateStudent(props) {
     return (
       <div>
         <p className="text-danger">
-          Username already exists. Use a different email address/ username
+          Username already exists. Use a different email address/ username.
         </p>
         <CreateStudent></CreateStudent>
       </div>
@@ -126,10 +131,10 @@ export default function CreateStudent(props) {
             Please choose a username.
           </Form.Control.Feedback>
         </Form.Group>
-        {email.endsWith("@match.com") ? (
+        {!email.endsWith("@scarletmail.rutgers.edu") ? (
           <p className="text-danger">
-            Please register as an admin instead with the @match.com email
-            address or use a valid email address.
+            Please register a student using a valid @scarletmail.rutgers.edu
+            email only.
           </p>
         ) : (
           <p className="text-success">Email address is valid!</p>

@@ -55,6 +55,12 @@ const ViewAllStudents = (props) => {
       });
   };
 
+  const handleForgotPassword = (e) => {
+    navigate("/forgotpass", {
+      state: { id: e, userName: e, isAdmin: 0, loggedInUser: userName },
+    });
+  };
+
   return (
     <div className="ViewAllStudents">
       <Modal show={show} onHide={handleClose}>
@@ -108,6 +114,17 @@ const ViewAllStudents = (props) => {
                       onClick={() => handleViewProfile(val.userName)}
                     >
                       View Profile
+                    </Button>
+                  </td>
+                  <td>
+                    <Button
+                      variant="primary"
+                      type="submit"
+                      onClick={(e) => {
+                        handleForgotPassword(val.userName);
+                      }}
+                    >
+                      Change Password
                     </Button>
                   </td>
                   <td>

@@ -9,6 +9,7 @@ const ViewProfileStudyBuddies = (props) => {
   const [firstName, setFirstName] = useState(null);
   const [lastName, setLastName] = useState(null);
   const [pronouns, setPronouns] = useState("");
+  const [contactInfo, setContactInfo] = useState("");
   const [campus, setCampus] = useState("");
   const [course, setCourse] = useState([null]);
   const [major, setMajor] = useState("");
@@ -29,6 +30,7 @@ const ViewProfileStudyBuddies = (props) => {
       setFirstName(result.data.firstName);
       setLastName(result.data.lastName);
       setPronouns(result.data.pronouns);
+      setContactInfo(result.data.contactInfo);
       setCampus(result.data.campus);
       setCourse(result.data.course);
       setMajor(result.data.major);
@@ -57,20 +59,28 @@ const ViewProfileStudyBuddies = (props) => {
             {" "}
             Last Name: <b>{lastName}</b>
           </h4>
+          <h4>
+            {" "}
+            Contact Information: <b>{contactInfo}</b>
+          </h4>
           <h4> Pronouns: {pronouns}</h4>
           <h4>
             {" "}
             Campus: <b>{campus}</b>
           </h4>
           <h4>
+            {" "}
+            Courses:{" "}
             <b>
-              {" "}
-              Courses:
-              {course.map((val) => (
-                <ul>
-                  <li>- {val}</li>
-                </ul>
-              ))}
+              {course ? (
+                course.map((val) => (
+                  <ul>
+                    <li>- {val}</li>
+                  </ul>
+                ))
+              ) : (
+                <p></p>
+              )}
             </b>
           </h4>
           <h4>

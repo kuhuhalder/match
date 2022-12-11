@@ -11,6 +11,7 @@ const Account = (props) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [pronouns, setPronouns] = useState("");
+  const [contactInfo, setContactInfo] = useState(null);
   const [campus, setCampus] = useState("");
   const [course, setCourse] = useState([]);
   const [major, setMajor] = useState("");
@@ -19,7 +20,7 @@ const Account = (props) => {
   const [genderPreference, setGenderPreference] = useState("");
   const [userName, setUserName] = useState(location.state.userName);
   //  Calling the getStudent API to get the information of the logged in user
- const configuration = {
+  const configuration = {
     method: "get",
     url: "http://localhost:8080/api/students/getStudent/" + userName,
   };
@@ -29,6 +30,7 @@ const Account = (props) => {
       setFirstName(result.data.firstName);
       setLastName(result.data.lastName);
       setPronouns(result.data.pronouns);
+      setContactInfo(result.data.contactInfo);
       setCampus(result.data.campus);
       setCourse(result.data.course);
       setMajor(result.data.major);
@@ -39,7 +41,7 @@ const Account = (props) => {
     .catch((error) => {
       console.log(error);
       error = new Error();
-    }); 
+    });
 
   return (
     <Container>
@@ -52,24 +54,44 @@ const Account = (props) => {
         </h1>
         <div>
           <h2>Your information</h2>
-          <h4>Username: <b>{userName} </b></h4>
-          <h4> First Name: <b>{firstName} </b></h4>
-          <h4> Last Name: <b>{lastName} </b></h4>
+          <h4>
+            Username: <b>{userName} </b>
+          </h4>
+          <h4>
+            {" "}
+            First Name: <b>{firstName} </b>
+          </h4>
+          <h4>
+            {" "}
+            Last Name: <b>{lastName} </b>
+          </h4>
+          <h4>
+            {" "}
+            Contact Information: <b>{contactInfo} </b>
+          </h4>
           <h4> Pronouns: {pronouns}</h4>
           <h4> Campus: {campus}</h4>
           <h4>
             {" "}
-            Courses:<b>
-            {course.map((val) => (
-              <ul>
-                <li>- {val}</li>
-              </ul>
-            ))}
+            Courses:{" "}
+            <b>
+              {course ? (
+                course.map((val) => (
+                  <ul>
+                    <li>- {val}</li>
+                  </ul>
+                ))
+              ) : (
+                <p></p>
+              )}
             </b>
           </h4>
           <h4> Major: {major}</h4>
           <h4> Year: {year}</h4>
-          <h4> Gender Preferences: <b> {genderPreference} </b></h4>
+          <h4>
+            {" "}
+            Gender Preferences: <b> {genderPreference} </b>
+          </h4>
           <h4> Bio: {bio}</h4>
         </div>
       </Col>

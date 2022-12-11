@@ -5,11 +5,12 @@ import { Link, useNavigate } from "react-router-dom";
 //  Login component is to verify if an username exists and if the password is correct
 export default function Login(props) {
   const navigate = useNavigate();
-  const [wrongDisp, setWrongDisp] = useState(<div></div>);
   const [wrong, setWrong] = useState(false);
   const [userName, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [login, setLogin] = useState(false);
+  const [invalidFields, setInvalidFields] = useState(false);
+  const [forgotPassword, setForgotPassword] = useState(false);
   //  Call the validate API to validate login information
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -31,6 +32,7 @@ export default function Login(props) {
         }
       })
       .catch((error) => {
+        setWrong(true);
         error = new Error();
       });
   };
@@ -38,23 +40,47 @@ export default function Login(props) {
   if (login && !userName.endsWith("@match.com")) {
     navigate("/account", { state: { userName: userName, password: password } });
   } else if (userName.endsWith("@match.com")) {
-    <p className="text-danger">Please login as an admin instead!</p>;
-  }
-
-  const handleForgotPassword = (e) => {
-    navigate("/forgotpass", {
-      state: { id: userName, userName: userName, isAdmin: 0 },
-    });
-  };
-
-  if (wrong) {
     return (
       <div>
-        <div> Username doesn't exist or password is incorrect </div>
+        <p className="text-danger">Please login as an admin instead!</p>
         <Login></Login>
       </div>
     );
   }
+
+  const handleForgotPassword = (e) => {
+    setForgotPassword(true);
+  };
+  if (forgotPassword) {
+    return (
+      <div>
+        <p className="text-danger">
+          Please contact admin@match.com to reset your password!
+        </p>
+        <Login></Login>
+      </div>
+    );
+  }
+  if (wrong) {
+    return (
+      <div>
+        <p className="text-danger">
+          {" "}
+          Username doesn't exist or password is incorrect.{" "}
+        </p>
+        <Login></Login>
+      </div>
+    );
+  }
+  if (invalidFields)
+    return (
+      <div>
+        <p className="text-danger">
+          Please login with a @scarletmail.rutgers.edu email address only.
+        </p>
+        <Login></Login>
+      </div>
+    );
 
   return (
     <div>
@@ -92,24 +118,28 @@ export default function Login(props) {
           Login
         </Button>
 
-        <Button
-          variant="primary"
-          type="submit"
-          onClick={(e) => {
-            handleForgotPassword();
-          }}
-        >
-          Forgot Password?
-        </Button>
-
         {login ? (
           <p className="text-success">You Are Logged in Successfully</p>
         ) : (
-          <p className="text-danger">You Are Not Logged in</p>
+          <p className="text-danger">
+            Please log in with a valid @scarletmail.rutgers.edu email address
+            only.{" "}
+          </p>
         )}
       </Form>
       <br></br>
-      <Link to="/register">Don't have an account? You can login here instead!</Link>
+
+      <Button
+        variant="secondary"
+        onClick={() => {
+          handleForgotPassword();
+        }}
+      >
+        Forgot Password?
+      </Button>
+      <Link to="/register">
+        Don't have an account? You can create an account here instead!
+      </Link>
     </div>
   );
 }

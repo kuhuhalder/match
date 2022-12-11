@@ -13,9 +13,8 @@ export default function Register(props) {
   const [isAdmin, setIsAdmin] = useState(0);
   const [register, setRegister] = useState(false);
   const [userNameExists, setUserNameExists] = useState(false);
-  const { state } = useLocation();
   const [emptyFields, setEmptyFields] = useState(false);
-  const [invalidFields, setInvalidFields] = useState(false)
+  const [invalidFields, setInvalidFields] = useState(false);
   // handleUpdateProfile function is to redirect to the update profile page
   const handleUpdateProfile = (e) => {
     navigate("/profile", {
@@ -32,8 +31,11 @@ export default function Register(props) {
     if (userName == "" || password == "" || firstName == "" || lastName == "") {
       setEmptyFields(true);
     }
-    if (userName.endsWith("@match.com") || userName.endsWith("scarletmail.rutgers.edu") ){
-      invalidFields(true)
+    if (
+      userName.endsWith("@match.com") ||
+      !userName.endsWith("scarletmail.rutgers.edu")
+    ) {
+      invalidFields(true);
     }
 
     e.preventDefault();
@@ -67,10 +69,12 @@ export default function Register(props) {
       </div>
     );
   }
-  if(invalidFields){
+  if (invalidFields) {
     return (
       <div>
-        <p className="text-danger">Please register with a @scarletmail.rutgers.edu email address only.</p>
+        <p className="text-danger">
+          Please register with a @scarletmail.rutgers.edu email address only.
+        </p>
         <Register></Register>
       </div>
     );
@@ -94,7 +98,11 @@ export default function Register(props) {
       </div>
     );
   }
-  if (register && !userName.endsWith("@match.com") && userName.endsWith("scarletmail.rutgers.edu")) {
+  if (
+    register &&
+    !userName.endsWith("@match.com") &&
+    userName.endsWith("scarletmail.rutgers.edu")
+  ) {
     return (
       <div>
         <p className="text-success">
@@ -142,10 +150,9 @@ export default function Register(props) {
             placeholder="Enter email"
           />
         </Form.Group>
-        {userName.endsWith("@match.com") ? (
+        {!userName.endsWith("@scarletmail.rutgers.edu") ? (
           <p className="text-danger">
-            Please register as an admin instead with the @match.com email
-            address or use a valid email address.
+            Please register using a @scarletmail.rutgers.edu email address only.
           </p>
         ) : (
           <p className="text-success">Email address is valid!</p>

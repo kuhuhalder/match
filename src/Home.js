@@ -8,7 +8,7 @@ const Home = (props) => {
   return (
     <Container>
       <div>
-        <img class="banner" src={banner} alt="homeImage" />
+        <img className="banner" src={banner} alt="homeImage" />
       </div>
       <Row>
         <Button

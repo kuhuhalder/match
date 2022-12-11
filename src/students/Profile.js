@@ -15,6 +15,7 @@ function Profile(props) {
   const [firstName, setFirstName] = useState(state.firstName);
   const [lastName, setLastName] = useState(state.lastName);
   const [pronouns, setPronouns] = useState(null);
+  const [contactInfo, setContactInfo] = useState(null);
   const [campus, setCampus] = useState(null);
   const [course, setCourses] = useState([]);
   const [major, setMajor] = useState(null);
@@ -24,8 +25,6 @@ function Profile(props) {
   const [register, setRegister] = useState(false);
   const [courseIds, setCourseIds] = useState([]);
   const listItems = courseIds.map((number) => <li>{number.courseName}</li>);
-
- 
 
   // handleSubmit function is to call the update API and update the critera and information of the logged in user.
   const handleSubmit = (e) => {
@@ -39,6 +38,7 @@ function Profile(props) {
         firstName,
         lastName,
         pronouns,
+        contactInfo,
         campus,
         course,
         major,
@@ -121,6 +121,21 @@ function Profile(props) {
             <option value="they/them"> they/them </option>
           </Form.Select>
         </Form.Group>
+        <Form.Group className="mb-3" controlId="formContactInfo">
+          <Form.Label> Contact Information </Form.Label>
+          <p>
+            {" "}
+            Feel free to include your phone number or social media @. These will
+            only be shared with your confirmed study buddies to connect.{" "}
+          </p>
+          <Form.Control
+            type="contactInfo"
+            name="contactInfo"
+            defaultValue={""}
+            onChange={(e) => setContactInfo(e.target.value)}
+            placeholder="Enter contact information"
+          />
+        </Form.Group>
         <Form.Group className="mb-3" controlId="formCampus">
           <Form.Label> Preferred Campus to Study/ Meet </Form.Label>
           <Form.Select
@@ -137,14 +152,18 @@ function Profile(props) {
 
         <Form.Group className="mb-3" controlId="formCourseName">
           <Form.Label>Courses You Want Matches for</Form.Label>
-          <p>Previous Course Selections will be removed</p>
+          <p>Courses is multi-select</p>
+          <p>
+            Previous Course Selections will be removed if you don't update
+            courses and submit this form.
+          </p>
           <Form.Select
             defaultValue={""}
             onChange={(e) =>
               setCourses((course) => course.concat(e.target.value))
             }
           >
-            <option value=""> Select Course </option>
+            <option value=""> Select Courses </option>
             {courseIds.map((val, key) => {
               return <option key={val.courseName}> {val.courseName} </option>;
             })}
@@ -198,6 +217,7 @@ function Profile(props) {
         </Form.Group>
         <Form.Group className="mb-3" controlId="formGenderPreferences">
           <Form.Label> Gender Preferences </Form.Label>
+          <p>Select your preferred genders (if any) for matching.</p>
           <Form.Select
             defaultValue={""}
             onChange={(e) => setGenderPreference(e.target.value)}

@@ -50,7 +50,11 @@ const Match = (props) => {
           <h2>
             {firstName} {lastName}, View Your Potential Matches!
           </h2>
-          <Table>
+          <p>
+            View the list of potential matches that our system thinks might be
+            best fit for you based on your preferences.{" "}
+          </p>
+          <Table striped hover>
             <thead>
               <tr>
                 <th>Name</th>
@@ -65,7 +69,9 @@ const Match = (props) => {
               {ids.map((val, key) => {
                 return (
                   <tr key={key}>
-                    <td>{val.firstName}</td>
+                    <td>
+                      {val.firstName} {val.lastName}
+                    </td>
                     <td>{val.course}</td>
                     <td>{val.year}</td>
                     <td>{val.major}</td>

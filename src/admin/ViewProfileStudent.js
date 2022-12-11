@@ -82,42 +82,46 @@ const ViewProfileStudent = (props) => {
           <div>
             <h4> Email address: {userName2}</h4>
             <h4>
-            {" "}
-            First Name: <b>{firstName} </b>
-          </h4>
-          <h4>
-            {" "}
-            Last Name: <b>{lastName}</b>
-          </h4>
-          <h4> Pronouns: {pronouns}</h4>
-          <h4>
-            {" "}
-            Campus: <b>{campus}</b>
-          </h4>
-          <h4>
-            <b>
               {" "}
-              Courses:
-              {course.map((val) => (
-                <ul>
-                  <li>- {val}</li>
-                </ul>
-              ))}
-            </b>
-          </h4>
-          <h4>
-            {" "}
-            Major: <b>{major}</b>
-          </h4>
-          <h4>
-            {" "}
-            Year: <b>{year}</b>
-          </h4>
-          <h4>
-            {" "}
-            Gender Preferences: <b>{genderPreference}</b>
-          </h4>
-          <h4> Bio: {bio}</h4>
+              First Name: <b>{firstName} </b>
+            </h4>
+            <h4>
+              {" "}
+              Last Name: <b>{lastName}</b>
+            </h4>
+            <h4> Pronouns: {pronouns}</h4>
+            <h4>
+              {" "}
+              Campus: <b>{campus}</b>
+            </h4>
+            <h4>
+              {" "}
+              Courses:{" "}
+              <b>
+                {course ? (
+                  course.map((val) => (
+                    <ul>
+                      <li>- {val}</li>
+                    </ul>
+                  ))
+                ) : (
+                  <p></p>
+                )}
+              </b>
+            </h4>
+            <h4>
+              {" "}
+              Major: <b>{major}</b>
+            </h4>
+            <h4>
+              {" "}
+              Year: <b>{year}</b>
+            </h4>
+            <h4>
+              {" "}
+              Gender Preferences: <b>{genderPreference}</b>
+            </h4>
+            <h4> Bio: {bio}</h4>
             <Button type="submit" onClick={() => deleteStudent()}>
               Delete Student
             </Button>

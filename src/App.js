@@ -25,13 +25,17 @@ import EditProfile from "./admin/EditProfile";
 import ViewProfileRequests from "./students/ViewProfileRequests";
 import ViewProfileStudyBuddies from "./students/ViewProfileStudyBuddies";
 import ViewProfileMatches from "./students/ViewProfileMatches";
+import ViewRequestsSent from "./students/ViewRequestsSent";
+import ViewProfileRequestsSent from "./students/ViewProfileRequestsSent";
 import AboutUs from "./AboutUs";
 const App = () => {
   return (
     <Container>
       <Row>
         <Col className="text-center">
-          <h1><b>MATCH</b></h1>
+          <h1>
+            <b>MATCH</b>
+          </h1>
         </Col>
       </Row>
 
@@ -46,6 +50,12 @@ const App = () => {
             <Route exact path="/account" element={<Account />} />
             <Route exact path="/matches" element={<Match />} />
             <Route exact path="/forgotpass" element={<ForgotPass />} />
+            <Route exact path="/requestssent" element={<ViewRequestsSent />} />
+            <Route
+              exact
+              path="/requestssentprofile"
+              element={<ViewProfileRequestsSent />}
+            />
             <Route
               exact
               path="/viewprofilematches"

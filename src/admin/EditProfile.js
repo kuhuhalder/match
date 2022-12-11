@@ -130,6 +130,11 @@ function EditProfile(props) {
 
         <Form.Group className="mb-3" controlId="formCourseName">
           <Form.Label>Courses You Want Matches for</Form.Label>
+          <p>Courses is multi-select</p>
+          <p>
+            Previous Course Selections will be removed if you don't update
+            courses and submit this form.
+          </p>
           <Form.Select
             onChange={(e) =>
               setCourses((course) => course.concat(e.target.value))
@@ -190,6 +195,7 @@ function EditProfile(props) {
         </Form.Group>
         <Form.Group className="mb-3" controlId="formGenderPreferences">
           <Form.Label> Gender Preferences </Form.Label>
+          <p>Select your preferred genders (if any) for matching.</p>
           <Form.Select
             required
             defaultValue={""}

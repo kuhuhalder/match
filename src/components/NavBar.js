@@ -85,6 +85,9 @@ const NavBar = (props) => {
     navigate("/viewrequests", { state: { id: userName, userName: userName } });
   };
 
+  const handleRequestsSent = (e) => {
+    navigate("/requestssent", { state: { id: userName, userName: userName } });
+  };
   const logout = () => {
     setUserName("");
     setPassword("");
@@ -93,14 +96,14 @@ const NavBar = (props) => {
   return (
     <Navbar className="color-nav" variant="light">
       <Container>
-        <Navbar.Brand href="/home" className= "justify-content-start">
+        <Navbar.Brand href="/home" className="justify-content-start">
           <img
             alt=""
             src={logo}
             width="30"
             height="30"
             className="d-inline-block align-top"
-          />{' '}
+          />{" "}
           Match
         </Navbar.Brand>
 
@@ -115,7 +118,10 @@ const NavBar = (props) => {
             View Potential Matches
           </Nav.Link>
           <Nav.Link href="/viewrequests" onClick={(e) => handleRequests(e)}>
-            View Requests
+            View Your Requests
+          </Nav.Link>
+          <Nav.Link href="/requestssent" onClick={(e) => handleRequestsSent(e)}>
+            View Requests Sent
           </Nav.Link>
           <Nav.Link
             href="/viewstudybuddies"

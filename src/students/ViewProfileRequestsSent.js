@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import { useLocation, useNavigate } from "react-router-dom";
 // ViewProfileRequests component is to view the profile of the students who are sent requests to the current logged in user
-const ViewProfileRequests = (props) => {
+const ViewProfileRequestsSent = (props) => {
   const location = useLocation();
   const navigate = useNavigate();
   const [firstName, setFirstName] = useState(null);
@@ -89,14 +89,14 @@ const ViewProfileRequests = (props) => {
           <Button
             type="submit"
             onClick={() =>
-              navigate("/viewrequests", { state: { userName: loggedInUser } })
+              navigate("/requestssent", { state: { userName: loggedInUser } })
             }
           >
-            Go back to requests
+            Go back to requests sent.
           </Button>
         </div>
       </div>
     </div>
   );
 };
-export default ViewProfileRequests;
+export default ViewProfileRequestsSent;
