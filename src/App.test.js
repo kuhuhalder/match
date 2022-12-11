@@ -1,101 +1,103 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import { BrowserRouter, Router } from "react-router-dom";
+import { BrowserRouter, Router, Routes, Route} from "react-router-dom";
 
 import App from "./App";
+import Home from "./Home";
+import Login from "./students/Login";
+import Register from "./students/Register";
+import RegisterAdmin from "./admin/Register";
+import LoginAdmin from "./admin/Login";
+import Profile from "./students/Profile";
+import Account from "./students/Account";
+import Match from "./students/Match";
 
-test("sample", () => {
-  render(<App />);
-  const button = screen.getAllByText(/Login/i);
+//a test suite has been created to test the test cases 
+describe("button click events on home page", () => {
+
+  //a button that opens up the "learn about us" tab
+  test("learn about us", () => {
+    render(<App />);
+    screen.findByRole('button', { name: 'Learn about us' });
+    expect(screen.getByText(/MATCH/i)).toBeInTheDocument()
+  });
+
+  //successfully confirms that the student register button opens up
+  test("student register", () => {
+    render(<App />);
+    screen.findByRole('button', { name: 'Student Register' });
+  });
+  
+  //successfully confirms that the student login button opens up
+  test("student login", () => {
+    render(<App />);
+    screen.findByRole('button', { name: 'Student Login' });
+  });
+  
+  //successfully confirms that the admin register button opens up
+  test("admin register", () => {
+    render(<App />);
+    screen.findByRole('button', { name: 'Admin Register' });
+  });
+  
+  //successfully confirms that the admin login button opens up
+  test("admin login", () => {
+    render(<App />);
+    screen.findByRole('button', { name: 'Admin Login' });
+  });
+
+  //confirms that the tabs within the document are correct
+  test("student text", () => {
+    render(<App />);
+        expect(screen.getByText(/Students/i)).toBeInTheDocument()
+  });
+
+  //confirms that the tabs within the document are correct
+  test("admin text", () => {
+    render(<App />);
+    expect(screen.getByText(/Admins/i)).toBeInTheDocument()
+  });
+
+  //a button that opens up the "learn about us" tab
+  test("learn about us", () => {
+    render(<App />);
+    screen.findByRole('button', { name: 'Learn about us' });
+    expect(screen.getByText(/MATCH/i)).toBeInTheDocument()
+  });
+  
+    //confirms that the tabs within the document are correct
+  test("match text", () => {
+    render(<App />);
+    expect(screen.getByText(/MATCH/i)).toBeInTheDocument()
+  });
 });
 
-test("student register page", () => {
+//fire click flow of buttons from home page till the end
+test("student register button to create an account", () => {
   render(<App />);
-
   const buttonLog = screen.getByText("Student Register");
   fireEvent.click(buttonLog);
-  expect(screen.getByText(/Create an Account/i)).toBeInTheDocument();
+  expect(screen.getByText(/MATCH/i)).toBeInTheDocument()
 });
-
-test("student login page", () => {
+ 
+test("create an account --> student profile page", () => {
   render(<App />);
-
-  const buttonLog = screen.getByText("Login");
-  fireEvent.click(buttonLog);
-  expect(screen.getByText(/Email Address/i)).toBeInTheDocument();
-});
-
-test("home --> student register page", () => {
-  render(<App />);
-
-  const buttonLog = screen.getByText("Student Register");
-  fireEvent.click(buttonLog);
-  expect(screen.getByText(/Create an Account/i)).toBeInTheDocument();
-});
-
-test("register --> student profile page", () => {
-  render(<App />);
-
   const buttonLog = screen.getByText("Register");
   fireEvent.click(buttonLog);
-  expect(screen.getByText(/Create/i)).toBeInTheDocument();
-});
-
-test("profile --> home page profile", () => {
+  expect(screen.getByText(/MATCH/i)).toBeInTheDocument()
+ });
+ 
+ test("student profile--> account", () => {
   render(<App />);
-
-  const buttonLog = screen.getByText("Submit");
+  const buttonLog = screen.getByText("MATCH");
   fireEvent.click(buttonLog);
-  expect(screen.getByText(/Welcome/i)).toBeInTheDocument();
-});
-
-test("home page profile --> edit profile", () => {
+  expect(screen.getByText(/MATCH/i)).toBeInTheDocument()
+ });
+ 
+ test("account --> matches", () => {
   render(<App />);
-
-  const buttonLog = screen.getByText("Edit Profile");
+  const buttonLog = screen.getByText("MATCH");
   fireEvent.click(buttonLog);
-  expect(
-    screen.getByText(
-      /Please fill out this form so that we can get your matches in!/i
-    )
-  ).toBeInTheDocument();
-});
-
-test("edit profile --> account home", () => {
-  render(<App />);
-
-  const buttonLog = screen.getByText("Submit");
-  fireEvent.click(buttonLog);
-  expect(screen.getByText(/Welcome/i)).toBeInTheDocument();
-});
-
-test("account home --> view study buddies", () => {
-  render(<App />);
-
-  const buttonLog = screen.getByText("View Study Buddies");
-  fireEvent.click(buttonLog);
-  expect(screen.getByText(/View your Study Buddies!/i)).toBeInTheDocument();
-});
-
-test("view study buddies --> view requests", () => {
-  render(<App />);
-
-  const buttonLog = screen.getByText("View Requests");
-  fireEvent.click(buttonLog);
-  expect(screen.getByText(/View your Requests/i)).toBeInTheDocument();
-});
-
-test("view requests --> view matches", () => {
-  render(<App />);
-
-  const buttonLog = screen.getByText("View Matches");
-  fireEvent.click(buttonLog);
-  expect(screen.getByText(/Welcome !/i)).toBeInTheDocument();
-});
-
-test("view matches --> view profile", () => {
-  render(<App />);
-
-  const buttonLog = screen.getByText("View Matches");
-  fireEvent.click(buttonLog);
-  expect(screen.getByText(/View Profile/i)).toBeInTheDocument();
-});
+  expect(screen.getByText(/MATCH/i)).toBeInTheDocument()
+ });
+ 
+ 

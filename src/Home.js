@@ -31,7 +31,7 @@ const Home = (props) => {
               navigate("/register");
             }}
           >
-            Register
+            Student Register
           </Button>
 
           <Button
@@ -41,7 +41,7 @@ const Home = (props) => {
               navigate("/login");
             }}
           >
-            Login
+            Student Login
           </Button>
         </Col>
 
@@ -54,7 +54,7 @@ const Home = (props) => {
               navigate("/registeradmin");
             }}
           >
-            Register
+            Admin Register
           </Button>
 
           <Button
@@ -64,7 +64,7 @@ const Home = (props) => {
               navigate("/loginadmin");
             }}
           >
-            Login
+            Admin Login
           </Button>
         </Col>
       </Row>
