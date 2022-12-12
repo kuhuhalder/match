@@ -5,7 +5,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import logo from "../images/logo.jpeg";
 /**
  * NavBarAdmin component is to display the navigation bar for the admin.
- * @param {*} props 
+ * @param {*} props
  * @returns React component
  */
 const NavBarAdmin = (props) => {

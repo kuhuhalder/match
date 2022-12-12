@@ -5,7 +5,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import NavBar from "../components/NavBar";
 /**
  * ViewRequestsSent component is to view the match requests sent by the logged in student.
- * @param {*} props 
+ * @param {*} props
  * @returns React component
  */
 const ViewRequestsSent = (props) => {

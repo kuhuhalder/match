@@ -4,7 +4,7 @@ import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import NavBarAdmin from "../components/NavBarAdmin";
 /**
  * ViewAccount component is to display the admin's information.
- * @param {*} props 
+ * @param {*} props
  * @returns React component
  */
 const ViewAccount = (props) => {

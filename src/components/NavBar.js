@@ -5,7 +5,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import logo from "../images/logo.jpeg";
 /**
  * NavBar component is to display the navigation bar.
- * @param {*} props 
+ * @param {*} props
  * @returns React component
  */
 const NavBar = (props) => {

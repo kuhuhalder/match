@@ -4,7 +4,7 @@ import { Alert, Button } from "react-bootstrap";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 /**
  * ViewProfileMatches component is to view the profile of the students who are possible matches with the current user.
- * @param {*} props 
+ * @param {*} props
  * @returns React component
  */
 const ViewProfileMatches = (props) => {

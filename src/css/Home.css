@@ -99,7 +99,7 @@
       justify-content: center;
       display: block;
       color: #fff;
-      background: #5d5be7;
+      background: purple;
       font-size: 1em;
       font-weight: bold;
       margin-top: 0px;
@@ -110,7 +110,20 @@
 
   .btn-custom {
     background: #5d5be7;
-    color:#fff
+    color:#fff;
+    width: 100%;
+      margin: 10px auto;
+      justify-content: center;
+      display: block;
+      color: #fff;
+      font-size: 1em;
+      font-weight: bold;
+      margin-top: 0px;
+      border-radius: 10px;
+      transition: .2s ease-in;
+      cursor: pointer;
+      height: 40px;
+      margin: 1px;
     
   }
   .btn-custom:hover{

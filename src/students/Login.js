@@ -1,10 +1,10 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Button, Form, Alert } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 /**
- * Login component is to validate a student's login information.
- * @param {*} props 
+ * Login component to update a user's password in case they forget their password.
+ * @param {*} props
  * @returns React component
  */
 export default function Login(props) {
@@ -66,16 +66,10 @@ export default function Login(props) {
     );
   }
   if (wrong) {
-    return (
-      <div>
-        <p className="text-danger">
-          {" "}
-          Username doesn't exist or password is incorrect.{" "}
-        </p>
-        <Login></Login>
-      </div>
-    );
+    setWrong(false);
+    alert("Please provide a valid username and password!!");
   }
+
   if (invalidFields)
     return (
       <div>
@@ -121,18 +115,7 @@ export default function Login(props) {
         >
           Login
         </Button>
-
-        {login ? (
-          <p className="text-success">You Are Logged in Successfully</p>
-        ) : (
-          <p className="text-danger">
-            Please log in with a valid @scarletmail.rutgers.edu email address
-            only.{" "}
-          </p>
-        )}
       </Form>
-      <br></br>
-
       <Button
         variant="primary"
         onClick={() => {
@@ -141,6 +124,15 @@ export default function Login(props) {
       >
         Forgot Password?
       </Button>
+      {login ? (
+        <p className="text-success">You Are Logged in Successfully</p>
+      ) : (
+        <p className="text-danger">
+          Please log in with a valid @scarletmail.rutgers.edu email address
+          only.{" "}
+        </p>
+      )}
+
       <Link to="/register">
         Don't have an account? You can create an account here instead!
       </Link>

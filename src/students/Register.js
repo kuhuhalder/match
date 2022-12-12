@@ -4,7 +4,7 @@ import { Button, Container, Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 /**
  * Register component is to register a new student on our platform.
- * @param {*} props 
+ * @param {*} props
  * @returns React component
  */
 export default function Register(props) {
@@ -66,12 +66,14 @@ export default function Register(props) {
       });
   };
   if (emptyFields) {
-    return (
-      <div>
-        <p className="text-danger">Please fill out the all the fields.</p>
-        <Register></Register>
-      </div>
-    );
+    alert("Please fill out all the fields.");
+    setEmptyFields(false);
+    // return (
+    //   <div>
+    //     <p className="text-danger">Please fill out the all the fields.</p>
+    //     <Register></Register>
+    //   </div>
+    // );
   }
   if (invalidFields) {
     return (
@@ -87,18 +89,16 @@ export default function Register(props) {
   if (userNameExists) {
     return (
       <div>
-        <p className="text-danger">Username already exists. Login instead</p>
-        {
-          <Button
-            variant="primary"
-            type="submit"
-            onClick={(e) => {
-              navigate("/login");
-            }}
-          >
-            Login
-          </Button>
-        }
+        alert("Username already exists. Please try again.")
+        <Button
+          variant="primary"
+          type="submit"
+          onClick={(e) => {
+            navigate("/login");
+          }}
+        >
+          Login
+        </Button>
       </div>
     );
   }

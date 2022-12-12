@@ -4,7 +4,7 @@ import { Button } from "react-bootstrap";
 import { useLocation, useNavigate } from "react-router-dom";
 /**
  * ViewProfileStudent component allows the admin to view the profile information of a student.
- * @param {*} props 
+ * @param {*} props
  * @returns React component
  */
 const ViewProfileStudent = (props) => {

@@ -5,7 +5,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import NavBarAdmin from "../components/NavBarAdmin";
 /**
  * EditProfile is to edit any student's information/ criteria for matching.
- * @param {*} props 
+ * @param {*} props
  * @returns React component
  */
 function EditProfile(props) {

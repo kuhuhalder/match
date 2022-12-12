@@ -5,7 +5,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import NavBar from "../components/NavBar";
 /**
  * ViewStudyBuddies component is to view the list of confirmed matches/ study buddies for the current logged in user.
- * @param {*} props 
+ * @param {*} props
  * @returns React component
  */
 const ViewStudyBuddies = (props) => {

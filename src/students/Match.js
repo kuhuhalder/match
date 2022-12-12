@@ -6,7 +6,7 @@ import NavBar from "../components/NavBar";
 import "../css/Match.css";
 /**
  * Match component to display a list of all possible matches determined by our matching algorithm.
- * @param {*} props 
+ * @param {*} props
  * @returns React component
  */
 const Match = (props) => {

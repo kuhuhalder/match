@@ -4,7 +4,7 @@ import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 /**
  * RegisterAdmin component is to register/ create a new account for an admin.
- * @param {*} props 
+ * @param {*} props
  * @returns React component
  */
 export default function RegisterAdmin(props) {

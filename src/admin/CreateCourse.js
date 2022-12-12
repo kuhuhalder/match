@@ -5,7 +5,7 @@ import axios from "axios";
 import NavBarAdmin from "../components/NavBarAdmin";
 /**
  * CreateCourse component is to create a course by the admin.
- * @param {*} props 
+ * @param {*} props
  * @returns React component
  */
 export default function CreateCourse(props) {

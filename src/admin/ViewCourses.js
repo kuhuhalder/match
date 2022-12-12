@@ -6,7 +6,7 @@ import Table from "react-bootstrap/Table";
 import { useLocation, useNavigate } from "react-router-dom";
 /**
  * ViewCourses component is to view all the courses.
- * @param {*} props 
+ * @param {*} props
  * @returns React component
  */
 function ViewCourses() {

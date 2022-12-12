@@ -5,7 +5,7 @@ import "./css/Home.css";
 import banner from "./images/banner.jpeg";
 /**
  * AboutUs component to display the information about the project.
- * @param {*} props 
+ * @param {*} props
  * @returns React component
  */
 const AboutUs = () => {

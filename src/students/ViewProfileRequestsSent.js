@@ -4,7 +4,7 @@ import { Button } from "react-bootstrap";
 import { useLocation, useNavigate } from "react-router-dom";
 /**
  * ViewProfileRequestsSent component is to display the profile of the student who the logged in user has sent requests to.
- * @param {*} props 
+ * @param {*} props
  * @returns React component
  */
 const ViewProfileRequestsSent = (props) => {

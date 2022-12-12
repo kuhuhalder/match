@@ -7,7 +7,7 @@ import Confetti from "react-confetti";
 import useWindowSize from "react-use/lib/useWindowSize";
 /**
  * ViewRequests component is to view the match requests sent by other students.
- * @param {*} props 
+ * @param {*} props
  * @returns React component
  */
 const ViewRequests = (props) => {

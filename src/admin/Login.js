@@ -4,7 +4,7 @@ import { Button, Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 /**
  * LoginAdmin component is to validate an admin's login information.
- * @param {*} props 
+ * @param {*} props
  * @returns React component
  */
 export default function LoginAdmin(props) {

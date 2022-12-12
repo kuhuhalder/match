@@ -4,7 +4,7 @@ import { Button, Modal, Table } from "react-bootstrap";
 import { useLocation, useNavigate } from "react-router-dom";
 /**
  * ViewAllStudents component is to view all the students in the system.
- * @param {*} props 
+ * @param {*} props
  * @returns React component
  */
 const ViewAllStudents = (props) => {

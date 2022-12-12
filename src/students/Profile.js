@@ -6,7 +6,7 @@ import NavBar from "../components/NavBar";
 /**
  * Profile component is to enter or update criteria to match with other students.
  * It also updates user information.
- * @param {*} props 
+ * @param {*} props
  * @returns React component
  */
 function Profile(props) {

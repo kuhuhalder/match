@@ -69,13 +69,6 @@ test("student register button to create an account", () => {
   expect(screen.getByText(/MATCH/i)).toBeInTheDocument();
 });
 
-test("create an account --> student profile page", () => {
-  render(<App />);
-  const buttonLog = screen.getByText("Register");
-  fireEvent.click(buttonLog);
-  expect(screen.getByText(/MATCH/i)).toBeInTheDocument();
-});
-
 test("student profile--> account", () => {
   render(<App />);
   const buttonLog = screen.getByText("MATCH");

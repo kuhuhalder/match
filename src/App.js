@@ -32,7 +32,7 @@ import LoginVerify from "./admin/LoginVerify";
 import RegisterVerify from "./admin/RegisterVerify";
 /**
  * App component that renders the entire application.
- * @param {*} props 
+ * @param {*} props
  * @returns React component
  */
 const App = () => {

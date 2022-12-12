@@ -4,7 +4,7 @@ import { Button, Container, Form } from "react-bootstrap";
 import { useLocation, useNavigate } from "react-router-dom";
 /**
  * ForgotPass component to update a user's password in case they forget their password.
- * @param {*} props 
+ * @param {*} props
  * @returns React component
  */
 const ForgotPass = (props) => {
