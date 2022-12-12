@@ -10,7 +10,7 @@ export default function RegisterVerify(props) {
   const [message, setMessage] = useState("");
   const handleSubmit = (e) => {
     if (message == "4312022") {
-      navigate("/loginadmin");
+      navigate("/registeradmin");
     } else {
       alert("Wrong code. Please try again.");
     }

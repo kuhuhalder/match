@@ -68,21 +68,10 @@ export default function Register(props) {
   if (emptyFields) {
     alert("Please fill out all the fields.");
     setEmptyFields(false);
-    // return (
-    //   <div>
-    //     <p className="text-danger">Please fill out the all the fields.</p>
-    //     <Register></Register>
-    //   </div>
-    // );
   }
   if (invalidFields) {
-    return (
-      <div>
-        <p className="text-danger">
-          Please register with a @scarletmail.rutgers.edu email address only.
-        </p>
-        <Register></Register>
-      </div>
+    alert(
+      "Please register with a @scarletmail.rutgers.edu email address only."
     );
   }
 
@@ -137,7 +126,6 @@ export default function Register(props) {
   return (
     <Container>
       <h2>Create an Account</h2>
-
       <Form onSubmit={(e) => handleRegister(e)}>
         <Form.Group controlId="formBasicEmail" required>
           <Form.Label>Email address</Form.Label>
@@ -206,7 +194,7 @@ export default function Register(props) {
         </Button>
       </Form>
       <br></br>
-      <Link to="/login">Already have an account? Click here to login!</Link>
+      Already have an account? Click <Link to="/login">here</Link> to login!
     </Container>
   );
 }

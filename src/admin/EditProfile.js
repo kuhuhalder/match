@@ -27,6 +27,7 @@ function EditProfile(props) {
   const [genderPreference, setGenderPreference] = useState(null);
   const [register, setRegister] = useState(false);
   const [courseIds, setCourseIds] = useState([]);
+  const [contactInfo, setContactInfo] = useState(null);
   const configuration = {
     method: "get",
     url: "http://localhost:8080/api/students/getAllCourses",
@@ -52,6 +53,7 @@ function EditProfile(props) {
         firstName,
         lastName,
         pronouns,
+        contactInfo,
         campus,
         course,
         major,
@@ -107,7 +109,6 @@ function EditProfile(props) {
         <Form.Group className="mb-3" controlId="formPronouns">
           <Form.Label> Pronouns </Form.Label>
           <Form.Select
-            required
             defaultValue={""}
             onChange={(e) => setPronouns(e.target.value)}
           >
@@ -117,10 +118,24 @@ function EditProfile(props) {
             <option value="they/them"> they/them </option>
           </Form.Select>
         </Form.Group>
+        <Form.Group className="mb-3" controlId="formContactInfo">
+          <Form.Label> Contact Information </Form.Label>
+          <p>
+            {" "}
+            Feel free to include your phone number or social media @. These will
+            only be shared with your confirmed study buddies to connect.{" "}
+          </p>
+          <Form.Control
+            type="contactInfo"
+            name="contactInfo"
+            defaultValue={""}
+            onChange={(e) => setContactInfo(e.target.value)}
+            placeholder="Enter contact information"
+          />
+        </Form.Group>
         <Form.Group className="mb-3" controlId="formCampus">
-          <Form.Label> Campus </Form.Label>
+          <Form.Label> Preferred Campus to Study/ Meet </Form.Label>
           <Form.Select
-            required
             defaultValue={""}
             onChange={(e) => setCampus(e.target.value)}
           >
@@ -140,11 +155,12 @@ function EditProfile(props) {
             courses and submit this form.
           </p>
           <Form.Select
+            defaultValue={""}
             onChange={(e) =>
               setCourses((course) => course.concat(e.target.value))
             }
           >
-            <option value=""> Select Course </option>
+            <option value=""> Select Courses </option>
             {courseIds.map((val, key) => {
               return <option key={val.courseName}> {val.courseName} </option>;
             })}
@@ -172,11 +188,9 @@ function EditProfile(props) {
             })}
           </tbody>
         </Table>
-
         <Form.Group className="mb-3" controlId="formYearsinCollege">
           <Form.Label>Year</Form.Label>
           <Form.Select
-            required
             defaultValue={""}
             onChange={(e) => setYear(e.target.value)}
           >
@@ -187,6 +201,7 @@ function EditProfile(props) {
             <option value="Senior"> Senior </option>
           </Form.Select>
         </Form.Group>
+
         <Form.Group className="mb-3" controlId="formMajor">
           <Form.Label>Major</Form.Label>
           <Form.Control
@@ -201,11 +216,11 @@ function EditProfile(props) {
           <Form.Label> Gender Preferences </Form.Label>
           <p>Select your preferred genders (if any) for matching.</p>
           <Form.Select
-            required
             defaultValue={""}
             onChange={(e) => setGenderPreference(e.target.value)}
           >
             <option value=""> Select Gender Preferences </option>
+            <option value="No Preferences">No Preferences</option>
             <option value="Female">Female </option>
             <option value="Male"> Male </option>
             <option value="Non-binary">Non-binary </option>

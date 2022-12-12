@@ -132,10 +132,8 @@ export default function Login(props) {
           only.{" "}
         </p>
       )}
-
-      <Link to="/register">
-        Don't have an account? You can create an account here instead!
-      </Link>
+      Don't have an account? You can create an account{" "}
+      <Link to="/register">here</Link> instead!
     </div>
   );
 }
