@@ -9,7 +9,7 @@ Type of Application: software tools for helping the users and making life easier
 The reason why we chose this project is because after being students at Rutgers University for the past 3-4 years, we have realized that knowing classmates and peers within classes is of utmost importance. It gives students a support system to go through the day-to-day challenges that each class faces and being able to share stresses, victories, and reminders with students within our classes is very helpful. We are creating a service that will allow students to meet and match with other students in the classes they are taking and form a “study buddy” relationship with them. This allows students a way to meet other students, form friendships, and gain support in classes that can be difficult. We expect to learn an ample amount of skills to accomplish this project.
 
 ## Meet the Team: S(WE)NSATIONAL
-### Team Members:
+### Team Members
 - Kuhu Halder (Product Owner)
 - Farah Lubaba Rouf (Scrum Master)
 - Shreya Jain (Front-end Developer)
@@ -24,10 +24,14 @@ IDE: VSCode for React.js + Intellij for Java
 ## Deployment
 The front-end is deployed on Netlify here: https://match-swensational.netlify.app/.
 
-The backend will be deployed on Heroku.
+The backend is deployed on Heroku: https://match-api-backend.herokuapp.com/
 
-## In order to run this project:
+## In order to run this project
 1. Download the repository into VSCode.
 2. On the terminal, run `npm install`
 3. After installing dependencies and node modules
 4. Run the app by typing `npm start` - It will start the developmental server and open up the app on the https://localhost:3000/ (3000 port) on your computer.
+
+## Final Presentation Link
+
+Link: https://docs.google.com/presentation/d/1eT741s7D4B_Vv6-ByvoSorSJBVJkrmYoyOZX2J1H2X8/edit?usp=sharing
