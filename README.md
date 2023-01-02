@@ -2,7 +2,7 @@
 
 MATCH is a web-app that pairs students to form study-buddies where students can study together. MATCH can also match students with mentors based on interests or classes mentors have already taken that the students are currently taking.
 
-Type of Application: software tools for helping the users and making life easier  or software projects that solve domain specific problems
+<b>Type of Application</b>: software tools for helping the users and making life easier  or software projects that solve domain specific problems
 
 ## Inspiration
 
