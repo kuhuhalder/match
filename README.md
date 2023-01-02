@@ -10,7 +10,7 @@ The reason why we chose this project is because after being students at Rutgers 
 
 ## Meet the Team: S(WE)NSATIONAL
 ### Team Members
-- Kuhu Halder (Product Owner)
+- Kuhu Halder (Product Owner + Front-end Developer)
 - Farah Lubaba Rouf (Scrum Master)
 - Shreya Jain (Front-end Developer)
 - Prince Rawal (Backend Developer)
@@ -27,11 +27,22 @@ The front-end is deployed on Netlify here: https://match-swensational.netlify.ap
 The backend is deployed on Heroku: https://match-api-backend.herokuapp.com/
 
 ## In order to run this project
-1. Download the repository into VSCode.
-2. On the terminal, run `npm install`
-3. After installing dependencies and node modules
-4. Run the app by typing `npm start` - It will start the developmental server and open up the app on the https://localhost:3000/ (3000 port) on your computer.
+1. Download VSCode and npm.
+2. Clone the GitHub repository by entering this command in the terminal: `git clone https://github.com/kuhuhalder/match`
+3. On the terminal, run `npm install .`
+4. After installing dependencies and node modules
+5. Run the app by typing `npm start` - It will start the developmental server and open up the app on the https://localhost:3000/ (3000 port) on your computer.
+6. To run the tests, type `npm run test` on the terminal.
 
 ## Final Presentation Link
 
 Link: https://docs.google.com/presentation/d/1eT741s7D4B_Vv6-ByvoSorSJBVJkrmYoyOZX2J1H2X8/edit?usp=sharing
+
+## Demo Video Link
+
+https://rutgers.zoom.us/rec/share/IXb0gSwM5tqR5Rm3MvwDY8qU3FWcYwlRD6TPZd5TEIW5Ss70vnTfxXIMPacamWEA.mZIZKT4tban-lH_e?startTime=1670878109000
+Passcode: R7%7*zSx
+
+## Final Report
+
+https://kuhuhalder.notion.site/Final-Report-fe161b592e7848949e0c079e7470df19 
